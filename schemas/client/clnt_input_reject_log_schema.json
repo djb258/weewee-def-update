@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_input_reject_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_reject_id": {
+      "type": "string",
+      "description": "TODO: Add definition for reject_id (BARTON_001_reject_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_group_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_number (BARTON_002_group_number)",
+      "nullable": false
+    },
+    "BARTON_003_rejection_reason": {
+      "type": "string",
+      "description": "TODO: Add definition for rejection_reason (BARTON_003_rejection_reason)",
+      "nullable": false
+    },
+    "BARTON_004_rejected_at": {
+      "type": "string",
+      "description": "TODO: Add definition for rejected_at (BARTON_004_rejected_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "BARTON_005_rejected_by": {
+      "type": "string",
+      "description": "TODO: Add definition for rejected_by (BARTON_005_rejected_by)",
+      "nullable": true,
+      "default": "'system_validator'::text"
+    },
+    "BARTON_006_raw_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for raw_payload (BARTON_006_raw_payload)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_reject_id",
+    "BARTON_002_group_number",
+    "BARTON_003_rejection_reason"
+  ]
+}

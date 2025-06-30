@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_bootstrap_program (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_agent_name": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_name (BARTON_001_agent_name)",
+      "nullable": false
+    },
+    "BARTON_002_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_002_process_id)",
+      "nullable": false
+    },
+    "BARTON_003_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for payload (BARTON_003_payload)",
+      "nullable": true
+    },
+    "BARTON_004_auto_trigger": {
+      "type": "boolean",
+      "description": "TODO: Add definition for auto_trigger (BARTON_004_auto_trigger)",
+      "nullable": true,
+      "default": "true"
+    },
+    "BARTON_005_last_updated": {
+      "type": "string",
+      "description": "TODO: Add definition for last_updated (BARTON_005_last_updated)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_agent_name",
+    "BARTON_002_process_id"
+  ]
+}

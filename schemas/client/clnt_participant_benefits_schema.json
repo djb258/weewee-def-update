@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_participant_benefits (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_participant_benefit_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for participant_benefit_uid (BARTON_001_participant_benefit_uid)",
+      "nullable": false
+    },
+    "BARTON_002_participant_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for participant_uid (BARTON_002_participant_uid)",
+      "nullable": true
+    },
+    "BARTON_003_vendor_benefit_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_benefit_uid (BARTON_003_vendor_benefit_uid)",
+      "nullable": true
+    },
+    "BARTON_004_coverage_level": {
+      "type": "string",
+      "description": "TODO: Add definition for coverage_level (BARTON_004_coverage_level)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_participant_benefit_uid"
+  ]
+}

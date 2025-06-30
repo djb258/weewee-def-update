@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_mission_meta (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_id (BARTON_001_mission_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_mission_label": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_label (BARTON_002_mission_label)",
+      "nullable": true
+    },
+    "BARTON_003_core_objective": {
+      "type": "string",
+      "description": "TODO: Add definition for core_objective (BARTON_003_core_objective)",
+      "nullable": true
+    },
+    "BARTON_004_initiated_by": {
+      "type": "string",
+      "description": "TODO: Add definition for initiated_by (BARTON_004_initiated_by)",
+      "nullable": true
+    },
+    "BARTON_005_escalation_trigger_mode": {
+      "type": "string",
+      "description": "TODO: Add definition for escalation_trigger_mode (BARTON_005_escalation_trigger_mode)",
+      "nullable": true
+    },
+    "BARTON_006_mindpal_engaged": {
+      "type": "boolean",
+      "description": "TODO: Add definition for mindpal_engaged (BARTON_006_mindpal_engaged)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_007_mission_confirmed": {
+      "type": "boolean",
+      "description": "TODO: Add definition for mission_confirmed (BARTON_007_mission_confirmed)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_008_orchestration_timestamp": {
+      "type": "string",
+      "description": "TODO: Add definition for orchestration_timestamp (BARTON_008_orchestration_timestamp)",
+      "format": "date-time",
+      "nullable": true
+    },
+    "BARTON_009_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_009_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_mission_id"
+  ]
+}

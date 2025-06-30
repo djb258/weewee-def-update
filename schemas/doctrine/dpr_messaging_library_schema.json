@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_messaging_library (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_doctrine_code": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_code (BARTON_002_doctrine_code)",
+      "nullable": true
+    },
+    "BARTON_003_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_003_sub_hive_name)",
+      "nullable": true
+    },
+    "BARTON_004_persona": {
+      "type": "string",
+      "description": "TODO: Add definition for persona (BARTON_004_persona)",
+      "nullable": true
+    },
+    "BARTON_005_tone_tag": {
+      "type": "string",
+      "description": "TODO: Add definition for tone_tag (BARTON_005_tone_tag)",
+      "nullable": true
+    },
+    "BARTON_006_message_text": {
+      "type": "string",
+      "description": "TODO: Add definition for message_text (BARTON_006_message_text)",
+      "nullable": true
+    },
+    "BARTON_007_created_by": {
+      "type": "string",
+      "description": "TODO: Add definition for created_by (BARTON_007_created_by)",
+      "nullable": true
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

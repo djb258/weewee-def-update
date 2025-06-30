@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_research_library (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_research_category": {
+      "type": "string",
+      "description": "TODO: Add definition for research_category (BARTON_002_research_category)",
+      "nullable": true
+    },
+    "BARTON_003_summary": {
+      "type": "string",
+      "description": "TODO: Add definition for summary (BARTON_003_summary)",
+      "nullable": true
+    },
+    "BARTON_004_source_url": {
+      "type": "string",
+      "description": "TODO: Add definition for source_url (BARTON_004_source_url)",
+      "format": "uri",
+      "nullable": true
+    },
+    "BARTON_005_doctrine_code": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_code (BARTON_005_doctrine_code)",
+      "nullable": true
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_sub_hive_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_001_sub_hive_name)",
+      "nullable": false
+    },
+    "BARTON_002_display_name": {
+      "type": "string",
+      "description": "TODO: Add definition for display_name (BARTON_002_display_name)",
+      "nullable": false
+    },
+    "BARTON_003_internal_alias": {
+      "type": "string",
+      "description": "TODO: Add definition for internal_alias (BARTON_003_internal_alias)",
+      "nullable": true
+    },
+    "BARTON_004_purpose": {
+      "type": "string",
+      "description": "TODO: Add definition for purpose (BARTON_004_purpose)",
+      "nullable": true
+    },
+    "BARTON_005_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_005_status)",
+      "nullable": true,
+      "default": "'active'::character varying"
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "BARTON_007_parent_hive": {
+      "type": "string",
+      "description": "TODO: Add definition for parent_hive (BARTON_007_parent_hive)",
+      "nullable": true
+    },
+    "BARTON_008_category": {
+      "type": "string",
+      "description": "TODO: Add definition for category (BARTON_008_category)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_sub_hive_name",
+    "BARTON_002_display_name"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_order_queue (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_issued_by": {
+      "type": "string",
+      "description": "TODO: Add definition for issued_by (BARTON_002_issued_by)",
+      "nullable": false
+    },
+    "BARTON_003_target_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for target_agent (BARTON_003_target_agent)",
+      "nullable": false
+    },
+    "BARTON_004_command_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for command_payload (BARTON_004_command_payload)",
+      "nullable": false
+    },
+    "BARTON_005_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_005_status)",
+      "nullable": true,
+      "default": "'pending'::text"
+    },
+    "BARTON_006_notes": {
+      "type": "string",
+      "description": "TODO: Add definition for notes (BARTON_006_notes)",
+      "nullable": true
+    },
+    "BARTON_007_reviewed_at": {
+      "type": "string",
+      "description": "TODO: Add definition for reviewed_at (BARTON_007_reviewed_at)",
+      "format": "date-time",
+      "nullable": true
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_issued_by",
+    "BARTON_003_target_agent",
+    "BARTON_004_command_payload"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_webhook_routing_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_001_process_id)",
+      "nullable": false
+    },
+    "BARTON_002_assigned_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for assigned_agent (BARTON_002_assigned_agent)",
+      "nullable": false
+    },
+    "BARTON_003_webhook_url": {
+      "type": "string",
+      "description": "TODO: Add definition for webhook_url (BARTON_003_webhook_url)",
+      "format": "uri",
+      "nullable": false
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_process_id",
+    "BARTON_002_assigned_agent",
+    "BARTON_003_webhook_url"
+  ]
+}

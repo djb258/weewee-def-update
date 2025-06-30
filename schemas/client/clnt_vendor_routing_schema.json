@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_vendor_routing (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_routing_id": {
+      "type": "string",
+      "description": "TODO: Add definition for routing_id (BARTON_001_routing_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_client_id": {
+      "type": "string",
+      "description": "TODO: Add definition for client_id (BARTON_002_client_id)",
+      "nullable": false
+    },
+    "BARTON_003_group_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_number (BARTON_003_group_number)",
+      "nullable": false
+    },
+    "BARTON_004_vendor_name": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_name (BARTON_004_vendor_name)",
+      "nullable": false
+    },
+    "BARTON_005_export_table": {
+      "type": "string",
+      "description": "TODO: Add definition for export_table (BARTON_005_export_table)",
+      "nullable": false
+    },
+    "BARTON_006_export_logic_profile": {
+      "type": "string",
+      "description": "TODO: Add definition for export_logic_profile (BARTON_006_export_logic_profile)",
+      "nullable": true
+    },
+    "BARTON_007_active": {
+      "type": "boolean",
+      "description": "TODO: Add definition for active (BARTON_007_active)",
+      "nullable": true,
+      "default": "true"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_routing_id",
+    "BARTON_002_client_id",
+    "BARTON_003_group_number",
+    "BARTON_004_vendor_name",
+    "BARTON_005_export_table"
+  ]
+}

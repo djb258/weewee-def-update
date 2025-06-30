@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "marketing_strategy_constants (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_constant_id": {
+      "type": "string",
+      "description": "TODO: Add definition for constant_id (BARTON_001_constant_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_id (BARTON_002_mission_id)",
+      "nullable": false
+    },
+    "BARTON_003_constant_key": {
+      "type": "string",
+      "description": "TODO: Add definition for constant_key (BARTON_003_constant_key)",
+      "nullable": true
+    },
+    "BARTON_004_constant_value": {
+      "type": "string",
+      "description": "TODO: Add definition for constant_value (BARTON_004_constant_value)",
+      "nullable": true
+    },
+    "BARTON_005_required_for_strategy": {
+      "type": "string",
+      "description": "TODO: Add definition for required_for_strategy (BARTON_005_required_for_strategy)",
+      "nullable": true
+    },
+    "BARTON_006_source": {
+      "type": "string",
+      "description": "TODO: Add definition for source (BARTON_006_source)",
+      "nullable": true
+    },
+    "BARTON_007_auto_confirmed": {
+      "type": "boolean",
+      "description": "TODO: Add definition for auto_confirmed (BARTON_007_auto_confirmed)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_008_commander_confirmed": {
+      "type": "boolean",
+      "description": "TODO: Add definition for commander_confirmed (BARTON_008_commander_confirmed)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_009_confirmation_timestamp": {
+      "type": "string",
+      "description": "TODO: Add definition for confirmation_timestamp (BARTON_009_confirmation_timestamp)",
+      "format": "date-time",
+      "nullable": true
+    },
+    "BARTON_010_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_010_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_constant_id",
+    "BARTON_002_mission_id"
+  ]
+}

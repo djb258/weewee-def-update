@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_webhook_routing_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_source_table": {
+      "type": "string",
+      "description": "TODO: Add definition for source_table (BARTON_002_source_table)",
+      "nullable": false
+    },
+    "BARTON_003_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for payload (BARTON_003_payload)",
+      "nullable": false
+    },
+    "BARTON_004_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_004_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_source_table",
+    "BARTON_003_payload"
+  ]
+}

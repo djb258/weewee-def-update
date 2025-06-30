@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "marketing_strategy_output_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_strategy_id": {
+      "type": "string",
+      "description": "TODO: Add definition for strategy_id (BARTON_001_strategy_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_id (BARTON_002_mission_id)",
+      "nullable": false
+    },
+    "BARTON_003_strategy_summary": {
+      "type": "string",
+      "description": "TODO: Add definition for strategy_summary (BARTON_003_strategy_summary)",
+      "nullable": false
+    },
+    "BARTON_004_strategy_equation": {
+      "type": "string",
+      "description": "TODO: Add definition for strategy_equation (BARTON_004_strategy_equation)",
+      "nullable": true
+    },
+    "BARTON_005_risk_matrix": {
+      "type": "string",
+      "description": "TODO: Add definition for risk_matrix (BARTON_005_risk_matrix)",
+      "nullable": true
+    },
+    "BARTON_006_decision_tree": {
+      "type": "string",
+      "description": "TODO: Add definition for decision_tree (BARTON_006_decision_tree)",
+      "nullable": true
+    },
+    "BARTON_007_doctrine_references": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_references (BARTON_007_doctrine_references)",
+      "nullable": true
+    },
+    "BARTON_008_export_format": {
+      "type": "string",
+      "description": "TODO: Add definition for export_format (BARTON_008_export_format)",
+      "nullable": true
+    },
+    "BARTON_009_pushed_by": {
+      "type": "string",
+      "description": "TODO: Add definition for pushed_by (BARTON_009_pushed_by)",
+      "nullable": true
+    },
+    "BARTON_010_pushed_at": {
+      "type": "string",
+      "description": "TODO: Add definition for pushed_at (BARTON_010_pushed_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "BARTON_011_human_override_flag": {
+      "type": "boolean",
+      "description": "TODO: Add definition for human_override_flag (BARTON_011_human_override_flag)",
+      "nullable": true,
+      "default": "false"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_strategy_id",
+    "BARTON_002_mission_id",
+    "BARTON_003_strategy_summary"
+  ]
+}

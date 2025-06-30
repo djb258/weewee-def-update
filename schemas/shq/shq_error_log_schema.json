@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_error_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_error_message": {
+      "type": "string",
+      "description": "TODO: Add definition for error_message (BARTON_002_error_message)",
+      "nullable": true
+    },
+    "BARTON_003_error_detail": {
+      "type": "string",
+      "description": "TODO: Add definition for error_detail (BARTON_003_error_detail)",
+      "nullable": true
+    },
+    "BARTON_004_logged_at": {
+      "type": "string",
+      "description": "TODO: Add definition for logged_at (BARTON_004_logged_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "BARTON_005_table_name": {
+      "type": "string",
+      "description": "TODO: Add definition for table_name (BARTON_005_table_name)",
+      "nullable": true
+    },
+    "BARTON_006_related_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for related_agent (BARTON_006_related_agent)",
+      "nullable": true
+    },
+    "BARTON_007_sniper_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for sniper_mission_id (BARTON_007_sniper_mission_id)",
+      "nullable": true
+    },
+    "BARTON_008_error_context": {
+      "type": "string",
+      "description": "TODO: Add definition for error_context (BARTON_008_error_context)",
+      "nullable": true
+    },
+    "BARTON_009_resolution_status": {
+      "type": "string",
+      "description": "TODO: Add definition for resolution_status (BARTON_009_resolution_status)",
+      "nullable": true,
+      "default": "'unresolved'::text"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

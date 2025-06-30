@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_parsed_spd_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_spd_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for spd_uid (BARTON_001_spd_uid)",
+      "nullable": false
+    },
+    "BARTON_002_vendor_benefit_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_benefit_uid (BARTON_002_vendor_benefit_uid)",
+      "nullable": true
+    },
+    "BARTON_003_plan_year": {
+      "type": "number",
+      "description": "TODO: Add definition for plan_year (BARTON_003_plan_year)",
+      "nullable": true
+    },
+    "BARTON_004_plan_type": {
+      "type": "string",
+      "description": "TODO: Add definition for plan_type (BARTON_004_plan_type)",
+      "nullable": true
+    },
+    "BARTON_005_contract_type": {
+      "type": "string",
+      "description": "TODO: Add definition for contract_type (BARTON_005_contract_type)",
+      "nullable": true
+    },
+    "BARTON_006_deductible_individual": {
+      "type": "number",
+      "description": "TODO: Add definition for deductible_individual (BARTON_006_deductible_individual)",
+      "nullable": true
+    },
+    "BARTON_007_deductible_family": {
+      "type": "number",
+      "description": "TODO: Add definition for deductible_family (BARTON_007_deductible_family)",
+      "nullable": true
+    },
+    "BARTON_008_reference_based_pricing": {
+      "type": "boolean",
+      "description": "TODO: Add definition for reference_based_pricing (BARTON_008_reference_based_pricing)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_009_coinsurance_percent": {
+      "type": "number",
+      "description": "TODO: Add definition for coinsurance_percent (BARTON_009_coinsurance_percent)",
+      "nullable": true
+    },
+    "BARTON_010_out_of_pocket_max": {
+      "type": "string",
+      "description": "TODO: Add definition for out_of_pocket_max (BARTON_010_out_of_pocket_max)",
+      "nullable": true
+    },
+    "BARTON_011_additional_terms_json": {
+      "type": "string",
+      "description": "TODO: Add definition for additional_terms_json (BARTON_011_additional_terms_json)",
+      "nullable": true,
+      "default": "'{}'::jsonb"
+    },
+    "BARTON_012_spd_text_excerpt": {
+      "type": "string",
+      "description": "TODO: Add definition for spd_text_excerpt (BARTON_012_spd_text_excerpt)",
+      "nullable": true
+    },
+    "BARTON_013_date_parsed": {
+      "type": "string",
+      "description": "TODO: Add definition for date_parsed (BARTON_013_date_parsed)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_spd_uid"
+  ]
+}

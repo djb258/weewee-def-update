@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_input_validation_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_validation_id": {
+      "type": "string",
+      "description": "TODO: Add definition for validation_id (BARTON_001_validation_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_group_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_number (BARTON_002_group_number)",
+      "nullable": false
+    },
+    "BARTON_003_field_in_source": {
+      "type": "string",
+      "description": "TODO: Add definition for field_in_source (BARTON_003_field_in_source)",
+      "nullable": false
+    },
+    "BARTON_004_rule_type": {
+      "type": "string",
+      "description": "TODO: Add definition for rule_type (BARTON_004_rule_type)",
+      "nullable": false
+    },
+    "BARTON_005_rule_detail": {
+      "type": "string",
+      "description": "TODO: Add definition for rule_detail (BARTON_005_rule_detail)",
+      "nullable": false
+    },
+    "BARTON_006_error_message": {
+      "type": "string",
+      "description": "TODO: Add definition for error_message (BARTON_006_error_message)",
+      "nullable": false
+    },
+    "BARTON_007_active": {
+      "type": "boolean",
+      "description": "TODO: Add definition for active (BARTON_007_active)",
+      "nullable": true,
+      "default": "true"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_validation_id",
+    "BARTON_002_group_number",
+    "BARTON_003_field_in_source",
+    "BARTON_004_rule_type",
+    "BARTON_005_rule_detail",
+    "BARTON_006_error_message"
+  ]
+}

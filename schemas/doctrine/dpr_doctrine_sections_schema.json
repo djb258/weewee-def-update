@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine_sections (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_section_number": {
+      "type": "number",
+      "description": "TODO: Add definition for section_number (BARTON_001_section_number)",
+      "nullable": false
+    },
+    "BARTON_002_section_title": {
+      "type": "string",
+      "description": "TODO: Add definition for section_title (BARTON_002_section_title)",
+      "nullable": false
+    },
+    "BARTON_003_doctrine_text": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_text (BARTON_003_doctrine_text)",
+      "nullable": false
+    },
+    "BARTON_004_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_004_enforcement_level)",
+      "nullable": false
+    },
+    "BARTON_005_doctrine_track": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_track (BARTON_005_doctrine_track)",
+      "nullable": false
+    },
+    "BARTON_006_source": {
+      "type": "string",
+      "description": "TODO: Add definition for source (BARTON_006_source)",
+      "nullable": true,
+      "default": "'notion'::text"
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_section_number",
+    "BARTON_002_section_title",
+    "BARTON_003_doctrine_text",
+    "BARTON_004_enforcement_level",
+    "BARTON_005_doctrine_track"
+  ]
+}

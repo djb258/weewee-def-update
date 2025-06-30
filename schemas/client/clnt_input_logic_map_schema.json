@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_input_logic_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_logic_id": {
+      "type": "string",
+      "description": "TODO: Add definition for logic_id (BARTON_001_logic_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_group_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_number (BARTON_002_group_number)",
+      "nullable": false
+    },
+    "BARTON_003_field_in_source": {
+      "type": "string",
+      "description": "TODO: Add definition for field_in_source (BARTON_003_field_in_source)",
+      "nullable": false
+    },
+    "BARTON_004_condition": {
+      "type": "string",
+      "description": "TODO: Add definition for condition (BARTON_004_condition)",
+      "nullable": false
+    },
+    "BARTON_005_map_to_field": {
+      "type": "string",
+      "description": "TODO: Add definition for map_to_field (BARTON_005_map_to_field)",
+      "nullable": false
+    },
+    "BARTON_006_transform_type": {
+      "type": "string",
+      "description": "TODO: Add definition for transform_type (BARTON_006_transform_type)",
+      "nullable": false
+    },
+    "BARTON_007_transform_rule": {
+      "type": "string",
+      "description": "TODO: Add definition for transform_rule (BARTON_007_transform_rule)",
+      "nullable": true
+    },
+    "BARTON_008_active": {
+      "type": "boolean",
+      "description": "TODO: Add definition for active (BARTON_008_active)",
+      "nullable": true,
+      "default": "true"
+    },
+    "BARTON_009_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_009_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_logic_id",
+    "BARTON_002_group_number",
+    "BARTON_003_field_in_source",
+    "BARTON_004_condition",
+    "BARTON_005_map_to_field",
+    "BARTON_006_transform_type"
+  ]
+}

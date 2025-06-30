@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_task_schedule (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_task_name": {
+      "type": "string",
+      "description": "TODO: Add definition for task_name (BARTON_002_task_name)",
+      "nullable": true
+    },
+    "BARTON_003_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_003_status)",
+      "nullable": true
+    },
+    "BARTON_004_scheduled_for": {
+      "type": "string",
+      "description": "TODO: Add definition for scheduled_for (BARTON_004_scheduled_for)",
+      "format": "date-time",
+      "nullable": true
+    },
+    "BARTON_005_result": {
+      "type": "string",
+      "description": "TODO: Add definition for result (BARTON_005_result)",
+      "nullable": true
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

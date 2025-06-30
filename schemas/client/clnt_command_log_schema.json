@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_command_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_source_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for source_agent (BARTON_002_source_agent)",
+      "nullable": false
+    },
+    "BARTON_003_target_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for target_agent (BARTON_003_target_agent)",
+      "nullable": false
+    },
+    "BARTON_004_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_004_status)",
+      "nullable": true,
+      "default": "'queued'::text"
+    },
+    "BARTON_005_raw_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for raw_payload (BARTON_005_raw_payload)",
+      "nullable": false
+    },
+    "BARTON_006_origin_label": {
+      "type": "string",
+      "description": "TODO: Add definition for origin_label (BARTON_006_origin_label)",
+      "nullable": true
+    },
+    "BARTON_007_mission_label": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_label (BARTON_007_mission_label)",
+      "nullable": true
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_source_agent",
+    "BARTON_003_target_agent",
+    "BARTON_005_raw_payload"
+  ]
+}

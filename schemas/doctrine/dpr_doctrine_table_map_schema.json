@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine_table_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_table_name": {
+      "type": "string",
+      "description": "TODO: Add definition for table_name (BARTON_001_table_name)",
+      "nullable": false
+    },
+    "BARTON_002_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+      "nullable": true
+    },
+    "BARTON_003_access_role": {
+      "type": "string",
+      "description": "TODO: Add definition for access_role (BARTON_003_access_role)",
+      "nullable": true
+    },
+    "BARTON_004_column_definitions": {
+      "type": "string",
+      "description": "TODO: Add definition for column_definitions (BARTON_004_column_definitions)",
+      "nullable": true
+    },
+    "BARTON_005_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for doctrine_section (BARTON_005_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_table_name"
+  ]
+}

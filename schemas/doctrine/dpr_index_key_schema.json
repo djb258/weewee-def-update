@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_index_key (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+      "nullable": true
+    },
+    "BARTON_003_table_reference": {
+      "type": "string",
+      "description": "TODO: Add definition for table_reference (BARTON_003_table_reference)",
+      "nullable": true
+    },
+    "BARTON_004_doctrine_category": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_category (BARTON_004_doctrine_category)",
+      "nullable": true
+    },
+    "BARTON_005_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_005_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

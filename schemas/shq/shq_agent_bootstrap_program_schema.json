@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_agent_bootstrap_program (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_agent_name": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_name (BARTON_001_agent_name)",
+      "nullable": false
+    },
+    "BARTON_002_boot_sequence_id": {
+      "type": "string",
+      "description": "TODO: Add definition for boot_sequence_id (BARTON_002_boot_sequence_id)",
+      "nullable": true,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_003_authorized_process_ids": {
+      "type": "string",
+      "description": "TODO: Add definition for authorized_process_ids (BARTON_003_authorized_process_ids)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_agent_name"
+  ]
+}

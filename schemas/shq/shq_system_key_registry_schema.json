@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_system_key_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "uuid_generate_v4()"
+    },
+    "BARTON_002_key_type": {
+      "type": "string",
+      "description": "TODO: Add definition for key_type (BARTON_002_key_type)",
+      "nullable": false
+    },
+    "BARTON_003_key_code": {
+      "type": "string",
+      "description": "TODO: Add definition for key_code (BARTON_003_key_code)",
+      "nullable": false
+    },
+    "BARTON_004_key_label": {
+      "type": "string",
+      "description": "TODO: Add definition for key_label (BARTON_004_key_label)",
+      "nullable": false
+    },
+    "BARTON_005_description": {
+      "type": "string",
+      "description": "TODO: Add definition for description (BARTON_005_description)",
+      "nullable": true
+    },
+    "BARTON_006_section_number": {
+      "type": "number",
+      "description": "TODO: Add definition for section_number (BARTON_006_section_number)",
+      "nullable": true
+    },
+    "BARTON_007_doctrine_anchor": {
+      "type": "boolean",
+      "description": "TODO: Add definition for doctrine_anchor (BARTON_007_doctrine_anchor)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_key_type",
+    "BARTON_003_key_code",
+    "BARTON_004_key_label"
+  ]
+}

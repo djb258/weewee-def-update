@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_agent_prompt_library (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_agent_name": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_name (BARTON_002_agent_name)",
+      "nullable": false
+    },
+    "BARTON_003_role": {
+      "type": "string",
+      "description": "TODO: Add definition for role (BARTON_003_role)",
+      "nullable": true
+    },
+    "BARTON_004_prompt_type": {
+      "type": "string",
+      "description": "TODO: Add definition for prompt_type (BARTON_004_prompt_type)",
+      "nullable": true
+    },
+    "BARTON_005_content": {
+      "type": "string",
+      "description": "TODO: Add definition for content (BARTON_005_content)",
+      "nullable": true
+    },
+    "BARTON_006_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for doctrine_section (BARTON_006_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_agent_name"
+  ]
+}

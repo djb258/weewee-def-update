@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine_notional (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_section_number": {
+      "type": "number",
+      "description": "TODO: Add definition for section_number (BARTON_002_section_number)",
+      "nullable": false
+    },
+    "BARTON_003_section_title": {
+      "type": "string",
+      "description": "TODO: Add definition for section_title (BARTON_003_section_title)",
+      "nullable": false
+    },
+    "BARTON_004_doctrine_text": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_text (BARTON_004_doctrine_text)",
+      "nullable": false
+    },
+    "BARTON_005_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_005_enforcement_level)",
+      "nullable": false
+    },
+    "BARTON_006_doctrine_track": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_track (BARTON_006_doctrine_track)",
+      "nullable": false
+    },
+    "BARTON_007_source_system": {
+      "type": "string",
+      "description": "TODO: Add definition for source_system (BARTON_007_source_system)",
+      "nullable": true,
+      "default": "'Notion'::text"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_section_number",
+    "BARTON_003_section_title",
+    "BARTON_004_doctrine_text",
+    "BARTON_005_enforcement_level",
+    "BARTON_006_doctrine_track"
+  ]
+}

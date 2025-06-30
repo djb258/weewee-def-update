@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_output_logic_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_output_logic_id": {
+      "type": "string",
+      "description": "TODO: Add definition for output_logic_id (BARTON_001_output_logic_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_vendor_name": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_name (BARTON_002_vendor_name)",
+      "nullable": false
+    },
+    "BARTON_003_export_column_name": {
+      "type": "string",
+      "description": "TODO: Add definition for export_column_name (BARTON_003_export_column_name)",
+      "nullable": false
+    },
+    "BARTON_004_field_in_master": {
+      "type": "string",
+      "description": "TODO: Add definition for field_in_master (BARTON_004_field_in_master)",
+      "nullable": false
+    },
+    "BARTON_005_logic_condition": {
+      "type": "string",
+      "description": "TODO: Add definition for logic_condition (BARTON_005_logic_condition)",
+      "nullable": true
+    },
+    "BARTON_006_true_output": {
+      "type": "string",
+      "description": "TODO: Add definition for true_output (BARTON_006_true_output)",
+      "nullable": true
+    },
+    "BARTON_007_false_output": {
+      "type": "string",
+      "description": "TODO: Add definition for false_output (BARTON_007_false_output)",
+      "nullable": true
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_output_logic_id",
+    "BARTON_002_vendor_name",
+    "BARTON_003_export_column_name",
+    "BARTON_004_field_in_master"
+  ]
+}

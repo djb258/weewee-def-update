@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_system_schema_index (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_table_name": {
+      "type": "string",
+      "description": "TODO: Add definition for table_name (BARTON_001_table_name)",
+      "nullable": false
+    },
+    "BARTON_002_purpose": {
+      "type": "string",
+      "description": "TODO: Add definition for purpose (BARTON_002_purpose)",
+      "nullable": true
+    },
+    "BARTON_003_related_process_ids": {
+      "type": "string",
+      "description": "TODO: Add definition for related_process_ids (BARTON_003_related_process_ids)",
+      "nullable": true
+    },
+    "BARTON_004_used_by_agents": {
+      "type": "string",
+      "description": "TODO: Add definition for used_by_agents (BARTON_004_used_by_agents)",
+      "nullable": true
+    },
+    "BARTON_005_access_mode": {
+      "type": "string",
+      "description": "TODO: Add definition for access_mode (BARTON_005_access_mode)",
+      "nullable": true,
+      "default": "'read_write'::text"
+    },
+    "BARTON_006_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for doctrine_section (BARTON_006_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "BARTON_008_column_definitions": {
+      "type": "string",
+      "description": "TODO: Add definition for column_definitions (BARTON_008_column_definitions)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_table_name"
+  ]
+}

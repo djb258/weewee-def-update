@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_system_agent_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_agent_name": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_name (BARTON_001_agent_name)",
+      "nullable": false
+    },
+    "BARTON_002_sub_hive": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive (BARTON_002_sub_hive)",
+      "nullable": true
+    },
+    "BARTON_003_rank": {
+      "type": "string",
+      "description": "TODO: Add definition for rank (BARTON_003_rank)",
+      "nullable": true
+    },
+    "BARTON_004_assigned_tables": {
+      "type": "string",
+      "description": "TODO: Add definition for assigned_tables (BARTON_004_assigned_tables)",
+      "nullable": true
+    },
+    "BARTON_005_role_description": {
+      "type": "string",
+      "description": "TODO: Add definition for role_description (BARTON_005_role_description)",
+      "nullable": true
+    },
+    "BARTON_006_route_target": {
+      "type": "string",
+      "description": "TODO: Add definition for route_target (BARTON_006_route_target)",
+      "nullable": true
+    },
+    "BARTON_007_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_007_enforcement_level)",
+      "nullable": true,
+      "default": "'strict'::text"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_agent_name"
+  ]
+}

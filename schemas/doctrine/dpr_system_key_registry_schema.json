@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_system_key_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_key_name": {
+      "type": "string",
+      "description": "TODO: Add definition for key_name (BARTON_001_key_name)",
+      "nullable": false
+    },
+    "BARTON_002_key_alias": {
+      "type": "string",
+      "description": "TODO: Add definition for key_alias (BARTON_002_key_alias)",
+      "nullable": false
+    },
+    "BARTON_003_key_domain": {
+      "type": "string",
+      "description": "TODO: Add definition for key_domain (BARTON_003_key_domain)",
+      "nullable": false
+    },
+    "BARTON_004_description": {
+      "type": "string",
+      "description": "TODO: Add definition for description (BARTON_004_description)",
+      "nullable": true
+    },
+    "BARTON_005_linked_entity": {
+      "type": "string",
+      "description": "TODO: Add definition for linked_entity (BARTON_005_linked_entity)",
+      "nullable": true
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_key_name",
+    "BARTON_002_key_alias",
+    "BARTON_003_key_domain"
+  ]
+}

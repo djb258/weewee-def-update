@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_process_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_001_process_id)",
+      "nullable": false
+    },
+    "BARTON_002_process_name": {
+      "type": "string",
+      "description": "TODO: Add definition for process_name (BARTON_002_process_name)",
+      "nullable": false
+    },
+    "BARTON_003_description": {
+      "type": "string",
+      "description": "TODO: Add definition for description (BARTON_003_description)",
+      "nullable": true
+    },
+    "BARTON_004_linked_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for linked_doctrine_section (BARTON_004_linked_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_005_boot_priority": {
+      "type": "boolean",
+      "description": "TODO: Add definition for boot_priority (BARTON_005_boot_priority)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_006_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_006_status)",
+      "nullable": true,
+      "default": "'active'::character varying"
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_process_id",
+    "BARTON_002_process_name"
+  ]
+}

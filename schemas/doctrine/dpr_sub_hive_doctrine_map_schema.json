@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_sub_hive_doctrine_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_section_number": {
+      "type": "number",
+      "description": "TODO: Add definition for section_number (BARTON_001_section_number)",
+      "nullable": false
+    },
+    "BARTON_002_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+      "nullable": false
+    },
+    "BARTON_003_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_003_enforcement_level)",
+      "nullable": true
+    },
+    "BARTON_004_linked_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for linked_process_id (BARTON_004_linked_process_id)",
+      "nullable": true
+    },
+    "BARTON_005_assigned_by": {
+      "type": "string",
+      "description": "TODO: Add definition for assigned_by (BARTON_005_assigned_by)",
+      "nullable": true
+    },
+    "BARTON_006_assigned_at": {
+      "type": "string",
+      "description": "TODO: Add definition for assigned_at (BARTON_006_assigned_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_section_number",
+    "BARTON_002_sub_hive_name"
+  ]
+}

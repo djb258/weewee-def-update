@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_client_process_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_client_id": {
+      "type": "string",
+      "description": "TODO: Add definition for client_id (BARTON_001_client_id)",
+      "nullable": false
+    },
+    "BARTON_002_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_002_process_id)",
+      "nullable": false
+    },
+    "BARTON_003_customized_version": {
+      "type": "boolean",
+      "description": "TODO: Add definition for customized_version (BARTON_003_customized_version)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_004_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_004_status)",
+      "nullable": true,
+      "default": "'active'::character varying"
+    },
+    "BARTON_005_deployment_notes": {
+      "type": "string",
+      "description": "TODO: Add definition for deployment_notes (BARTON_005_deployment_notes)",
+      "nullable": true
+    },
+    "BARTON_006_last_deployed_by": {
+      "type": "string",
+      "description": "TODO: Add definition for last_deployed_by (BARTON_006_last_deployed_by)",
+      "nullable": true
+    },
+    "BARTON_007_deployed_at": {
+      "type": "string",
+      "description": "TODO: Add definition for deployed_at (BARTON_007_deployed_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_client_id",
+    "BARTON_002_process_id"
+  ]
+}

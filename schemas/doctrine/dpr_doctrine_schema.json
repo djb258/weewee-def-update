@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_section_number": {
+      "type": "string",
+      "description": "TODO: Add definition for section_number (BARTON_002_section_number)",
+      "nullable": true
+    },
+    "BARTON_003_section_title": {
+      "type": "string",
+      "description": "TODO: Add definition for section_title (BARTON_003_section_title)",
+      "nullable": true
+    },
+    "BARTON_004_doctrine_text": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_text (BARTON_004_doctrine_text)",
+      "nullable": true
+    },
+    "BARTON_005_doctrine_type": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_type (BARTON_005_doctrine_type)",
+      "nullable": true
+    },
+    "BARTON_006_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_006_enforcement_level)",
+      "nullable": true
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "BARTON_008_doctrine_category": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_category (BARTON_008_doctrine_category)",
+      "nullable": true
+    },
+    "BARTON_009_sub_hive": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive (BARTON_009_sub_hive)",
+      "nullable": true
+    },
+    "BARTON_010_enforcement_target": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_target (BARTON_010_enforcement_target)",
+      "nullable": true
+    },
+    "BARTON_011_enforcement_scope": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_scope (BARTON_011_enforcement_scope)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

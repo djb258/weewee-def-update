@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_process_library (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_001_process_id)",
+      "nullable": false
+    },
+    "BARTON_002_description": {
+      "type": "string",
+      "description": "TODO: Add definition for description (BARTON_002_description)",
+      "nullable": true
+    },
+    "BARTON_003_default_target_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for default_target_agent (BARTON_003_default_target_agent)",
+      "nullable": true
+    },
+    "BARTON_004_default_objectives": {
+      "type": "string",
+      "description": "TODO: Add definition for default_objectives (BARTON_004_default_objectives)",
+      "nullable": true
+    },
+    "BARTON_005_webhook_url": {
+      "type": "string",
+      "description": "TODO: Add definition for webhook_url (BARTON_005_webhook_url)",
+      "format": "uri",
+      "nullable": true
+    },
+    "BARTON_006_payload_template": {
+      "type": "string",
+      "description": "TODO: Add definition for payload_template (BARTON_006_payload_template)",
+      "nullable": true
+    },
+    "BARTON_007_output_target": {
+      "type": "string",
+      "description": "TODO: Add definition for output_target (BARTON_007_output_target)",
+      "nullable": true,
+      "default": "'command_log'::text"
+    },
+    "BARTON_008_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_008_enforcement_level)",
+      "nullable": true,
+      "default": "'strict'::text"
+    },
+    "BARTON_009_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_009_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "BARTON_010_blueprint_id": {
+      "type": "string",
+      "description": "TODO: Add definition for blueprint_id (BARTON_010_blueprint_id)",
+      "nullable": true
+    },
+    "BARTON_011_version": {
+      "type": "string",
+      "description": "TODO: Add definition for version (BARTON_011_version)",
+      "nullable": true
+    },
+    "BARTON_012_process_name": {
+      "type": "string",
+      "description": "TODO: Add definition for process_name (BARTON_012_process_name)",
+      "nullable": true
+    },
+    "BARTON_013_cursor_templates": {
+      "type": "string",
+      "description": "TODO: Add definition for cursor_templates (BARTON_013_cursor_templates)",
+      "nullable": true
+    },
+    "BARTON_014_firebase": {
+      "type": "string",
+      "description": "TODO: Add definition for firebase (BARTON_014_firebase)",
+      "nullable": true
+    },
+    "BARTON_015_recovery_tree": {
+      "type": "string",
+      "description": "TODO: Add definition for recovery_tree (BARTON_015_recovery_tree)",
+      "nullable": true
+    },
+    "BARTON_016_output_queues": {
+      "type": "string",
+      "description": "TODO: Add definition for output_queues (BARTON_016_output_queues)",
+      "nullable": true
+    },
+    "BARTON_017_agent_id": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_id (BARTON_017_agent_id)",
+      "nullable": true
+    },
+    "BARTON_018_deployment_host": {
+      "type": "string",
+      "description": "TODO: Add definition for deployment_host (BARTON_018_deployment_host)",
+      "nullable": true
+    },
+    "BARTON_019_orchestrator": {
+      "type": "string",
+      "description": "TODO: Add definition for orchestrator (BARTON_019_orchestrator)",
+      "nullable": true
+    },
+    "BARTON_020_llm_executor": {
+      "type": "string",
+      "description": "TODO: Add definition for llm_executor (BARTON_020_llm_executor)",
+      "nullable": true
+    },
+    "BARTON_021_error_handler": {
+      "type": "string",
+      "description": "TODO: Add definition for error_handler (BARTON_021_error_handler)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_process_id"
+  ]
+}

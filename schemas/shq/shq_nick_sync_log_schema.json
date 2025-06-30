@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_nick_sync_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_session_label": {
+      "type": "string",
+      "description": "TODO: Add definition for session_label (BARTON_002_session_label)",
+      "nullable": false
+    },
+    "BARTON_003_synced_by": {
+      "type": "string",
+      "description": "TODO: Add definition for synced_by (BARTON_003_synced_by)",
+      "nullable": false
+    },
+    "BARTON_004_sync_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for sync_payload (BARTON_004_sync_payload)",
+      "nullable": false
+    },
+    "BARTON_005_sync_type": {
+      "type": "string",
+      "description": "TODO: Add definition for sync_type (BARTON_005_sync_type)",
+      "nullable": false
+    },
+    "BARTON_006_related_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for related_mission_id (BARTON_006_related_mission_id)",
+      "nullable": true
+    },
+    "BARTON_007_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_session_label",
+    "BARTON_003_synced_by",
+    "BARTON_004_sync_payload",
+    "BARTON_005_sync_type"
+  ]
+}

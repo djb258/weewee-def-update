@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_validator_schema_index (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_schema_name": {
+      "type": "string",
+      "description": "TODO: Add definition for schema_name (BARTON_002_schema_name)",
+      "nullable": false
+    },
+    "BARTON_003_table_name": {
+      "type": "string",
+      "description": "TODO: Add definition for table_name (BARTON_003_table_name)",
+      "nullable": false
+    },
+    "BARTON_004_column_name": {
+      "type": "string",
+      "description": "TODO: Add definition for column_name (BARTON_004_column_name)",
+      "nullable": false
+    },
+    "BARTON_005_data_type": {
+      "type": "string",
+      "description": "TODO: Add definition for data_type (BARTON_005_data_type)",
+      "nullable": false
+    },
+    "BARTON_006_is_nullable": {
+      "type": "boolean",
+      "description": "TODO: Add definition for is_nullable (BARTON_006_is_nullable)",
+      "nullable": true
+    },
+    "BARTON_007_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for doctrine_section (BARTON_007_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_008_notes": {
+      "type": "string",
+      "description": "TODO: Add definition for notes (BARTON_008_notes)",
+      "nullable": true
+    },
+    "BARTON_009_last_updated": {
+      "type": "string",
+      "description": "TODO: Add definition for last_updated (BARTON_009_last_updated)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_002_schema_name",
+    "BARTON_003_table_name",
+    "BARTON_004_column_name",
+    "BARTON_005_data_type"
+  ]
+}

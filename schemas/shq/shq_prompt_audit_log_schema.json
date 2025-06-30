@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_prompt_audit_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_prompt_input": {
+      "type": "string",
+      "description": "TODO: Add definition for prompt_input (BARTON_002_prompt_input)",
+      "nullable": true
+    },
+    "BARTON_003_generated_output": {
+      "type": "string",
+      "description": "TODO: Add definition for generated_output (BARTON_003_generated_output)",
+      "nullable": true
+    },
+    "BARTON_004_agent_name": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_name (BARTON_004_agent_name)",
+      "nullable": true
+    },
+    "BARTON_005_model_used": {
+      "type": "string",
+      "description": "TODO: Add definition for model_used (BARTON_005_model_used)",
+      "nullable": true
+    },
+    "BARTON_006_review_status": {
+      "type": "string",
+      "description": "TODO: Add definition for review_status (BARTON_006_review_status)",
+      "nullable": true,
+      "default": "'unreviewed'::text"
+    },
+    "BARTON_007_doctrine_compliance": {
+      "type": "boolean",
+      "description": "TODO: Add definition for doctrine_compliance (BARTON_007_doctrine_compliance)",
+      "nullable": true,
+      "default": "false"
+    },
+    "BARTON_008_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}

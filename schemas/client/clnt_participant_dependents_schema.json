@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_participant_dependents (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_dependent_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for dependent_uid (BARTON_001_dependent_uid)",
+      "nullable": false
+    },
+    "BARTON_002_participant_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for participant_uid (BARTON_002_participant_uid)",
+      "nullable": true
+    },
+    "BARTON_003_name": {
+      "type": "string",
+      "description": "TODO: Add definition for name (BARTON_003_name)",
+      "nullable": true
+    },
+    "BARTON_004_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for relationship (BARTON_004_relationship)",
+      "nullable": true
+    },
+    "BARTON_005_dob": {
+      "type": "string",
+      "description": "TODO: Add definition for dob (BARTON_005_dob)",
+      "format": "date",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_dependent_uid"
+  ]
+}

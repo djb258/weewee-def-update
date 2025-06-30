@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine_category_map (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_doctrine_branch": {
+      "type": "string",
+      "description": "TODO: Add definition for doctrine_branch (BARTON_001_doctrine_branch)",
+      "nullable": true
+    },
+    "BARTON_002_range_start": {
+      "type": "number",
+      "description": "TODO: Add definition for range_start (BARTON_002_range_start)",
+      "nullable": true
+    },
+    "BARTON_003_range_end": {
+      "type": "number",
+      "description": "TODO: Add definition for range_end (BARTON_003_range_end)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": []
+}

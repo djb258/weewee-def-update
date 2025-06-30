@@ -1,0 +1,698 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_master_eligibility (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_eligibility_id": {
+      "type": "string",
+      "description": "TODO: Add definition for eligibility_id (BARTON_001_eligibility_id)",
+      "nullable": true
+    },
+    "BARTON_002_client_id": {
+      "type": "string",
+      "description": "TODO: Add definition for client_id (BARTON_002_client_id)",
+      "nullable": true
+    },
+    "BARTON_003_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for first_name (BARTON_003_first_name)",
+      "nullable": true
+    },
+    "BARTON_004_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for last_name (BARTON_004_last_name)",
+      "nullable": true
+    },
+    "BARTON_005_employee_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for employee_ssn (BARTON_005_employee_ssn)",
+      "nullable": true
+    },
+    "BARTON_006_employee_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for employee_birthday (BARTON_006_employee_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_007_email_address": {
+      "type": "string",
+      "description": "TODO: Add definition for email_address (BARTON_007_email_address)",
+      "format": "email",
+      "nullable": true
+    },
+    "BARTON_008_cell_phone_number": {
+      "type": "string",
+      "description": "TODO: Add definition for cell_phone_number (BARTON_008_cell_phone_number)",
+      "nullable": true
+    },
+    "BARTON_009_home_phone_number": {
+      "type": "string",
+      "description": "TODO: Add definition for home_phone_number (BARTON_009_home_phone_number)",
+      "nullable": true
+    },
+    "BARTON_010_work_phone": {
+      "type": "string",
+      "description": "TODO: Add definition for work_phone (BARTON_010_work_phone)",
+      "nullable": true
+    },
+    "BARTON_011_home_address": {
+      "type": "string",
+      "description": "TODO: Add definition for home_address (BARTON_011_home_address)",
+      "nullable": true
+    },
+    "BARTON_012_city": {
+      "type": "string",
+      "description": "TODO: Add definition for city (BARTON_012_city)",
+      "nullable": true
+    },
+    "BARTON_013_state": {
+      "type": "string",
+      "description": "TODO: Add definition for state (BARTON_013_state)",
+      "nullable": true
+    },
+    "BARTON_014_zip": {
+      "type": "string",
+      "description": "TODO: Add definition for zip (BARTON_014_zip)",
+      "nullable": true
+    },
+    "BARTON_015_submission_date": {
+      "type": "string",
+      "description": "TODO: Add definition for submission_date (BARTON_015_submission_date)",
+      "format": "date-time",
+      "nullable": true
+    },
+    "BARTON_016_reporting_date": {
+      "type": "string",
+      "description": "TODO: Add definition for reporting_date (BARTON_016_reporting_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_017_last_update_date": {
+      "type": "string",
+      "description": "TODO: Add definition for last_update_date (BARTON_017_last_update_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_018_enrollment_reason": {
+      "type": "string",
+      "description": "TODO: Add definition for enrollment_reason (BARTON_018_enrollment_reason)",
+      "nullable": true
+    },
+    "BARTON_019_employee_date_of_hire": {
+      "type": "string",
+      "description": "TODO: Add definition for employee_date_of_hire (BARTON_019_employee_date_of_hire)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_020_date_of_termination": {
+      "type": "string",
+      "description": "TODO: Add definition for date_of_termination (BARTON_020_date_of_termination)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_021_reason_for_termination": {
+      "type": "string",
+      "description": "TODO: Add definition for reason_for_termination (BARTON_021_reason_for_termination)",
+      "nullable": true
+    },
+    "BARTON_022_hourly_or_salary": {
+      "type": "string",
+      "description": "TODO: Add definition for hourly_or_salary (BARTON_022_hourly_or_salary)",
+      "format": "uri",
+      "nullable": true
+    },
+    "BARTON_023_employee_salary": {
+      "type": "number",
+      "description": "TODO: Add definition for employee_salary (BARTON_023_employee_salary)",
+      "nullable": true
+    },
+    "BARTON_024_hours_per_week": {
+      "type": "number",
+      "description": "TODO: Add definition for hours_per_week (BARTON_024_hours_per_week)",
+      "nullable": true
+    },
+    "BARTON_025_department": {
+      "type": "string",
+      "description": "TODO: Add definition for department (BARTON_025_department)",
+      "nullable": true
+    },
+    "BARTON_026_division": {
+      "type": "string",
+      "description": "TODO: Add definition for division (BARTON_026_division)",
+      "nullable": true
+    },
+    "BARTON_027_marital_status": {
+      "type": "string",
+      "description": "TODO: Add definition for marital_status (BARTON_027_marital_status)",
+      "nullable": true
+    },
+    "BARTON_028_health_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for health_provided_by (BARTON_028_health_provided_by)",
+      "nullable": true
+    },
+    "BARTON_029_health_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for health_policy_number (BARTON_029_health_policy_number)",
+      "nullable": true
+    },
+    "BARTON_030_dental_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for dental_provided_by (BARTON_030_dental_provided_by)",
+      "nullable": true
+    },
+    "BARTON_031_dental_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for dental_policy_number (BARTON_031_dental_policy_number)",
+      "nullable": true
+    },
+    "BARTON_032_vision_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for vision_provided_by (BARTON_032_vision_provided_by)",
+      "nullable": true
+    },
+    "BARTON_033_vision_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for vision_policy_number (BARTON_033_vision_policy_number)",
+      "nullable": true
+    },
+    "BARTON_034_std_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for std_provided_by (BARTON_034_std_provided_by)",
+      "nullable": true
+    },
+    "BARTON_035_std_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for std_policy_number (BARTON_035_std_policy_number)",
+      "nullable": true
+    },
+    "BARTON_036_ltd_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for ltd_provided_by (BARTON_036_ltd_provided_by)",
+      "nullable": true
+    },
+    "BARTON_037_ltd_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for ltd_policy_number (BARTON_037_ltd_policy_number)",
+      "nullable": true
+    },
+    "BARTON_038_life_insurance_provided_by": {
+      "type": "string",
+      "description": "TODO: Add definition for life_insurance_provided_by (BARTON_038_life_insurance_provided_by)",
+      "nullable": true
+    },
+    "BARTON_039_life_insurance_policy_name": {
+      "type": "string",
+      "description": "TODO: Add definition for life_insurance_policy_name (BARTON_039_life_insurance_policy_name)",
+      "nullable": true
+    },
+    "BARTON_040_group_life_policy_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_life_policy_number (BARTON_040_group_life_policy_number)",
+      "nullable": true
+    },
+    "BARTON_041_std_ltd_plan": {
+      "type": "string",
+      "description": "TODO: Add definition for std_ltd_plan (BARTON_041_std_ltd_plan)",
+      "nullable": true
+    },
+    "BARTON_042_std_ltd_coverage": {
+      "type": "boolean",
+      "description": "TODO: Add definition for std_ltd_coverage (BARTON_042_std_ltd_coverage)",
+      "nullable": true
+    },
+    "BARTON_043_std_ltd_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for std_ltd_effective_date (BARTON_043_std_ltd_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_044_group_life_coverage_status": {
+      "type": "string",
+      "description": "TODO: Add definition for group_life_coverage_status (BARTON_044_group_life_coverage_status)",
+      "nullable": true
+    },
+    "BARTON_045_group_life_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for group_life_effective_date (BARTON_045_group_life_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_046_medical_plan_tier": {
+      "type": "string",
+      "description": "TODO: Add definition for medical_plan_tier (BARTON_046_medical_plan_tier)",
+      "nullable": true
+    },
+    "BARTON_047_medical_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for medical_effective_date (BARTON_047_medical_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_048_medical_effective_date_old": {
+      "type": "string",
+      "description": "TODO: Add definition for medical_effective_date_old (BARTON_048_medical_effective_date_old)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_049_mec_plan": {
+      "type": "string",
+      "description": "TODO: Add definition for mec_plan (BARTON_049_mec_plan)",
+      "nullable": true
+    },
+    "BARTON_050_major_medical_plan": {
+      "type": "string",
+      "description": "TODO: Add definition for major_medical_plan (BARTON_050_major_medical_plan)",
+      "nullable": true
+    },
+    "BARTON_051_dental_coverage": {
+      "type": "string",
+      "description": "TODO: Add definition for dental_coverage (BARTON_051_dental_coverage)",
+      "nullable": true
+    },
+    "BARTON_052_dental_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for dental_effective_date (BARTON_052_dental_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_053_vision_coverage": {
+      "type": "string",
+      "description": "TODO: Add definition for vision_coverage (BARTON_053_vision_coverage)",
+      "nullable": true
+    },
+    "BARTON_054_vision_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for vision_effective_date (BARTON_054_vision_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_055_employee_medical_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employee_medical_premium (BARTON_055_employee_medical_premium)",
+      "nullable": true
+    },
+    "BARTON_056_employee_vision_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employee_vision_premium (BARTON_056_employee_vision_premium)",
+      "nullable": true
+    },
+    "BARTON_057_employee_dental_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employee_dental_premium (BARTON_057_employee_dental_premium)",
+      "nullable": true
+    },
+    "BARTON_058_total_employee_health_insurance_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for total_employee_health_insurance_premium (BARTON_058_total_employee_health_insurance_premium)",
+      "nullable": true
+    },
+    "BARTON_059_employer_medical_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employer_medical_premium (BARTON_059_employer_medical_premium)",
+      "nullable": true
+    },
+    "BARTON_060_employer_dental_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employer_dental_premium (BARTON_060_employer_dental_premium)",
+      "nullable": true
+    },
+    "BARTON_061_employer_vision_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for employer_vision_premium (BARTON_061_employer_vision_premium)",
+      "nullable": true
+    },
+    "BARTON_062_total_employer_health_insurance_premium": {
+      "type": "number",
+      "description": "TODO: Add definition for total_employer_health_insurance_premium (BARTON_062_total_employer_health_insurance_premium)",
+      "nullable": true
+    },
+    "BARTON_063_group_term_life_ad_d_std_ltd_insurance_coverage_provided_by_emp": {
+      "type": "boolean",
+      "description": "TODO: Add definition for group_term_life_ad_d_std_ltd_insurance_coverage_provided_by_emp (BARTON_063_group_term_life_ad_d_std_ltd_insurance_coverage_provided_by_emp)",
+      "nullable": true
+    },
+    "BARTON_064_employee_class": {
+      "type": "string",
+      "description": "TODO: Add definition for employee_class (BARTON_064_employee_class)",
+      "nullable": true
+    },
+    "BARTON_065_ltd_election": {
+      "type": "boolean",
+      "description": "TODO: Add definition for ltd_election (BARTON_065_ltd_election)",
+      "nullable": true
+    },
+    "BARTON_066_benefit_deduction_frequency": {
+      "type": "string",
+      "description": "TODO: Add definition for benefit_deduction_frequency (BARTON_066_benefit_deduction_frequency)",
+      "nullable": true
+    },
+    "BARTON_067_beneficiary": {
+      "type": "string",
+      "description": "TODO: Add definition for beneficiary (BARTON_067_beneficiary)",
+      "nullable": true
+    },
+    "BARTON_068_beneficiary_address": {
+      "type": "string",
+      "description": "TODO: Add definition for beneficiary_address (BARTON_068_beneficiary_address)",
+      "nullable": true
+    },
+    "BARTON_069_beneficiary_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for beneficiary_birthday (BARTON_069_beneficiary_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_070_has_prescriptions": {
+      "type": "boolean",
+      "description": "TODO: Add definition for has_prescriptions (BARTON_070_has_prescriptions)",
+      "nullable": true
+    },
+    "BARTON_071_prescriptions": {
+      "type": "string",
+      "description": "TODO: Add definition for prescriptions (BARTON_071_prescriptions)",
+      "nullable": true
+    },
+    "BARTON_072_dep1_add_or_remove": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_add_or_remove (BARTON_072_dep1_add_or_remove)",
+      "nullable": true
+    },
+    "BARTON_073_dep1_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_first_name (BARTON_073_dep1_first_name)",
+      "nullable": true
+    },
+    "BARTON_074_dep1_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_last_name (BARTON_074_dep1_last_name)",
+      "nullable": true
+    },
+    "BARTON_075_dep1_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_relationship (BARTON_075_dep1_relationship)",
+      "nullable": true
+    },
+    "BARTON_076_dep1_dep_code": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_dep_code (BARTON_076_dep1_dep_code)",
+      "nullable": true
+    },
+    "BARTON_077_dep1_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_ssn (BARTON_077_dep1_ssn)",
+      "nullable": true
+    },
+    "BARTON_078_dep1_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_birthday (BARTON_078_dep1_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_079_dep1_gender": {
+      "type": "string",
+      "description": "TODO: Add definition for dep1_gender (BARTON_079_dep1_gender)",
+      "nullable": true
+    },
+    "BARTON_080_dep2_add_or_remove": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_add_or_remove (BARTON_080_dep2_add_or_remove)",
+      "nullable": true
+    },
+    "BARTON_081_dep2_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_first_name (BARTON_081_dep2_first_name)",
+      "nullable": true
+    },
+    "BARTON_082_dep2_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_last_name (BARTON_082_dep2_last_name)",
+      "nullable": true
+    },
+    "BARTON_083_dep2_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_relationship (BARTON_083_dep2_relationship)",
+      "nullable": true
+    },
+    "BARTON_084_dep2_dep_code": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_dep_code (BARTON_084_dep2_dep_code)",
+      "nullable": true
+    },
+    "BARTON_085_dep2_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_ssn (BARTON_085_dep2_ssn)",
+      "nullable": true
+    },
+    "BARTON_086_dep2_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_birthday (BARTON_086_dep2_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_087_dep2_gender": {
+      "type": "string",
+      "description": "TODO: Add definition for dep2_gender (BARTON_087_dep2_gender)",
+      "nullable": true
+    },
+    "BARTON_088_dep3_add_or_remove": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_add_or_remove (BARTON_088_dep3_add_or_remove)",
+      "nullable": true
+    },
+    "BARTON_089_dep3_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_first_name (BARTON_089_dep3_first_name)",
+      "nullable": true
+    },
+    "BARTON_090_dep3_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_last_name (BARTON_090_dep3_last_name)",
+      "nullable": true
+    },
+    "BARTON_091_dep3_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_relationship (BARTON_091_dep3_relationship)",
+      "nullable": true
+    },
+    "BARTON_092_dep3_dep_code": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_dep_code (BARTON_092_dep3_dep_code)",
+      "nullable": true
+    },
+    "BARTON_093_dep3_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_ssn (BARTON_093_dep3_ssn)",
+      "nullable": true
+    },
+    "BARTON_094_dep3_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_birthday (BARTON_094_dep3_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_095_dep3_gender": {
+      "type": "string",
+      "description": "TODO: Add definition for dep3_gender (BARTON_095_dep3_gender)",
+      "nullable": true
+    },
+    "BARTON_096_dep4_add_or_remove": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_add_or_remove (BARTON_096_dep4_add_or_remove)",
+      "nullable": true
+    },
+    "BARTON_097_dep4_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_first_name (BARTON_097_dep4_first_name)",
+      "nullable": true
+    },
+    "BARTON_098_dep4_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_last_name (BARTON_098_dep4_last_name)",
+      "nullable": true
+    },
+    "BARTON_099_dep4_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_relationship (BARTON_099_dep4_relationship)",
+      "nullable": true
+    },
+    "BARTON_100_dep4_dep_code": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_dep_code (BARTON_100_dep4_dep_code)",
+      "nullable": true
+    },
+    "BARTON_101_dep4_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_ssn (BARTON_101_dep4_ssn)",
+      "nullable": true
+    },
+    "BARTON_102_dep4_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_birthday (BARTON_102_dep4_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_103_dep4_gender": {
+      "type": "string",
+      "description": "TODO: Add definition for dep4_gender (BARTON_103_dep4_gender)",
+      "nullable": true
+    },
+    "BARTON_104_dep5_add_or_remove": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_add_or_remove (BARTON_104_dep5_add_or_remove)",
+      "nullable": true
+    },
+    "BARTON_105_dep5_first_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_first_name (BARTON_105_dep5_first_name)",
+      "nullable": true
+    },
+    "BARTON_106_dep5_last_name": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_last_name (BARTON_106_dep5_last_name)",
+      "nullable": true
+    },
+    "BARTON_107_dep5_relationship": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_relationship (BARTON_107_dep5_relationship)",
+      "nullable": true
+    },
+    "BARTON_108_dep5_dep_code": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_dep_code (BARTON_108_dep5_dep_code)",
+      "nullable": true
+    },
+    "BARTON_109_dep5_ssn": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_ssn (BARTON_109_dep5_ssn)",
+      "nullable": true
+    },
+    "BARTON_110_dep5_birthday": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_birthday (BARTON_110_dep5_birthday)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_111_dep5_gender": {
+      "type": "string",
+      "description": "TODO: Add definition for dep5_gender (BARTON_111_dep5_gender)",
+      "nullable": true
+    },
+    "BARTON_112_other_benefit1_name": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit1_name (BARTON_112_other_benefit1_name)",
+      "nullable": true
+    },
+    "BARTON_113_other_benefit1_coverage_tier": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit1_coverage_tier (BARTON_113_other_benefit1_coverage_tier)",
+      "nullable": true
+    },
+    "BARTON_114_other_benefit1_action": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit1_action (BARTON_114_other_benefit1_action)",
+      "nullable": true
+    },
+    "BARTON_115_other_benefit1_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit1_effective_date (BARTON_115_other_benefit1_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_116_other_benefit1_termination_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit1_termination_date (BARTON_116_other_benefit1_termination_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_117_other_benefit2_name": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit2_name (BARTON_117_other_benefit2_name)",
+      "nullable": true
+    },
+    "BARTON_118_other_benefit2_coverage_tier": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit2_coverage_tier (BARTON_118_other_benefit2_coverage_tier)",
+      "nullable": true
+    },
+    "BARTON_119_other_benefit2_action": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit2_action (BARTON_119_other_benefit2_action)",
+      "nullable": true
+    },
+    "BARTON_120_other_benefit2_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit2_effective_date (BARTON_120_other_benefit2_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_121_other_benefit2_termination_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit2_termination_date (BARTON_121_other_benefit2_termination_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_122_other_benefit3_name": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit3_name (BARTON_122_other_benefit3_name)",
+      "nullable": true
+    },
+    "BARTON_123_other_benefit3_coverage_tier": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit3_coverage_tier (BARTON_123_other_benefit3_coverage_tier)",
+      "nullable": true
+    },
+    "BARTON_124_other_benefit3_action": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit3_action (BARTON_124_other_benefit3_action)",
+      "nullable": true
+    },
+    "BARTON_125_other_benefit3_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit3_effective_date (BARTON_125_other_benefit3_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_126_other_benefit3_termination_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit3_termination_date (BARTON_126_other_benefit3_termination_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_127_other_benefit4_name": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit4_name (BARTON_127_other_benefit4_name)",
+      "nullable": true
+    },
+    "BARTON_128_other_benefit4_coverage_tier": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit4_coverage_tier (BARTON_128_other_benefit4_coverage_tier)",
+      "nullable": true
+    },
+    "BARTON_129_other_benefit4_action": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit4_action (BARTON_129_other_benefit4_action)",
+      "nullable": true
+    },
+    "BARTON_130_other_benefit4_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit4_effective_date (BARTON_130_other_benefit4_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_131_other_benefit4_termination_date": {
+      "type": "string",
+      "description": "TODO: Add definition for other_benefit4_termination_date (BARTON_131_other_benefit4_termination_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": []
+}

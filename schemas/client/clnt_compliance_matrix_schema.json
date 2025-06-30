@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_compliance_matrix (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_compliance_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for compliance_uid (BARTON_001_compliance_uid)",
+      "nullable": false
+    },
+    "BARTON_002_clnt_master_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for clnt_master_uid (BARTON_002_clnt_master_uid)",
+      "nullable": true
+    },
+    "BARTON_003_plan_year": {
+      "type": "number",
+      "description": "TODO: Add definition for plan_year (BARTON_003_plan_year)",
+      "nullable": true
+    },
+    "BARTON_004_jurisdiction_level": {
+      "type": "string",
+      "description": "TODO: Add definition for jurisdiction_level (BARTON_004_jurisdiction_level)",
+      "nullable": true
+    },
+    "BARTON_005_jurisdiction_name": {
+      "type": "string",
+      "description": "TODO: Add definition for jurisdiction_name (BARTON_005_jurisdiction_name)",
+      "nullable": true
+    },
+    "BARTON_006_requirement": {
+      "type": "string",
+      "description": "TODO: Add definition for requirement (BARTON_006_requirement)",
+      "nullable": true
+    },
+    "BARTON_007_required_for": {
+      "type": "string",
+      "description": "TODO: Add definition for required_for (BARTON_007_required_for)",
+      "nullable": true
+    },
+    "BARTON_008_due_date": {
+      "type": "string",
+      "description": "TODO: Add definition for due_date (BARTON_008_due_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_009_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_009_status)",
+      "nullable": true
+    },
+    "BARTON_010_completed_by": {
+      "type": "string",
+      "description": "TODO: Add definition for completed_by (BARTON_010_completed_by)",
+      "nullable": true
+    },
+    "BARTON_011_blueprint_id": {
+      "type": "string",
+      "description": "TODO: Add definition for blueprint_id (BARTON_011_blueprint_id)",
+      "nullable": true
+    },
+    "BARTON_012_docs_url": {
+      "type": "string",
+      "description": "TODO: Add definition for docs_url (BARTON_012_docs_url)",
+      "format": "uri",
+      "nullable": true
+    },
+    "BARTON_013_timestamp_updated": {
+      "type": "string",
+      "description": "TODO: Add definition for timestamp_updated (BARTON_013_timestamp_updated)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_compliance_uid"
+  ]
+}

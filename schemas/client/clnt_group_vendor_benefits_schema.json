@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_group_vendor_benefits (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_vendor_benefit_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_benefit_uid (BARTON_001_vendor_benefit_uid)",
+      "nullable": false
+    },
+    "BARTON_002_clnt_master_uid": {
+      "type": "string",
+      "description": "TODO: Add definition for clnt_master_uid (BARTON_002_clnt_master_uid)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_vendor_benefit_uid"
+  ]
+}

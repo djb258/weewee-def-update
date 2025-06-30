@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "dpr_doctrine_christmas_tree (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_doctrine_section": {
+      "type": "number",
+      "description": "TODO: Add definition for doctrine_section (BARTON_001_doctrine_section)",
+      "nullable": true
+    },
+    "BARTON_002_sub_hive_name": {
+      "type": "string",
+      "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+      "nullable": true
+    },
+    "BARTON_003_agent_id": {
+      "type": "string",
+      "description": "TODO: Add definition for agent_id (BARTON_003_agent_id)",
+      "nullable": true
+    },
+    "BARTON_004_process_id": {
+      "type": "string",
+      "description": "TODO: Add definition for process_id (BARTON_004_process_id)",
+      "nullable": true
+    },
+    "BARTON_005_mission_label": {
+      "type": "string",
+      "description": "TODO: Add definition for mission_label (BARTON_005_mission_label)",
+      "nullable": true
+    },
+    "BARTON_006_output_target": {
+      "type": "string",
+      "description": "TODO: Add definition for output_target (BARTON_006_output_target)",
+      "nullable": true
+    },
+    "BARTON_007_related_tables": {
+      "type": "string",
+      "description": "TODO: Add definition for related_tables (BARTON_007_related_tables)",
+      "nullable": true
+    },
+    "BARTON_008_webhook_url": {
+      "type": "string",
+      "description": "TODO: Add definition for webhook_url (BARTON_008_webhook_url)",
+      "format": "uri",
+      "nullable": true
+    },
+    "BARTON_009_enforcement_level": {
+      "type": "string",
+      "description": "TODO: Add definition for enforcement_level (BARTON_009_enforcement_level)",
+      "nullable": true,
+      "default": "'strict'::text"
+    },
+    "BARTON_010_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_010_status)",
+      "nullable": true,
+      "default": "'active'::text"
+    },
+    "BARTON_011_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_011_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": []
+}

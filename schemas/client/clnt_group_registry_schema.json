@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clnt_group_registry (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_registry_id": {
+      "type": "string",
+      "description": "TODO: Add definition for registry_id (BARTON_001_registry_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_client_id": {
+      "type": "string",
+      "description": "TODO: Add definition for client_id (BARTON_002_client_id)",
+      "nullable": false
+    },
+    "BARTON_003_group_number": {
+      "type": "string",
+      "description": "TODO: Add definition for group_number (BARTON_003_group_number)",
+      "nullable": false
+    },
+    "BARTON_004_vendor_name": {
+      "type": "string",
+      "description": "TODO: Add definition for vendor_name (BARTON_004_vendor_name)",
+      "nullable": false
+    },
+    "BARTON_005_external_group_id": {
+      "type": "string",
+      "description": "TODO: Add definition for external_group_id (BARTON_005_external_group_id)",
+      "nullable": true
+    },
+    "BARTON_006_effective_date": {
+      "type": "string",
+      "description": "TODO: Add definition for effective_date (BARTON_006_effective_date)",
+      "format": "date",
+      "nullable": true
+    },
+    "BARTON_007_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_007_status)",
+      "nullable": true,
+      "default": "'Active'::text"
+    },
+    "BARTON_008_notes": {
+      "type": "string",
+      "description": "TODO: Add definition for notes (BARTON_008_notes)",
+      "nullable": true
+    },
+    "BARTON_009_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_009_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_registry_id",
+    "BARTON_002_client_id",
+    "BARTON_003_group_number",
+    "BARTON_004_vendor_name"
+  ]
+}

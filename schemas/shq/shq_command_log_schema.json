@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shq_command_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_sniper_mission_id": {
+      "type": "string",
+      "description": "TODO: Add definition for sniper_mission_id (BARTON_002_sniper_mission_id)",
+      "nullable": true
+    },
+    "BARTON_003_received_payload": {
+      "type": "string",
+      "description": "TODO: Add definition for received_payload (BARTON_003_received_payload)",
+      "nullable": false
+    },
+    "BARTON_004_status": {
+      "type": "string",
+      "description": "TODO: Add definition for status (BARTON_004_status)",
+      "nullable": true,
+      "default": "'received'::text"
+    },
+    "BARTON_005_response_agent": {
+      "type": "string",
+      "description": "TODO: Add definition for response_agent (BARTON_005_response_agent)",
+      "nullable": true
+    },
+    "BARTON_006_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "BARTON_007_linked_prep_id": {
+      "type": "string",
+      "description": "TODO: Add definition for linked_prep_id (BARTON_007_linked_prep_id)",
+      "nullable": true
+    },
+    "BARTON_008_notes": {
+      "type": "string",
+      "description": "TODO: Add definition for notes (BARTON_008_notes)",
+      "nullable": true
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id",
+    "BARTON_003_received_payload"
+  ]
+}

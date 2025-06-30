@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cmd_engineer_log (STAMPED/Barton Doctrine)",
+  "type": "object",
+  "properties": {
+    "BARTON_001_id": {
+      "type": "string",
+      "description": "TODO: Add definition for id (BARTON_001_id)",
+      "nullable": false,
+      "default": "gen_random_uuid()"
+    },
+    "BARTON_002_event": {
+      "type": "string",
+      "description": "TODO: Add definition for event (BARTON_002_event)",
+      "nullable": true
+    },
+    "BARTON_003_system": {
+      "type": "string",
+      "description": "TODO: Add definition for system (BARTON_003_system)",
+      "nullable": true
+    },
+    "BARTON_004_metadata": {
+      "type": "string",
+      "description": "TODO: Add definition for metadata (BARTON_004_metadata)",
+      "nullable": true
+    },
+    "BARTON_005_created_at": {
+      "type": "string",
+      "description": "TODO: Add definition for created_at (BARTON_005_created_at)",
+      "format": "date-time",
+      "nullable": true,
+      "default": "now()"
+    },
+    "conditionalLogic": {
+      "type": "array",
+      "description": "Conditional logic, constraints, or business rules for this table",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "BARTON_001_id"
+  ]
+}
