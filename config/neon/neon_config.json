@@ -1,0 +1,26 @@
+{
+  "database": {
+    "name": "neondb",
+    "host": "ep-round-bird-a4a7s49a-pooler.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "ssl": true,
+    "pool": {
+      "min": 2,
+      "max": 10
+    }
+  },
+  "sync": {
+    "enabled": true,
+    "interval": 3600000,
+    "backup_enabled": true,
+    "tables": [
+      "weewee_bootstrap_registry",
+      "shq_bootstrap_program",
+      "client_onboarding"
+    ]
+  },
+  "logging": {
+    "level": "info",
+    "file": "neon-sync.log"
+  }
+} 

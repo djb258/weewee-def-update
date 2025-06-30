@@ -1,0 +1,390 @@
+#!/usr/bin/env tsx
+
+/**
+ * Browserless.ai Integration
+ * Headless browser automation platform for web scraping and testing
+ * Run: npm run browserless:setup
+ */
+
+import axios from "axios";
+import * as fs from "fs";
+import * as path from "path";
+import { config } from "dotenv";
+
+// Load environment variables
+config();
+
+class BrowserlessIntegration {
+  private config: any;
+  private client: any;
+
+  constructor() {
+    this.config = {
+      apiKey: process.env.BROWSERLESS_API_KEY || "",
+      baseUrl: process.env.BROWSERLESS_BASE_URL || "https://api.browserless.ai",
+      endpoint: process.env.BROWSERLESS_ENDPOINT,
+      token: process.env.BROWSERLESS_TOKEN
+    };
+
+    if (!this.config.apiKey && !this.config.token) {
+      throw new Error("BROWSERLESS_API_KEY or BROWSERLESS_TOKEN is required. Please set it in your .env file.");
+    }
+
+    this.client = axios.create({
+      baseURL: this.config.baseUrl,
+      headers: {
+        "Authorization": `Bearer ${this.config.apiKey || this.config.token}`,
+        "Content-Type": "application/json"
+      }
+    });
+  }
+
+  private log(message: string, color: string = "blue"): void {
+    const colors: any = {
+      green: "\x1b[32m",
+      yellow: "\x1b[33m",
+      red: "\x1b[31m",
+      blue: "\x1b[34m",
+      cyan: "\x1b[36m",
+      magenta: "\x1b[35m"
+    };
+    console.log(`${colors[color]}${message}\x1b[0m`);
+  }
+
+  public async setup(): Promise<void> {
+    this.log("🌐 Setting up Browserless.ai Integration", "blue");
+    this.log("========================================", "blue");
+
+    try {
+      await this.testConnection();
+      
+      const account = await this.getAccountInfo();
+      if (account) {
+        this.log(`✅ Connected as: ${account.email || account.name}`, "green");
+        this.log(`💰 Credits: ${account.credits || 0}`, "blue");
+        this.log(`⏱️ Usage: ${account.usage || 0} minutes this month`, "blue");
+      }
+
+      this.log("✅ Browserless.ai integration setup complete!", "green");
+      this.log("🚀 Ready for headless browser automation!", "cyan");
+    } catch (error: any) {
+      this.log("❌ Setup failed:", "red");
+      this.log(error.message, "red");
+      throw error;
+    }
+  }
+
+  public async testConnection(): Promise<boolean> {
+    try {
+      this.log("🔍 Testing Browserless.ai API connection...", "blue");
+      
+      // Test with account info or health check
+      const response = await this.client.get("/account");
+      
+      if (response.status === 200) {
+        this.log("✅ API connection successful!", "green");
+        return true;
+      } else {
+        throw new Error(`API returned status ${response.status}`);
+      }
+    } catch (error: any) {
+      // Try alternative health check endpoint
+      try {
+        const healthResponse = await this.client.get("/health");
+        if (healthResponse.status === 200) {
+          this.log("✅ API connection successful!", "green");
+          return true;
+        }
+      } catch (healthError) {
+        // Continue with original error handling
+      }
+      
+      this.log("❌ API connection failed:", "red");
+      if (error.response?.status === 401) {
+        this.log("Invalid API key/token. Please check your BROWSERLESS_API_KEY or BROWSERLESS_TOKEN", "red");
+      } else if (error.response?.status === 403) {
+        this.log("Access forbidden. Please check your API key permissions", "red");
+      } else {
+        this.log(error.message, "red");
+      }
+      return false;
+    }
+  }
+
+  public async getAccountInfo(): Promise<any> {
+    try {
+      const response = await this.client.get("/account");
+      return response.data;
+    } catch (error: any) {
+      this.log("❌ Failed to get account info:", "red");
+      this.log(error.message, "red");
+      return null;
+    }
+  }
+
+  public async takeScreenshot(url: string, options: any = {}): Promise<any> {
+    try {
+      this.log(`📸 Taking screenshot of: ${url}`, "blue");
+      
+      const screenshotParams = {
+        url: url,
+        type: options.type || "png",
+        fullPage: options.fullPage !== false,
+        quality: options.quality || 90,
+        width: options.width || 1920,
+        height: options.height || 1080,
+        ...options
+      };
+
+      const response = await this.client.post("/screenshot", screenshotParams, {
+        responseType: 'arraybuffer'
+      });
+
+      if (response.status === 200) {
+        const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+        const filename = `screenshot-${timestamp}.${screenshotParams.type}`;
+        const outputDir = path.join(__dirname, "../logs");
+        
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        const filepath = path.join(outputDir, filename);
+        fs.writeFileSync(filepath, response.data);
+        
+        this.log(`✅ Screenshot saved: ${filename}`, "green");
+        return { filename, filepath, size: response.data.length };
+      }
+    } catch (error: any) {
+      this.log("❌ Screenshot failed:", "red");
+      this.log(error.message, "red");
+      throw error;
+    }
+  }
+
+  public async generatePDF(url: string, options: any = {}): Promise<any> {
+    try {
+      this.log(`📄 Generating PDF of: ${url}`, "blue");
+      
+      const pdfParams = {
+        url: url,
+        format: options.format || "A4",
+        landscape: options.landscape || false,
+        margin: options.margin || { top: "1cm", bottom: "1cm", left: "1cm", right: "1cm" },
+        printBackground: options.printBackground !== false,
+        ...options
+      };
+
+      const response = await this.client.post("/pdf", pdfParams, {
+        responseType: 'arraybuffer'
+      });
+
+      if (response.status === 200) {
+        const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+        const filename = `pdf-${timestamp}.pdf`;
+        const outputDir = path.join(__dirname, "../logs");
+        
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        const filepath = path.join(outputDir, filename);
+        fs.writeFileSync(filepath, response.data);
+        
+        this.log(`✅ PDF saved: ${filename}`, "green");
+        return { filename, filepath, size: response.data.length };
+      }
+    } catch (error: any) {
+      this.log("❌ PDF generation failed:", "red");
+      this.log(error.message, "red");
+      throw error;
+    }
+  }
+
+  public async scrapeContent(url: string, selector?: string): Promise<any> {
+    try {
+      this.log(`🕷️ Scraping content from: ${url}`, "blue");
+      
+      const scrapeParams = {
+        url: url,
+        elements: selector ? [{ selector: selector }] : [{ selector: "body" }],
+        waitFor: 2000
+      };
+
+      const response = await this.client.post("/scrape", scrapeParams);
+      const results = response.data;
+
+      if (results && results.data) {
+        this.log(`✅ Scraped ${results.data.length} element(s)`, "green");
+        
+        results.data.forEach((item: any, index: number) => {
+          this.log(`\n${index + 1}. ${item.text?.substring(0, 100)}...`, "cyan");
+        });
+
+        // Save scraped data
+        const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+        const filename = `scrape-${timestamp}.json`;
+        const outputDir = path.join(__dirname, "../logs");
+        
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        const filepath = path.join(outputDir, filename);
+        fs.writeFileSync(filepath, JSON.stringify(results, null, 2));
+        
+        this.log(`💾 Scraped data saved: ${filename}`, "green");
+      }
+
+      return results;
+    } catch (error: any) {
+      this.log("❌ Scraping failed:", "red");
+      this.log(error.message, "red");
+      throw error;
+    }
+  }
+
+  public async runFunction(code: string, url?: string): Promise<any> {
+    try {
+      this.log("🚀 Running custom browser function...", "blue");
+      
+      const functionParams = {
+        code: code,
+        context: url ? { url: url } : {}
+      };
+
+      const response = await this.client.post("/function", functionParams);
+      const results = response.data;
+
+      this.log("✅ Function executed successfully!", "green");
+      this.log(`Result: ${JSON.stringify(results, null, 2)}`, "cyan");
+
+      return results;
+    } catch (error: any) {
+      this.log("❌ Function execution failed:", "red");
+      this.log(error.message, "red");
+      throw error;
+    }
+  }
+
+  public async validateConfiguration(): Promise<void> {
+    this.log("🔍 Validating Browserless.ai configuration...", "blue");
+    
+    const issues: string[] = [];
+    
+    if (!this.config.apiKey && !this.config.token) {
+      issues.push("BROWSERLESS_API_KEY or BROWSERLESS_TOKEN is missing");
+    }
+    
+    if (!this.config.baseUrl) {
+      issues.push("BROWSERLESS_BASE_URL is missing");
+    }
+    
+    if (issues.length > 0) {
+      this.log("❌ Configuration issues found:", "red");
+      issues.forEach(issue => this.log(`  - ${issue}`, "red"));
+      
+      this.log("\n📝 Required environment variables:", "yellow");
+      this.log("BROWSERLESS_API_KEY=your-api-key (or BROWSERLESS_TOKEN)", "yellow");
+      this.log("BROWSERLESS_BASE_URL=https://api.browserless.ai", "yellow");
+      this.log("BROWSERLESS_ENDPOINT=your-endpoint (optional)", "yellow");
+      
+      throw new Error("Configuration validation failed");
+    }
+    
+    this.log("✅ Configuration is valid!", "green");
+  }
+}
+
+// CLI Interface
+async function main() {
+  const args = process.argv.slice(2);
+
+  try {
+    const browserless = new BrowserlessIntegration();
+
+    switch (args[0]) {
+      case "setup":
+        await browserless.setup();
+        break;
+      
+      case "test":
+        await browserless.testConnection();
+        break;
+      
+      case "account":
+        const account = await browserless.getAccountInfo();
+        console.log("Account Info:", account);
+        break;
+      
+      case "screenshot":
+        if (!args[1]) {
+          console.log("Usage: npm run browserless:screenshot <url> [width] [height]");
+          return;
+        }
+        const width = args[2] ? parseInt(args[2]) : 1920;
+        const height = args[3] ? parseInt(args[3]) : 1080;
+        await browserless.takeScreenshot(args[1], { width, height });
+        break;
+      
+      case "pdf":
+        if (!args[1]) {
+          console.log("Usage: npm run browserless:pdf <url> [format]");
+          return;
+        }
+        const format = args[2] || "A4";
+        await browserless.generatePDF(args[1], { format });
+        break;
+      
+      case "scrape":
+        if (!args[1]) {
+          console.log("Usage: npm run browserless:scrape <url> [selector]");
+          return;
+        }
+        await browserless.scrapeContent(args[1], args[2]);
+        break;
+      
+      case "function":
+        if (!args[1]) {
+          console.log("Usage: npm run browserless:function <javascript-code> [url]");
+          return;
+        }
+        await browserless.runFunction(args[1], args[2]);
+        break;
+      
+      case "validate":
+        await browserless.validateConfiguration();
+        break;
+      
+      default:
+        console.log(`
+🌐 Browserless.ai Integration
+
+Usage:
+  npm run browserless:setup                    # Initial setup and connection test
+  npm run browserless:test                     # Test API connection
+  npm run browserless:account                  # Get account information
+  npm run browserless:screenshot <url> [w] [h] # Take screenshot
+  npm run browserless:pdf <url> [format]      # Generate PDF
+  npm run browserless:scrape <url> [selector] # Scrape content
+  npm run browserless:function <code> [url]   # Run custom function
+  npm run browserless:validate                # Validate configuration
+
+Examples:
+  npm run browserless:setup
+  npm run browserless:screenshot "https://example.com" 1920 1080
+  npm run browserless:pdf "https://example.com" A4
+  npm run browserless:scrape "https://example.com" "h1"
+        `);
+    }
+  } catch (error: any) {
+    console.error("❌ Error:", error.message);
+    process.exit(1);
+  }
+}
+
+if (require.main === module) {
+  main();
+}
+
+export { BrowserlessIntegration };

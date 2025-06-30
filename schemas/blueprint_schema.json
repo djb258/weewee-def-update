@@ -1,0 +1,5243 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2025-06-30T01:50:26.827Z",
+  "database": "neon",
+  "tables": [
+    {
+      "name": "blueprint_enforcement_log",
+      "doctrine_comment": null,
+      "column_count": "11",
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('blueprint_enforcement_log_id_seq'::regclass)",
+          "barton_comment": null
+        },
+        {
+          "name": "rule_id",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "rule_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "table_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "column_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "violation_type",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "violation_details",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "severity",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "corrected",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": null
+        },
+        {
+          "name": "corrected_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": null
+        }
+      ]
+    },
+    {
+      "name": "clnt_client_process_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "client_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Client Id. Format: uuid. Required."
+        },
+        {
+          "name": "process_id",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Process Id. Format: character varying(20). Required."
+        },
+        {
+          "name": "customized_version",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_003] Description: Customized Version. Format: boolean. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'active'::character varying",
+          "barton_comment": "[BARTON_004] Description: Status. Format: character varying(20). Nullable."
+        },
+        {
+          "name": "deployment_notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Deployment Notes. Format: text. Nullable."
+        },
+        {
+          "name": "last_deployed_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Last Deployed By. Format: text. Nullable."
+        },
+        {
+          "name": "deployed_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Deployed At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'queued'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "origin_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Origin Label. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_compliance_matrix",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "13",
+      "columns": [
+        {
+          "name": "compliance_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Compliance Uid. Format: uuid. Required."
+        },
+        {
+          "name": "clnt_master_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Clnt Master Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "plan_year",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Plan Year. Format: integer. Nullable."
+        },
+        {
+          "name": "jurisdiction_level",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Jurisdiction Level. Format: text. Nullable."
+        },
+        {
+          "name": "jurisdiction_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Jurisdiction Name. Format: text. Nullable."
+        },
+        {
+          "name": "requirement",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Requirement. Format: text. Nullable."
+        },
+        {
+          "name": "required_for",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Required For. Format: jsonb. Nullable."
+        },
+        {
+          "name": "due_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Due Date. Format: date. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "completed_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Completed By. Format: text. Nullable."
+        },
+        {
+          "name": "blueprint_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Blueprint Id. Format: text. Nullable."
+        },
+        {
+          "name": "docs_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: Docs Url. Format: text. Nullable."
+        },
+        {
+          "name": "timestamp_updated",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_013] Description: Timestamp Updated. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_group_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "9",
+      "columns": [
+        {
+          "name": "registry_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Registry Id. Format: uuid. Required."
+        },
+        {
+          "name": "client_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Client Id. Format: uuid. Required."
+        },
+        {
+          "name": "group_number",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Group Number. Format: text. Required."
+        },
+        {
+          "name": "vendor_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Vendor Name. Format: text. Required."
+        },
+        {
+          "name": "external_group_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: External Group Id. Format: text. Nullable."
+        },
+        {
+          "name": "effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'Active'::text",
+          "barton_comment": "[BARTON_007] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_009] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_group_vendor_benefits",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "2",
+      "columns": [
+        {
+          "name": "vendor_benefit_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Vendor Benefit Uid. Format: uuid. Required."
+        },
+        {
+          "name": "clnt_master_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Clnt Master Uid. Format: uuid. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_input_logic_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "9",
+      "columns": [
+        {
+          "name": "logic_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Logic Id. Format: uuid. Required."
+        },
+        {
+          "name": "group_number",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Group Number. Format: text. Required."
+        },
+        {
+          "name": "field_in_source",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Field In Source. Format: text. Required."
+        },
+        {
+          "name": "condition",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Condition. Format: text. Required."
+        },
+        {
+          "name": "map_to_field",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Map To Field. Format: text. Required."
+        },
+        {
+          "name": "transform_type",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Transform Type. Format: text. Required."
+        },
+        {
+          "name": "transform_rule",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Transform Rule. Format: text. Nullable."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": true,
+          "default": "true",
+          "barton_comment": "[BARTON_008] Description: Active. Format: boolean. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_009] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_input_reject_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "reject_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Reject Id. Format: uuid. Required."
+        },
+        {
+          "name": "group_number",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Group Number. Format: text. Required."
+        },
+        {
+          "name": "rejection_reason",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Rejection Reason. Format: text. Required."
+        },
+        {
+          "name": "rejected_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_004] Description: Rejected At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "rejected_by",
+          "type": "text",
+          "nullable": true,
+          "default": "'system_validator'::text",
+          "barton_comment": "[BARTON_005] Description: Rejected By. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Raw Payload. Format: jsonb. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_input_validation_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "validation_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Validation Id. Format: uuid. Required."
+        },
+        {
+          "name": "group_number",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Group Number. Format: text. Required."
+        },
+        {
+          "name": "field_in_source",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Field In Source. Format: text. Required."
+        },
+        {
+          "name": "rule_type",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Rule Type. Format: text. Required."
+        },
+        {
+          "name": "rule_detail",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Rule Detail. Format: text. Required."
+        },
+        {
+          "name": "error_message",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Error Message. Format: text. Required."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": true,
+          "default": "true",
+          "barton_comment": "[BARTON_007] Description: Active. Format: boolean. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_master_eligibility",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "131",
+      "columns": [
+        {
+          "name": "eligibility_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Eligibility Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "client_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Client Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: First Name. Format: text. Nullable."
+        },
+        {
+          "name": "last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "employee_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Employee Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "employee_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Employee Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "email_address",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Email Address. Format: text. Nullable."
+        },
+        {
+          "name": "cell_phone_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Cell Phone Number. Format: text. Nullable."
+        },
+        {
+          "name": "home_phone_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Home Phone Number. Format: text. Nullable."
+        },
+        {
+          "name": "work_phone",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Work Phone. Format: text. Nullable."
+        },
+        {
+          "name": "home_address",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Home Address. Format: text. Nullable."
+        },
+        {
+          "name": "city",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: City. Format: text. Nullable."
+        },
+        {
+          "name": "state",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_013] Description: State. Format: text. Nullable."
+        },
+        {
+          "name": "zip",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_014] Description: Zip. Format: text. Nullable."
+        },
+        {
+          "name": "submission_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_015] Description: Submission Date. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "reporting_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_016] Description: Reporting Date. Format: date. Nullable."
+        },
+        {
+          "name": "last_update_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_017] Description: Last Update Date. Format: date. Nullable."
+        },
+        {
+          "name": "enrollment_reason",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_018] Description: Enrollment Reason. Format: text. Nullable."
+        },
+        {
+          "name": "employee_date_of_hire",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_019] Description: Employee Date Of Hire. Format: date. Nullable."
+        },
+        {
+          "name": "date_of_termination",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_020] Description: Date Of Termination. Format: date. Nullable."
+        },
+        {
+          "name": "reason_for_termination",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_021] Description: Reason For Termination. Format: text. Nullable."
+        },
+        {
+          "name": "hourly_or_salary",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_022] Description: Hourly Or Salary. Format: text. Nullable."
+        },
+        {
+          "name": "employee_salary",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_023] Description: Employee Salary. Format: numeric. Nullable."
+        },
+        {
+          "name": "hours_per_week",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_024] Description: Hours Per Week. Format: integer. Nullable."
+        },
+        {
+          "name": "department",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_025] Description: Department. Format: text. Nullable."
+        },
+        {
+          "name": "division",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_026] Description: Division. Format: text. Nullable."
+        },
+        {
+          "name": "marital_status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_027] Description: Marital Status. Format: text. Nullable."
+        },
+        {
+          "name": "health_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_028] Description: Health Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "health_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_029] Description: Health Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "dental_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_030] Description: Dental Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "dental_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_031] Description: Dental Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "vision_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_032] Description: Vision Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "vision_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_033] Description: Vision Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "std_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_034] Description: Std Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "std_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_035] Description: Std Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "ltd_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_036] Description: Ltd Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "ltd_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_037] Description: Ltd Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "life_insurance_provided_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_038] Description: Life Insurance Provided By. Format: text. Nullable."
+        },
+        {
+          "name": "life_insurance_policy_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_039] Description: Life Insurance Policy Name. Format: text. Nullable."
+        },
+        {
+          "name": "group_life_policy_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_040] Description: Group Life Policy Number. Format: text. Nullable."
+        },
+        {
+          "name": "std_ltd_plan",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_041] Description: Std Ltd Plan. Format: text. Nullable."
+        },
+        {
+          "name": "std_ltd_coverage",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_042] Description: Std Ltd Coverage. Format: boolean. Nullable."
+        },
+        {
+          "name": "std_ltd_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_043] Description: Std Ltd Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "group_life_coverage_status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_044] Description: Group Life Coverage Status. Format: text. Nullable."
+        },
+        {
+          "name": "group_life_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_045] Description: Group Life Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "medical_plan_tier",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_046] Description: Medical Plan Tier. Format: text. Nullable."
+        },
+        {
+          "name": "medical_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_047] Description: Medical Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "medical_effective_date_old",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_048] Description: Medical Effective Date Old. Format: date. Nullable."
+        },
+        {
+          "name": "mec_plan",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_049] Description: Mec Plan. Format: text. Nullable."
+        },
+        {
+          "name": "major_medical_plan",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_050] Description: Major Medical Plan. Format: text. Nullable."
+        },
+        {
+          "name": "dental_coverage",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_051] Description: Dental Coverage. Format: text. Nullable."
+        },
+        {
+          "name": "dental_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_052] Description: Dental Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "vision_coverage",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_053] Description: Vision Coverage. Format: text. Nullable."
+        },
+        {
+          "name": "vision_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_054] Description: Vision Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "employee_medical_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_055] Description: Employee Medical Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "employee_vision_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_056] Description: Employee Vision Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "employee_dental_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_057] Description: Employee Dental Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "total_employee_health_insurance_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_058] Description: Total Employee Health Insurance Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "employer_medical_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_059] Description: Employer Medical Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "employer_dental_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_060] Description: Employer Dental Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "employer_vision_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_061] Description: Employer Vision Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "total_employer_health_insurance_premium",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_062] Description: Total Employer Health Insurance Premium. Format: numeric. Nullable."
+        },
+        {
+          "name": "group_term_life_ad_d_std_ltd_insurance_coverage_provided_by_emp",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_063] Description: Group Term Life Ad D Std Ltd Insurance Coverage Provided By Emp. Format: boolean. Nullable."
+        },
+        {
+          "name": "employee_class",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_064] Description: Employee Class. Format: text. Nullable."
+        },
+        {
+          "name": "ltd_election",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_065] Description: Ltd Election. Format: boolean. Nullable."
+        },
+        {
+          "name": "benefit_deduction_frequency",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_066] Description: Benefit Deduction Frequency. Format: text. Nullable."
+        },
+        {
+          "name": "beneficiary",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_067] Description: Beneficiary. Format: text. Nullable."
+        },
+        {
+          "name": "beneficiary_address",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_068] Description: Beneficiary Address. Format: text. Nullable."
+        },
+        {
+          "name": "beneficiary_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_069] Description: Beneficiary Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "has_prescriptions",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_070] Description: Has Prescriptions. Format: boolean. Nullable."
+        },
+        {
+          "name": "prescriptions",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_071] Description: Prescriptions. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_add_or_remove",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_072] Description: Dep1 Add Or Remove. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_073] Description: Dep1 First Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_074] Description: Dep1 Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_075] Description: Dep1 Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_dep_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_076] Description: Dep1 Dep Code. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_077] Description: Dep1 Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "dep1_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_078] Description: Dep1 Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "dep1_gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_079] Description: Dep1 Gender. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_add_or_remove",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_080] Description: Dep2 Add Or Remove. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_081] Description: Dep2 First Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_082] Description: Dep2 Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_083] Description: Dep2 Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_dep_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_084] Description: Dep2 Dep Code. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_085] Description: Dep2 Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "dep2_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_086] Description: Dep2 Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "dep2_gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_087] Description: Dep2 Gender. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_add_or_remove",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_088] Description: Dep3 Add Or Remove. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_089] Description: Dep3 First Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_090] Description: Dep3 Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_091] Description: Dep3 Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_dep_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_092] Description: Dep3 Dep Code. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_093] Description: Dep3 Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "dep3_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_094] Description: Dep3 Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "dep3_gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_095] Description: Dep3 Gender. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_add_or_remove",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_096] Description: Dep4 Add Or Remove. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_097] Description: Dep4 First Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_098] Description: Dep4 Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_099] Description: Dep4 Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_dep_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_100] Description: Dep4 Dep Code. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_101] Description: Dep4 Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "dep4_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_102] Description: Dep4 Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "dep4_gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_103] Description: Dep4 Gender. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_add_or_remove",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_104] Description: Dep5 Add Or Remove. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_105] Description: Dep5 First Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_106] Description: Dep5 Last Name. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_107] Description: Dep5 Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_dep_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_108] Description: Dep5 Dep Code. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_ssn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_109] Description: Dep5 Ssn. Format: text. Nullable."
+        },
+        {
+          "name": "dep5_birthday",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_110] Description: Dep5 Birthday. Format: date. Nullable."
+        },
+        {
+          "name": "dep5_gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_111] Description: Dep5 Gender. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit1_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_112] Description: Other Benefit1 Name. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit1_coverage_tier",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_113] Description: Other Benefit1 Coverage Tier. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit1_action",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_114] Description: Other Benefit1 Action. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit1_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_115] Description: Other Benefit1 Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit1_termination_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_116] Description: Other Benefit1 Termination Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit2_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_117] Description: Other Benefit2 Name. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit2_coverage_tier",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_118] Description: Other Benefit2 Coverage Tier. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit2_action",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_119] Description: Other Benefit2 Action. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit2_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_120] Description: Other Benefit2 Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit2_termination_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_121] Description: Other Benefit2 Termination Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit3_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_122] Description: Other Benefit3 Name. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit3_coverage_tier",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_123] Description: Other Benefit3 Coverage Tier. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit3_action",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_124] Description: Other Benefit3 Action. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit3_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_125] Description: Other Benefit3 Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit3_termination_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_126] Description: Other Benefit3 Termination Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit4_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_127] Description: Other Benefit4 Name. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit4_coverage_tier",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_128] Description: Other Benefit4 Coverage Tier. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit4_action",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_129] Description: Other Benefit4 Action. Format: text. Nullable."
+        },
+        {
+          "name": "other_benefit4_effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_130] Description: Other Benefit4 Effective Date. Format: date. Nullable."
+        },
+        {
+          "name": "other_benefit4_termination_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_131] Description: Other Benefit4 Termination Date. Format: date. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_output_logic_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "output_logic_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Output Logic Id. Format: uuid. Required."
+        },
+        {
+          "name": "vendor_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Vendor Name. Format: text. Required."
+        },
+        {
+          "name": "export_column_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Export Column Name. Format: text. Required."
+        },
+        {
+          "name": "field_in_master",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Field In Master. Format: text. Required."
+        },
+        {
+          "name": "logic_condition",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Logic Condition. Format: text. Nullable."
+        },
+        {
+          "name": "true_output",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: True Output. Format: text. Nullable."
+        },
+        {
+          "name": "false_output",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: False Output. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_parsed_spd_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "13",
+      "columns": [
+        {
+          "name": "spd_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Spd Uid. Format: uuid. Required."
+        },
+        {
+          "name": "vendor_benefit_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Vendor Benefit Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "plan_year",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Plan Year. Format: integer. Nullable."
+        },
+        {
+          "name": "plan_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Plan Type. Format: text. Nullable."
+        },
+        {
+          "name": "contract_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Contract Type. Format: text. Nullable."
+        },
+        {
+          "name": "deductible_individual",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Deductible Individual. Format: numeric. Nullable."
+        },
+        {
+          "name": "deductible_family",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Deductible Family. Format: numeric. Nullable."
+        },
+        {
+          "name": "reference_based_pricing",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_008] Description: Reference Based Pricing. Format: boolean. Nullable."
+        },
+        {
+          "name": "coinsurance_percent",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Coinsurance Percent. Format: integer. Nullable."
+        },
+        {
+          "name": "out_of_pocket_max",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Out Of Pocket Max. Format: jsonb. Nullable."
+        },
+        {
+          "name": "additional_terms_json",
+          "type": "jsonb",
+          "nullable": true,
+          "default": "'{}'::jsonb",
+          "barton_comment": "[BARTON_011] Description: Additional Terms Json. Format: jsonb. Nullable."
+        },
+        {
+          "name": "spd_text_excerpt",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: Spd Text Excerpt. Format: text. Nullable."
+        },
+        {
+          "name": "date_parsed",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_013] Description: Date Parsed. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_participant_benefits",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "4",
+      "columns": [
+        {
+          "name": "participant_benefit_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Participant Benefit Uid. Format: uuid. Required."
+        },
+        {
+          "name": "participant_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Participant Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "vendor_benefit_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Vendor Benefit Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "coverage_level",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Coverage Level. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_participant_dependents",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "dependent_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Dependent Uid. Format: uuid. Required."
+        },
+        {
+          "name": "participant_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Participant Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Name. Format: text. Nullable."
+        },
+        {
+          "name": "relationship",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Relationship. Format: text. Nullable."
+        },
+        {
+          "name": "dob",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Dob. Format: date. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_participant_vendor_ids",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "4",
+      "columns": [
+        {
+          "name": "participant_vendor_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Participant Vendor Id. Format: uuid. Required."
+        },
+        {
+          "name": "participant_uid",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Participant Uid. Format: uuid. Nullable."
+        },
+        {
+          "name": "vendor_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Vendor Name. Format: text. Nullable."
+        },
+        {
+          "name": "vendor_member_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Vendor Member Id. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "clnt_subhive_master",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "1",
+      "columns": [
+        {
+          "name": "clnt_master_uid",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Clnt Master Uid. Format: uuid. Required."
+        }
+      ]
+    },
+    {
+      "name": "clnt_vendor_routing",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "routing_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Routing Id. Format: uuid. Required."
+        },
+        {
+          "name": "client_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Client Id. Format: uuid. Required."
+        },
+        {
+          "name": "group_number",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Group Number. Format: text. Required."
+        },
+        {
+          "name": "vendor_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Vendor Name. Format: text. Required."
+        },
+        {
+          "name": "export_table",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Export Table. Format: text. Required."
+        },
+        {
+          "name": "export_logic_profile",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Export Logic Profile. Format: text. Nullable."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": true,
+          "default": "true",
+          "barton_comment": "[BARTON_007] Description: Active. Format: boolean. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "cmd_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'queued'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "origin_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Origin Label. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "cmd_engineer_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "event",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Event. Format: text. Nullable."
+        },
+        {
+          "name": "system",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: System. Format: text. Nullable."
+        },
+        {
+          "name": "metadata",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Metadata. Format: jsonb. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "cmd_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'queued'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "origin_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Origin Label. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "11",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "section_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Section Number. Format: text. Nullable."
+        },
+        {
+          "name": "section_title",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Section Title. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_text",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Doctrine Text. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Doctrine Type. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Enforcement Level. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp with time zone. Nullable."
+        },
+        {
+          "name": "doctrine_category",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Doctrine Category. Format: text. Nullable."
+        },
+        {
+          "name": "sub_hive",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Sub Hive. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Enforcement Target. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_scope",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Enforcement Scope. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine_category_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "3",
+      "columns": [
+        {
+          "name": "doctrine_branch",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Doctrine Branch. Format: text. Nullable."
+        },
+        {
+          "name": "range_start",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Range Start. Format: integer. Nullable."
+        },
+        {
+          "name": "range_end",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Range End. Format: integer. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine_christmas_tree",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "11",
+      "columns": [
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sub Hive Name. Format: text. Nullable."
+        },
+        {
+          "name": "agent_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Agent Id. Format: text. Nullable."
+        },
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Process Id. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "output_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Output Target. Format: text. Nullable."
+        },
+        {
+          "name": "related_tables",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Related Tables. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "webhook_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Webhook Url. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": true,
+          "default": "'strict'::text",
+          "barton_comment": "[BARTON_009] Description: Enforcement Level. Format: text. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'active'::text",
+          "barton_comment": "[BARTON_010] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_011] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine_notional",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "section_number",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Section Number. Format: integer. Required."
+        },
+        {
+          "name": "section_title",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Section Title. Format: text. Required."
+        },
+        {
+          "name": "doctrine_text",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Doctrine Text. Format: text. Required."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Enforcement Level. Format: text. Required."
+        },
+        {
+          "name": "doctrine_track",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Doctrine Track. Format: text. Required."
+        },
+        {
+          "name": "source_system",
+          "type": "text",
+          "nullable": true,
+          "default": "'Notion'::text",
+          "barton_comment": "[BARTON_007] Description: Source System. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine_sections",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "section_number",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Section Number. Format: integer. Required."
+        },
+        {
+          "name": "section_title",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Section Title. Format: text. Required."
+        },
+        {
+          "name": "doctrine_text",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Doctrine Text. Format: text. Required."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Enforcement Level. Format: text. Required."
+        },
+        {
+          "name": "doctrine_track",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Doctrine Track. Format: text. Required."
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "nullable": true,
+          "default": "'notion'::text",
+          "barton_comment": "[BARTON_006] Description: Source. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_doctrine_table_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "table_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Table Name. Format: text. Required."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sub Hive Name. Format: text. Nullable."
+        },
+        {
+          "name": "access_role",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Access Role. Format: text. Nullable."
+        },
+        {
+          "name": "column_definitions",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Column Definitions. Format: jsonb. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_index_key",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sub Hive Name. Format: text. Nullable."
+        },
+        {
+          "name": "table_reference",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Table Reference. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_category",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Doctrine Category. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_knowledge_sync",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "sync_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sync Type. Format: text. Nullable."
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Source. Format: text. Nullable."
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Payload. Format: jsonb. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_messaging_library",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "doctrine_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Doctrine Code. Format: text. Nullable."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Sub Hive Name. Format: text. Nullable."
+        },
+        {
+          "name": "persona",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Persona. Format: text. Nullable."
+        },
+        {
+          "name": "tone_tag",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Tone Tag. Format: text. Nullable."
+        },
+        {
+          "name": "message_text",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Message Text. Format: text. Nullable."
+        },
+        {
+          "name": "created_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Created By. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_research_library",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "research_category",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Research Category. Format: text. Nullable."
+        },
+        {
+          "name": "summary",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Summary. Format: text. Nullable."
+        },
+        {
+          "name": "source_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Source Url. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Doctrine Code. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_sub_hive_assets",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "12",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Sub Hive Name. Format: text. Nullable."
+        },
+        {
+          "name": "agent_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Agent Id. Format: text. Nullable."
+        },
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Process Id. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "output_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Output Target. Format: text. Nullable."
+        },
+        {
+          "name": "related_tables",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Related Tables. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "webhook_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Webhook Url. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": true,
+          "default": "'strict'::text",
+          "barton_comment": "[BARTON_010] Description: Enforcement Level. Format: text. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'active'::text",
+          "barton_comment": "[BARTON_011] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_012] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_sub_hive_doctrine_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "section_number",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Section Number. Format: integer. Required."
+        },
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sub Hive Name. Format: text. Required."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Enforcement Level. Format: character varying(20). Nullable."
+        },
+        {
+          "name": "linked_process_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Linked Process Id. Format: character varying(20). Nullable."
+        },
+        {
+          "name": "assigned_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Assigned By. Format: text. Nullable."
+        },
+        {
+          "name": "assigned_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Assigned At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_sub_hive_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "sub_hive_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Sub Hive Name. Format: text. Required."
+        },
+        {
+          "name": "display_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Display Name. Format: text. Required."
+        },
+        {
+          "name": "internal_alias",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Internal Alias. Format: text. Nullable."
+        },
+        {
+          "name": "purpose",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Purpose. Format: text. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'active'::character varying",
+          "barton_comment": "[BARTON_005] Description: Status. Format: character varying(20). Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "parent_hive",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Parent Hive. Format: text. Nullable."
+        },
+        {
+          "name": "category",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Category. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "dpr_system_key_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "key_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Key Name. Format: text. Required."
+        },
+        {
+          "name": "key_alias",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Key Alias. Format: text. Required."
+        },
+        {
+          "name": "key_domain",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Key Domain. Format: text. Required."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "linked_entity",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Linked Entity. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "marketing_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'queued'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "origin_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Origin Label. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "marketing_icp_assets",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "icp_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Icp Label. Format: text. Nullable."
+        },
+        {
+          "name": "icp_payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Icp Payload. Format: jsonb. Nullable."
+        },
+        {
+          "name": "created_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Created By. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "marketing_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "marketing_strategy_constants",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "10",
+      "columns": [
+        {
+          "name": "constant_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Constant Id. Format: uuid. Required."
+        },
+        {
+          "name": "mission_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Mission Id. Format: uuid. Required."
+        },
+        {
+          "name": "constant_key",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Constant Key. Format: text. Nullable."
+        },
+        {
+          "name": "constant_value",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Constant Value. Format: text. Nullable."
+        },
+        {
+          "name": "required_for_strategy",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Required For Strategy. Format: text. Nullable."
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Source. Format: text. Nullable."
+        },
+        {
+          "name": "auto_confirmed",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_007] Description: Auto Confirmed. Format: boolean. Nullable."
+        },
+        {
+          "name": "commander_confirmed",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_008] Description: Commander Confirmed. Format: boolean. Nullable."
+        },
+        {
+          "name": "confirmation_timestamp",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Confirmation Timestamp. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_010] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "marketing_strategy_output_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "11",
+      "columns": [
+        {
+          "name": "strategy_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Strategy Id. Format: uuid. Required."
+        },
+        {
+          "name": "mission_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Mission Id. Format: uuid. Required."
+        },
+        {
+          "name": "strategy_summary",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Strategy Summary. Format: text. Required."
+        },
+        {
+          "name": "strategy_equation",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Strategy Equation. Format: jsonb. Nullable."
+        },
+        {
+          "name": "risk_matrix",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Risk Matrix. Format: jsonb. Nullable."
+        },
+        {
+          "name": "decision_tree",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Decision Tree. Format: jsonb. Nullable."
+        },
+        {
+          "name": "doctrine_references",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Doctrine References. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "export_format",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Export Format. Format: text. Nullable."
+        },
+        {
+          "name": "pushed_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Pushed By. Format: text. Nullable."
+        },
+        {
+          "name": "pushed_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_010] Description: Pushed At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "human_override_flag",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_011] Description: Human Override Flag. Format: boolean. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "pers_db_agent_activity",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Agent Name. Format: text. Nullable."
+        },
+        {
+          "name": "activity_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Activity Type. Format: text. Nullable."
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Payload. Format: jsonb. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "pers_db_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "command",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Command. Format: text. Nullable."
+        },
+        {
+          "name": "result",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Result. Format: text. Nullable."
+        },
+        {
+          "name": "executed_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Executed By. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "pers_db_finance_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "log_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Log Date. Format: date. Nullable."
+        },
+        {
+          "name": "amount",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Amount. Format: numeric. Nullable."
+        },
+        {
+          "name": "category",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Category. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "pers_db_health_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "log_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Log Date. Format: date. Nullable."
+        },
+        {
+          "name": "log_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Log Type. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "pers_db_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "4",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Payload. Format: jsonb. Nullable."
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Source. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_004] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "schema_audit_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "10",
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('schema_audit_log_id_seq'::regclass)",
+          "barton_comment": null
+        },
+        {
+          "name": "event_type",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "table_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "column_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "old_value",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "new_value",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "changed_by",
+          "type": "character varying",
+          "nullable": true,
+          "default": "CURRENT_USER",
+          "barton_comment": null
+        },
+        {
+          "name": "changed_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": null
+        },
+        {
+          "name": "session_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        },
+        {
+          "name": "application_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": null
+        }
+      ]
+    },
+    {
+      "name": "shq_agent_bootstrap_program",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "3",
+      "columns": [
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Agent Name. Format: text. Required."
+        },
+        {
+          "name": "boot_sequence_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_002] Description: Boot Sequence Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "authorized_process_ids",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Authorized Process Ids. Format: ARRAY. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_agent_process_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "10",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Agent Id. Format: text. Required."
+        },
+        {
+          "name": "agent_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Agent Type. Format: text. Nullable."
+        },
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Process Id. Format: text. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "default_objectives",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Default Objectives. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "payload_sample",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Payload Sample. Format: jsonb. Nullable."
+        },
+        {
+          "name": "output_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Output Target. Format: text. Nullable."
+        },
+        {
+          "name": "promoted_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Promoted By. Format: text. Nullable."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_010] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_agent_prompt_library",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Agent Name. Format: text. Required."
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Role. Format: text. Nullable."
+        },
+        {
+          "name": "prompt_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Prompt Type. Format: text. Nullable."
+        },
+        {
+          "name": "content",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Content. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_api_keys",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Label. Format: text. Nullable."
+        },
+        {
+          "name": "key_value",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Key Value. Format: text. Nullable."
+        },
+        {
+          "name": "service",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Service. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_bootstrap_program",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "5",
+      "columns": [
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Agent Name. Format: text. Required."
+        },
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Process Id. Format: text. Required."
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Payload. Format: jsonb. Nullable."
+        },
+        {
+          "name": "auto_trigger",
+          "type": "boolean",
+          "nullable": true,
+          "default": "true",
+          "barton_comment": "[BARTON_004] Description: Auto Trigger. Format: boolean. Nullable."
+        },
+        {
+          "name": "last_updated",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_005] Description: Last Updated. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_command_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "sniper_mission_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sniper Mission Id. Format: text. Nullable."
+        },
+        {
+          "name": "received_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Received Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'received'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "response_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Response Agent. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp with time zone. Nullable."
+        },
+        {
+          "name": "linked_prep_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Linked Prep Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Notes. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_error_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "9",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "error_message",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Error Message. Format: text. Nullable."
+        },
+        {
+          "name": "error_detail",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Error Detail. Format: text. Nullable."
+        },
+        {
+          "name": "logged_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_004] Description: Logged At. Format: timestamp with time zone. Nullable."
+        },
+        {
+          "name": "table_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Table Name. Format: text. Nullable."
+        },
+        {
+          "name": "related_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Related Agent. Format: text. Nullable."
+        },
+        {
+          "name": "sniper_mission_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Sniper Mission Id. Format: text. Nullable."
+        },
+        {
+          "name": "error_context",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Error Context. Format: jsonb. Nullable."
+        },
+        {
+          "name": "resolution_status",
+          "type": "text",
+          "nullable": true,
+          "default": "'unresolved'::text",
+          "barton_comment": "[BARTON_009] Description: Resolution Status. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_mission_meta",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "9",
+      "columns": [
+        {
+          "name": "mission_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Mission Id. Format: uuid. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "core_objective",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Core Objective. Format: text. Nullable."
+        },
+        {
+          "name": "initiated_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Initiated By. Format: text. Nullable."
+        },
+        {
+          "name": "escalation_trigger_mode",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Escalation Trigger Mode. Format: text. Nullable."
+        },
+        {
+          "name": "mindpal_engaged",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_006] Description: Mindpal Engaged. Format: boolean. Nullable."
+        },
+        {
+          "name": "mission_confirmed",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_007] Description: Mission Confirmed. Format: boolean. Nullable."
+        },
+        {
+          "name": "orchestration_timestamp",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Orchestration Timestamp. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_009] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_mission_payload_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Id. Format: integer. Required."
+        },
+        {
+          "name": "routing_mode",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Routing Mode. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Nullable."
+        },
+        {
+          "name": "target_prep_table",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Target Prep Table. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_nick_sync_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "session_label",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Session Label. Format: text. Required."
+        },
+        {
+          "name": "synced_by",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Synced By. Format: text. Required."
+        },
+        {
+          "name": "sync_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Sync Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "sync_type",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Sync Type. Format: text. Required."
+        },
+        {
+          "name": "related_mission_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Related Mission Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_order_queue",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "issued_by",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Issued By. Format: text. Required."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Target Agent. Format: text. Required."
+        },
+        {
+          "name": "command_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Command Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_005] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "reviewed_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Reviewed At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "13",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_005] Description: Created At. Format: timestamp with time zone. Nullable."
+        },
+        {
+          "name": "sniper_mission_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Sniper Mission Id. Format: text. Nullable."
+        },
+        {
+          "name": "target_id",
+          "type": "uuid",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Target Id. Format: uuid. Nullable."
+        },
+        {
+          "name": "created_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Created By. Format: text. Nullable."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_009] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "reviewed_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Reviewed At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "target_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: Target Agent. Format: text. Nullable."
+        },
+        {
+          "name": "origin_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_013] Description: Origin Label. Format: text. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_process_library",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "21",
+      "columns": [
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Process Id. Format: text. Required."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "default_target_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Default Target Agent. Format: text. Nullable."
+        },
+        {
+          "name": "default_objectives",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Default Objectives. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "webhook_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Webhook Url. Format: text. Nullable."
+        },
+        {
+          "name": "payload_template",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Payload Template. Format: jsonb. Nullable."
+        },
+        {
+          "name": "output_target",
+          "type": "text",
+          "nullable": true,
+          "default": "'command_log'::text",
+          "barton_comment": "[BARTON_007] Description: Output Target. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": true,
+          "default": "'strict'::text",
+          "barton_comment": "[BARTON_008] Description: Enforcement Level. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_009] Description: Created At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "blueprint_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Blueprint Id. Format: character varying(10). Nullable."
+        },
+        {
+          "name": "version",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Version. Format: character varying(10). Nullable."
+        },
+        {
+          "name": "process_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: Process Name. Format: text. Nullable."
+        },
+        {
+          "name": "cursor_templates",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_013] Description: Cursor Templates. Format: jsonb. Nullable."
+        },
+        {
+          "name": "firebase",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_014] Description: Firebase. Format: jsonb. Nullable."
+        },
+        {
+          "name": "recovery_tree",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_015] Description: Recovery Tree. Format: jsonb. Nullable."
+        },
+        {
+          "name": "output_queues",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_016] Description: Output Queues. Format: jsonb. Nullable."
+        },
+        {
+          "name": "agent_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_017] Description: Agent Id. Format: character varying(100). Nullable."
+        },
+        {
+          "name": "deployment_host",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_018] Description: Deployment Host. Format: character varying(100). Nullable."
+        },
+        {
+          "name": "orchestrator",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_019] Description: Orchestrator. Format: character varying(100). Nullable."
+        },
+        {
+          "name": "llm_executor",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_020] Description: Llm Executor. Format: character varying(100). Nullable."
+        },
+        {
+          "name": "error_handler",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_021] Description: Error Handler. Format: character varying(100). Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_process_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "process_id",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Process Id. Format: character varying(20). Required."
+        },
+        {
+          "name": "process_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Process Name. Format: text. Required."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "linked_doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Linked Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "boot_priority",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_005] Description: Boot Priority. Format: boolean. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'active'::character varying",
+          "barton_comment": "[BARTON_006] Description: Status. Format: character varying(20). Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_processes_index",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "7",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Process Id. Format: text. Nullable."
+        },
+        {
+          "name": "required_inputs",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Required Inputs. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "output_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Output Target. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "created_by",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Created By. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_prompt_audit_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "prompt_input",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Prompt Input. Format: text. Nullable."
+        },
+        {
+          "name": "generated_output",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Generated Output. Format: text. Nullable."
+        },
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Agent Name. Format: text. Nullable."
+        },
+        {
+          "name": "model_used",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Model Used. Format: text. Nullable."
+        },
+        {
+          "name": "review_status",
+          "type": "text",
+          "nullable": true,
+          "default": "'unreviewed'::text",
+          "barton_comment": "[BARTON_006] Description: Review Status. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_compliance",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_007] Description: Doctrine Compliance. Format: boolean. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_system_agent_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "agent_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Agent Name. Format: text. Required."
+        },
+        {
+          "name": "sub_hive",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Sub Hive. Format: text. Nullable."
+        },
+        {
+          "name": "rank",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Rank. Format: text. Nullable."
+        },
+        {
+          "name": "assigned_tables",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Assigned Tables. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "role_description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Role Description. Format: text. Nullable."
+        },
+        {
+          "name": "route_target",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Route Target. Format: text. Nullable."
+        },
+        {
+          "name": "enforcement_level",
+          "type": "text",
+          "nullable": true,
+          "default": "'strict'::text",
+          "barton_comment": "[BARTON_007] Description: Enforcement Level. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_system_key_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "key_type",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Key Type. Format: text. Required."
+        },
+        {
+          "name": "key_code",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Key Code. Format: text. Required."
+        },
+        {
+          "name": "key_label",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Key Label. Format: text. Required."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "section_number",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Section Number. Format: integer. Nullable."
+        },
+        {
+          "name": "doctrine_anchor",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_007] Description: Doctrine Anchor. Format: boolean. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_system_schema_index",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "8",
+      "columns": [
+        {
+          "name": "table_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Table Name. Format: text. Required."
+        },
+        {
+          "name": "purpose",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Purpose. Format: text. Nullable."
+        },
+        {
+          "name": "related_process_ids",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Related Process Ids. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "used_by_agents",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Used By Agents. Format: ARRAY. Nullable."
+        },
+        {
+          "name": "access_mode",
+          "type": "text",
+          "nullable": true,
+          "default": "'read_write'::text",
+          "barton_comment": "[BARTON_005] Description: Access Mode. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_007] Description: Created At. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "column_definitions",
+          "type": "jsonb",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Column Definitions. Format: jsonb. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_task_schedule",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "task_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Task Name. Format: text. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "scheduled_for",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Scheduled For. Format: timestamp with time zone. Nullable."
+        },
+        {
+          "name": "result",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Result. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "default": "now()",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp with time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_tool_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "18",
+      "columns": [
+        {
+          "name": "tool_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Tool Id. Format: uuid. Required."
+        },
+        {
+          "name": "tool_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Tool Name. Format: text. Required."
+        },
+        {
+          "name": "tool_class",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Tool Class. Format: text. Nullable."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'active'::text",
+          "barton_comment": "[BARTON_004] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "access_method",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Access Method. Format: text. Nullable."
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Description. Format: text. Nullable."
+        },
+        {
+          "name": "blueprint_usage_notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Blueprint Usage Notes. Format: text. Nullable."
+        },
+        {
+          "name": "last_verified",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_008] Description: Last Verified. Format: timestamp without time zone. Nullable."
+        },
+        {
+          "name": "is_core",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "barton_comment": "[BARTON_009] Description: Is Core. Format: boolean. Nullable."
+        },
+        {
+          "name": "api_key_reference",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_010] Description: Api Key Reference. Format: text. Nullable."
+        },
+        {
+          "name": "website_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_011] Description: Website Url. Format: text. Nullable."
+        },
+        {
+          "name": "version",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_012] Description: Version. Format: text. Nullable."
+        },
+        {
+          "name": "agent_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_013] Description: Agent Id. Format: text. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_014] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "api_docs_url",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_015] Description: Api Docs Url. Format: text. Nullable."
+        },
+        {
+          "name": "retry_protocol",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_016] Description: Retry Protocol. Format: text. Nullable."
+        },
+        {
+          "name": "compliance_layer",
+          "type": "text",
+          "nullable": true,
+          "default": "'none'::text",
+          "barton_comment": "[BARTON_017] Description: Compliance Layer. Format: text. Nullable."
+        },
+        {
+          "name": "env_vars",
+          "type": "ARRAY",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_018] Description: Env Vars. Format: ARRAY. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_validator_registry",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "table_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Table Name. Format: text. Required."
+        },
+        {
+          "name": "column_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Column Name. Format: text. Required."
+        },
+        {
+          "name": "data_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Data Type. Format: text. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "validator_notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Validator Notes. Format: text. Nullable."
+        },
+        {
+          "name": "last_validated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Last Validated At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_validator_schema_index",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "9",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "schema_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Schema Name. Format: text. Required."
+        },
+        {
+          "name": "table_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Table Name. Format: text. Required."
+        },
+        {
+          "name": "column_name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Column Name. Format: text. Required."
+        },
+        {
+          "name": "data_type",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Data Type. Format: text. Required."
+        },
+        {
+          "name": "is_nullable",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_006] Description: Is Nullable. Format: boolean. Nullable."
+        },
+        {
+          "name": "doctrine_section",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_007] Description: Doctrine Section. Format: integer. Nullable."
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_008] Description: Notes. Format: text. Nullable."
+        },
+        {
+          "name": "last_updated",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_009] Description: Last Updated. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_webhook_routing_log",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "4",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_table",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Table. Format: text. Required."
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_004] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    },
+    {
+      "name": "shq_webhook_routing_map",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "3",
+      "columns": [
+        {
+          "name": "process_id",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_001] Description: Process Id. Format: text. Required."
+        },
+        {
+          "name": "assigned_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Assigned Agent. Format: text. Required."
+        },
+        {
+          "name": "webhook_url",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_003] Description: Webhook Url. Format: text. Required."
+        }
+      ]
+    },
+    {
+      "name": "test_prep_table",
+      "doctrine_comment": "NEON Doctrine: Nuclear Enforcement, Explicit Ownership, Operational Normalization, No Orphan Data. Barton Sections 80001–80008 enforced.",
+      "column_count": "6",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "barton_comment": "[BARTON_001] Description: Id. Format: uuid. Required."
+        },
+        {
+          "name": "source_agent",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_002] Description: Source Agent. Format: text. Required."
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": "'pending'::text",
+          "barton_comment": "[BARTON_003] Description: Status. Format: text. Nullable."
+        },
+        {
+          "name": "raw_payload",
+          "type": "jsonb",
+          "nullable": false,
+          "default": null,
+          "barton_comment": "[BARTON_004] Description: Raw Payload. Format: jsonb. Required."
+        },
+        {
+          "name": "mission_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "barton_comment": "[BARTON_005] Description: Mission Label. Format: text. Nullable."
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "barton_comment": "[BARTON_006] Description: Created At. Format: timestamp without time zone. Nullable."
+        }
+      ]
+    }
+  ]
+}

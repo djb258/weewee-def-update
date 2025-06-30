@@ -1,0 +1,11 @@
+{
+  "numbering": "Describes Barton numbering pattern.",
+  "acronyms": {
+    "STAMPED": "Neon vault structure",
+    "SPVPET": "Firebase staging structure",
+    "STACKED": "BigQuery intake structure"
+  },
+  "tools": ["Cursor", "Vercel", "Render", "GitKraken", "Obsidian"],
+  "module_discipline": "Modules are versioned, integrated, and merged according to defined process.",
+  "process_policy": "No process is built unless foundation conforms."
+} 

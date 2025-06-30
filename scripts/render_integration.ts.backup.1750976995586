@@ -1,0 +1,379 @@
+import axios, { AxiosInstance } from 'axios';
+import { z } from 'zod';
+
+// Render Configuration Schema
+export const RenderConfigSchema = z.object({
+  apiKey: z.string().min(1, 'API key is required'),
+  webhookUrl: z.string().url('Webhook URL must be a valid URL'),
+  baseUrl: z.string().url('Base URL must be a valid URL').default('https://api.render.com'),
+  timeout: z.number().positive().default(30000),
+  retryAttempts: z.number().int().min(0).max(5).default(3),
+});
+
+export type RenderConfig = z.infer<typeof RenderConfigSchema>;
+
+// Render Service Schema
+export const RenderServiceSchema = z.object({
+  id: z.string().min(1, 'Service ID is required'),
+  name: z.string().min(1, 'Service name is required'),
+  type: z.enum(['web_service', 'static_site', 'background_worker', 'cron_job']),
+  status: z.enum(['live', 'suspended', 'deleted', 'build_failed', 'deploy_failed']),
+  service_details: z.object({
+    url: z.string().url().optional(),
+    environment: z.enum(['production', 'preview']).optional(),
+    region: z.string().optional(),
+    plan: z.string().optional(),
+  }).optional(),
+  created_at: z.date(),
+  updated_at: z.date(),
+});
+
+export type RenderService = z.infer<typeof RenderServiceSchema>;
+
+// Render Deployment Schema
+export const RenderDeploymentSchema = z.object({
+  id: z.string().min(1, 'Deployment ID is required'),
+  service_id: z.string().min(1, 'Service ID is required'),
+  status: z.enum(['pending', 'building', 'live', 'failed', 'cancelled']),
+  commit: z.object({
+    id: z.string().optional(),
+    message: z.string().optional(),
+    author: z.string().optional(),
+  }).optional(),
+  environment: z.enum(['production', 'preview']).optional(),
+  created_at: z.date(),
+  updated_at: z.date(),
+  finished_at: z.date().optional(),
+});
+
+export type RenderDeployment = z.infer<typeof RenderDeploymentSchema>;
+
+// Render Webhook Payload Schema
+export const RenderWebhookPayloadSchema = z.object({
+  action: z.enum(['deploy', 'build', 'restart', 'suspend']),
+  timestamp: z.string().datetime(),
+  environment: z.enum(['production', 'preview', 'development']).optional(),
+  service_id: z.string().optional(),
+  deployment_id: z.string().optional(),
+  metadata: z.record(z.unknown()).optional(),
+});
+
+export type RenderWebhookPayload = z.infer<typeof RenderWebhookPayloadSchema>;
+
+export class RenderIntegration {
+  private config: RenderConfig;
+  private client: AxiosInstance;
+
+  constructor(config: RenderConfig) {
+    this.config = RenderConfigSchema.parse(config);
+    this.client = axios.create({
+      baseURL: this.config.baseUrl,
+      timeout: this.config.timeout,
+      headers: {
+        'Authorization': `Bearer ${this.config.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  /**
+   * Trigger deployment via webhook
+   */
+  async triggerDeployment(payload?: Partial<RenderWebhookPayload>): Promise<{
+    success: boolean;
+    statusCode: number;
+    response?: unknown;
+    error?: string;
+  }> {
+    try {
+      const defaultPayload: RenderWebhookPayload = {
+        action: 'deploy',
+        timestamp: new Date().toISOString(),
+        environment: 'production',
+        metadata: {
+          triggered_by: 'blueprint_enforcer',
+          source: 'automated_deployment',
+        },
+      };
+
+      const finalPayload = { ...defaultPayload, ...payload };
+      const validatedPayload = RenderWebhookPayloadSchema.parse(finalPayload);
+
+      const response = await this.client.post(this.config.webhookUrl, validatedPayload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      });
+
+      return {
+        success: response.status >= 200 && response.status < 300,
+        statusCode: response.status,
+        response: response.data,
+      };
+    } catch (error) {
+      console.error('Error triggering Render deployment:', error);
+      return {
+        success: false,
+        statusCode: error instanceof Error && 'response' in error ? (error as any).response?.status || 500 : 500,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
+   * Get all Render services
+   */
+  async getServices(): Promise<RenderService[]> {
+    try {
+      const response = await this.client.get('/v1/services');
+      return z.array(RenderServiceSchema).parse(response.data);
+    } catch (error) {
+      console.error('Error fetching Render services:', error);
+      throw new Error(`Failed to fetch Render services: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get a specific Render service
+   */
+  async getService(serviceId: string): Promise<RenderService> {
+    try {
+      const response = await this.client.get(`/v1/services/${serviceId}`);
+      return RenderServiceSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error fetching Render service:', error);
+      throw new Error(`Failed to fetch Render service: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get service deployments
+   */
+  async getDeployments(serviceId: string): Promise<RenderDeployment[]> {
+    try {
+      const response = await this.client.get(`/v1/services/${serviceId}/deploys`);
+      return z.array(RenderDeploymentSchema).parse(response.data);
+    } catch (error) {
+      console.error('Error fetching Render deployments:', error);
+      throw new Error(`Failed to fetch Render deployments: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get a specific deployment
+   */
+  async getDeployment(serviceId: string, deploymentId: string): Promise<RenderDeployment> {
+    try {
+      const response = await this.client.get(`/v1/services/${serviceId}/deploys/${deploymentId}`);
+      return RenderDeploymentSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error fetching Render deployment:', error);
+      throw new Error(`Failed to fetch Render deployment: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Create a new deployment
+   */
+  async createDeployment(serviceId: string, options?: {
+    branch?: string;
+    commitId?: string;
+    environment?: 'production' | 'preview';
+  }): Promise<RenderDeployment> {
+    try {
+      const response = await this.client.post(`/v1/services/${serviceId}/deploys`, {
+        ...options,
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
+
+      return RenderDeploymentSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error creating Render deployment:', error);
+      throw new Error(`Failed to create Render deployment: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Deploy blueprint to Render
+   */
+  async deployBlueprint(blueprintData: unknown, serviceId: string): Promise<{
+    success: boolean;
+    deploymentId?: string;
+    serviceUrl?: string;
+    error?: string;
+  }> {
+    try {
+      // Create deployment
+      const deployment = await this.createDeployment(serviceId, {
+        environment: 'production',
+      });
+
+      // Wait for deployment to complete
+      let finalDeployment = deployment;
+      const maxAttempts = 30; // 5 minutes with 10-second intervals
+      let attempts = 0;
+
+      while (finalDeployment.status === 'pending' || finalDeployment.status === 'building') {
+        if (attempts >= maxAttempts) {
+          throw new Error('Deployment timeout');
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait 10 seconds
+        finalDeployment = await this.getDeployment(serviceId, deployment.id);
+        attempts++;
+      }
+
+      if (finalDeployment.status === 'live') {
+        // Get service details to get the URL
+        const service = await this.getService(serviceId);
+        
+        return {
+          success: true,
+          deploymentId: deployment.id,
+          ...(service.service_details?.url && { serviceUrl: service.service_details.url }),
+        };
+      } else {
+        return {
+          success: false,
+          deploymentId: deployment.id,
+          error: `Deployment failed with status: ${finalDeployment.status}`,
+        };
+      }
+    } catch (error) {
+      console.error('Error deploying blueprint to Render:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
+   * Set up automated deployments for blueprint changes
+   */
+  async setupBlueprintDeployment(blueprintId: string, serviceId: string, config: {
+    autoDeploy: boolean;
+    environment: 'production' | 'preview';
+    branch?: string;
+  }): Promise<{
+    success: boolean;
+    webhookUrl?: string;
+    error?: string;
+  }> {
+    try {
+      // Create webhook for blueprint changes
+      const webhookPayload: RenderWebhookPayload = {
+        action: 'deploy',
+        timestamp: new Date().toISOString(),
+        environment: config.environment,
+        service_id: serviceId,
+        metadata: {
+          blueprint_id: blueprintId,
+          auto_deploy: config.autoDeploy,
+          branch: config.branch || 'main',
+        },
+      };
+
+      const result = await this.triggerDeployment(webhookPayload);
+
+      if (result.success) {
+        return {
+          success: true,
+          webhookUrl: this.config.webhookUrl,
+        };
+      } else {
+        return {
+          success: false,
+          error: result.error || 'Failed to set up webhook',
+        };
+      }
+    } catch (error) {
+      console.error('Error setting up blueprint deployment:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
+   * Health check for Render service
+   */
+  async healthCheck(): Promise<{ status: string; timestamp: string; version?: string }> {
+    try {
+      const response = await this.client.get('/health');
+      return {
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        version: response.data.version,
+      };
+    } catch (error) {
+      console.error('Render health check failed:', error);
+      return {
+        status: 'unhealthy',
+        timestamp: new Date().toISOString(),
+      };
+    }
+  }
+
+  /**
+   * Get deployment logs
+   */
+  async getDeploymentLogs(serviceId: string, deploymentId: string): Promise<{
+    logs: string;
+    timestamp: string;
+  }> {
+    try {
+      const response = await this.client.get(`/v1/services/${serviceId}/deploys/${deploymentId}/logs`);
+      return {
+        logs: response.data.logs || '',
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      console.error('Error fetching deployment logs:', error);
+      throw new Error(`Failed to fetch deployment logs: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Restart a service
+   */
+  async restartService(serviceId: string): Promise<{
+    success: boolean;
+    deploymentId?: string;
+    error?: string;
+  }> {
+    try {
+      const response = await this.client.post(`/v1/services/${serviceId}/restart`);
+      return {
+        success: true,
+        deploymentId: response.data.deployment_id,
+      };
+    } catch (error) {
+      console.error('Error restarting Render service:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+}
+
+// Export validation functions
+export const validateRenderConfig = (data: unknown): RenderConfig => {
+  return RenderConfigSchema.parse(data);
+};
+
+export const validateRenderService = (data: unknown): RenderService => {
+  return RenderServiceSchema.parse(data);
+};
+
+export const validateRenderDeployment = (data: unknown): RenderDeployment => {
+  return RenderDeploymentSchema.parse(data);
+};
+
+export const validateRenderWebhookPayload = (data: unknown): RenderWebhookPayload => {
+  return RenderWebhookPayloadSchema.parse(data);
+}; 

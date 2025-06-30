@@ -1,0 +1,11 @@
+{
+  "clients": [
+    {
+      "id": "client-001",
+      "name": "Sample Client",
+      "status": "active",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "default_client": "client-001"
+} 

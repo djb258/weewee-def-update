@@ -1,0 +1,43 @@
+{
+  "schema": "SPVPET",
+  "description": "Firebase working memory schema - all temp storage before promotion",
+  "database": "Firebase/Firestore",
+  "fields": {
+    "source_id": {
+      "type": "string",
+      "required": true,
+      "description": "Identifies where the record came from (agent, UI, source system)"
+    },
+    "process_id": {
+      "type": "string", 
+      "required": true,
+      "description": "Tied to the blueprint or workflow logic being executed"
+    },
+    "validated": {
+      "type": "boolean|enum",
+      "required": true,
+      "description": "Track whether the data passed validation"
+    },
+    "promoted_to": {
+      "type": "string",
+      "required": false,
+      "description": "Target storage (e.g. Neon table, BigQuery table, etc.)"
+    },
+    "execution_signature": {
+      "type": "string",
+      "required": true,
+      "description": "Unique hash of the agent, blueprint, and schema version used"
+    },
+    "timestamp_last_touched": {
+      "type": "timestamp",
+      "required": true,
+      "description": "Last update or mutation timestamp - vital for TTL/retention control"
+    }
+  },
+  "collections": [
+    "agent_whiteboard",
+    "human_firebreak_queue",
+    "temp_storage_subhives"
+  ],
+  "barton_doctrine": "Structural alias - must be enforced identically across all databases"
+}

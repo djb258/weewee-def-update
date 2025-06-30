@@ -1,0 +1,269 @@
+import axios, { AxiosInstance } from 'axios';
+import { z } from 'zod';
+import { validateBlueprintForFirebase } from '../src/schemas/blueprint-schemas';
+
+// MindPal Configuration Schema
+export const MindPalConfigSchema = z.object({
+  apiKey: z.string().min(1, 'API key is required'),
+  baseUrl: z.string().url('Base URL must be a valid URL').default('https://api.mindpal.com'),
+  timeout: z.number().positive().default(30000),
+  retryAttempts: z.number().int().min(0).max(5).default(3),
+});
+
+export type MindPalConfig = z.infer<typeof MindPalConfigSchema>;
+
+// MindPal Agent Schema
+export const MindPalAgentSchema = z.object({
+  id: z.string().min(1, 'Agent ID is required'),
+  name: z.string().min(1, 'Agent name is required'),
+  type: z.enum(['blueprint_validator', 'data_processor', 'automation_agent']),
+  status: z.enum(['active', 'inactive', 'training', 'error']),
+  capabilities: z.array(z.string()),
+  metadata: z.record(z.unknown()).optional(),
+  created_at: z.date(),
+  updated_at: z.date(),
+});
+
+export type MindPalAgent = z.infer<typeof MindPalAgentSchema>;
+
+// MindPal Task Schema
+export const MindPalTaskSchema = z.object({
+  id: z.string().min(1, 'Task ID is required'),
+  agent_id: z.string().min(1, 'Agent ID is required'),
+  blueprint_id: z.string().min(1, 'Blueprint ID is required'),
+  task_type: z.enum(['validate', 'process', 'automate', 'analyze']),
+  payload: z.record(z.unknown()),
+  status: z.enum(['pending', 'running', 'completed', 'failed']),
+  result: z.record(z.unknown()).optional(),
+  error_message: z.string().optional(),
+  created_at: z.date(),
+  updated_at: z.date(),
+  completed_at: z.date().optional(),
+});
+
+export type MindPalTask = z.infer<typeof MindPalTaskSchema>;
+
+export class MindPalIntegration {
+  private config: MindPalConfig;
+  private client: AxiosInstance;
+
+  constructor(config: MindPalConfig) {
+    this.config = MindPalConfigSchema.parse(config);
+    this.client = axios.create({
+      baseURL: this.config.baseUrl,
+      timeout: this.config.timeout,
+      headers: {
+        'Authorization': `Bearer ${this.config.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  /**
+   * Create a new MindPal agent
+   */
+  async createAgent(agentData: Omit<MindPalAgent, 'id' | 'created_at' | 'updated_at'>): Promise<MindPalAgent> {
+    try {
+      const response = await this.client.post('/agents', {
+        ...agentData,
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
+
+      return MindPalAgentSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error creating MindPal agent:', error);
+      throw new Error(`Failed to create MindPal agent: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get all MindPal agents
+   */
+  async getAgents(): Promise<MindPalAgent[]> {
+    try {
+      const response = await this.client.get('/agents');
+      return z.array(MindPalAgentSchema).parse(response.data);
+    } catch (error) {
+      console.error('Error fetching MindPal agents:', error);
+      throw new Error(`Failed to fetch MindPal agents: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get a specific MindPal agent
+   */
+  async getAgent(agentId: string): Promise<MindPalAgent> {
+    try {
+      const response = await this.client.get(`/agents/${agentId}`);
+      return MindPalAgentSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error fetching MindPal agent:', error);
+      throw new Error(`Failed to fetch MindPal agent: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Create a new MindPal task
+   */
+  async createTask(taskData: Omit<MindPalTask, 'id' | 'created_at' | 'updated_at'>): Promise<MindPalTask> {
+    try {
+      const response = await this.client.post('/tasks', {
+        ...taskData,
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
+
+      return MindPalTaskSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error creating MindPal task:', error);
+      throw new Error(`Failed to create MindPal task: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get all MindPal tasks
+   */
+  async getTasks(): Promise<MindPalTask[]> {
+    try {
+      const response = await this.client.get('/tasks');
+      return z.array(MindPalTaskSchema).parse(response.data);
+    } catch (error) {
+      console.error('Error fetching MindPal tasks:', error);
+      throw new Error(`Failed to fetch MindPal tasks: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Get a specific MindPal task
+   */
+  async getTask(taskId: string): Promise<MindPalTask> {
+    try {
+      const response = await this.client.get(`/tasks/${taskId}`);
+      return MindPalTaskSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error fetching MindPal task:', error);
+      throw new Error(`Failed to fetch MindPal task: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Update task status
+   */
+  async updateTaskStatus(taskId: string, status: MindPalTask['status'], result?: Record<string, unknown>): Promise<MindPalTask> {
+    try {
+      const updateData: Partial<MindPalTask> = {
+        status,
+        updated_at: new Date(),
+      };
+
+      if (status === 'completed' && result) {
+        updateData.result = result;
+        updateData.completed_at = new Date();
+      }
+
+      const response = await this.client.patch(`/tasks/${taskId}`, updateData);
+      return MindPalTaskSchema.parse(response.data);
+    } catch (error) {
+      console.error('Error updating MindPal task status:', error);
+      throw new Error(`Failed to update MindPal task status: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Validate blueprint using MindPal agent
+   */
+  async validateBlueprintWithMindPal(blueprintData: unknown, agentId: string): Promise<{
+    isValid: boolean;
+    errors: string[];
+    suggestions: string[];
+    validatedData?: unknown;
+  }> {
+    try {
+      // First validate the blueprint data locally
+      const validatedBlueprint = validateBlueprintForFirebase(blueprintData);
+
+      // Create a MindPal task for validation
+      const task = await this.createTask({
+        agent_id: agentId,
+        blueprint_id: validatedBlueprint.id,
+        task_type: 'validate',
+        payload: { blueprint: validatedBlueprint },
+        status: 'pending',
+      });
+
+      // Update task status to running
+      await this.updateTaskStatus(task.id, 'running');
+
+      // Simulate MindPal processing (replace with actual API call)
+      const mindpalResult = await this.processWithMindPal(task);
+
+      // Update task with results
+      await this.updateTaskStatus(task.id, 'completed', mindpalResult);
+
+      return {
+        isValid: mindpalResult.isValid,
+        errors: mindpalResult.errors || [],
+        suggestions: mindpalResult.suggestions || [],
+        validatedData: mindpalResult.validatedData,
+      };
+    } catch (error) {
+      console.error('Error validating blueprint with MindPal:', error);
+      throw new Error(`Failed to validate blueprint with MindPal: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  /**
+   * Process task with MindPal (placeholder for actual API integration)
+   */
+  private async processWithMindPal(task: MindPalTask): Promise<{
+    isValid: boolean;
+    errors: string[];
+    suggestions: string[];
+    validatedData: unknown;
+  }> {
+    // This is a placeholder - replace with actual MindPal API calls
+    // For now, we'll simulate processing
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    return {
+      isValid: true,
+      errors: [],
+      suggestions: ['Consider adding more metadata for better organization'],
+      validatedData: task.payload,
+    };
+  }
+
+  /**
+   * Health check for MindPal service
+   */
+  async healthCheck(): Promise<{ status: string; timestamp: string; version?: string }> {
+    try {
+      const response = await this.client.get('/health');
+      return {
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        version: response.data.version,
+      };
+    } catch (error) {
+      console.error('MindPal health check failed:', error);
+      return {
+        status: 'unhealthy',
+        timestamp: new Date().toISOString(),
+      };
+    }
+  }
+}
+
+// Export validation functions
+export const validateMindPalConfig = (data: unknown): MindPalConfig => {
+  return MindPalConfigSchema.parse(data);
+};
+
+export const validateMindPalAgent = (data: unknown): MindPalAgent => {
+  return MindPalAgentSchema.parse(data);
+};
+
+export const validateMindPalTask = (data: unknown): MindPalTask => {
+  return MindPalTaskSchema.parse(data);
+}; 

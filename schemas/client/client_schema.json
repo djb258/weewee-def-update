@@ -1,0 +1,26 @@
+{
+  "name": "client_schema",
+  "version": "1.0.0",
+  "description": "Client onboarding schema for new-client-setup",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      "description": "Unique identifier for the client"
+    },
+    "client_name": {
+      "type": "string",
+      "description": "Name of the client"
+    },
+    "onboarding_status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "completed", "failed"],
+      "description": "Current onboarding status"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the client was created"
+    }
+  },
+  "required": ["client_id", "client_name"]
+} 

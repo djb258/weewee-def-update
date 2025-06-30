@@ -1,0 +1,53 @@
+{
+  "schema": "STACKED",
+  "description": "BigQuery foreign silo schema - long-term analytics storage",
+  "database": "BigQuery",
+  "fields": {
+    "source_id": {
+      "type": "STRING",
+      "mode": "REQUIRED",
+      "description": "Identifies where the record came from (agent, UI, source system)"
+    },
+    "task_id": {
+      "type": "STRING",
+      "mode": "REQUIRED", 
+      "description": "Tied to the blueprint or workflow logic being executed"
+    },
+    "analytics_approved": {
+      "type": "BOOLEAN",
+      "mode": "REQUIRED",
+      "description": "Track whether the data passed validation for analytics"
+    },
+    "consolidated_from": {
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Source storage reference (Neon table, Firebase collection, etc.)"
+    },
+    "knowledge_signature": {
+      "type": "STRING",
+      "mode": "REQUIRED",
+      "description": "Unique hash of the agent, blueprint, and schema version used"
+    },
+    "event_timestamp": {
+      "type": "TIMESTAMP",
+      "mode": "REQUIRED",
+      "description": "Last update or mutation timestamp - vital for partitioning"
+    },
+    "data_payload": {
+      "type": "JSON",
+      "mode": "REQUIRED",
+      "description": "The actual record data in JSON format"
+    }
+  },
+  "table_config": {
+    "partitioning": {
+      "type": "TIME",
+      "field": "event_timestamp",
+      "granularity": "DAY"
+    },
+    "clustering": ["source_id", "knowledge_signature"],
+    "description": "STACKED analytics table - structural alias of SPVPET/STAMPED per Barton Doctrine"
+  },
+  "barton_doctrine": "Structural alias - must be enforced identically across all databases",
+  "ddl_example": "CREATE TABLE dataset.stacked_records (source_id STRING NOT NULL, task_id STRING NOT NULL, analytics_approved BOOLEAN NOT NULL, consolidated_from STRING, knowledge_signature STRING NOT NULL, event_timestamp TIMESTAMP NOT NULL, data_payload JSON NOT NULL) PARTITION BY DATE(event_timestamp) CLUSTER BY source_id, knowledge_signature"
+}
