@@ -1,0 +1,57 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Doctrine API",
+    "version": "1.0.0",
+    "description": "Provides the latest system doctrine and foundation for process framing."
+  },
+  "servers": [
+    {
+      "url": "https://weewee-def-update.vercel.app"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "getDoctrine",
+        "summary": "Fetch the latest system doctrine",
+        "responses": {
+          "200": {
+            "description": "Doctrine fetch successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "numbering": { "type": "string" },
+                    "acronyms": {
+                      "type": "object",
+                      "properties": {
+                        "STAMPED": { "type": "string" },
+                        "SPVPET": { "type": "string" },
+                        "STACKED": { "type": "string" }
+                      }
+                    },
+                    "tools": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "module_discipline": { "type": "string" },
+                    "process_policy": { "type": "string" }
+                  },
+                  "required": [
+                    "numbering",
+                    "acronyms",
+                    "tools",
+                    "module_discipline",
+                    "process_policy"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
