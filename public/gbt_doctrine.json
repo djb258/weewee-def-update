@@ -1,0 +1,1178 @@
+{
+  "metadata": {
+    "generated_at": "2025-07-02T17:32:39.751Z",
+    "version": "1.0.0",
+    "framework": "STAMPED",
+    "total_schemas": 16,
+    "description": "Comprehensive doctrine data for GBT memory updates"
+  },
+  "stamped_framework": {
+    "process_id": "weewee-def-update",
+    "owner": "djb258",
+    "goal": "Comprehensive system for managing definitions, schemas, and doctrine using NEON Doctrine and STAMPED Framework",
+    "type": "doctrine_management_system",
+    "phase_structure": {
+      "phase_1": "Frame",
+      "phase_2": "Blueprint",
+      "phase_3": "Process"
+    },
+    "structure_definition": {
+      "process_name": "WeeWee Definition Update System",
+      "description": "A comprehensive system for managing definitions, schemas, and doctrine using the STAMPED framework with NEON Doctrine integration"
+    },
+    "constants_variables_map": {
+      "constants": [
+        "doctrine_schema_version",
+        "stamped_framework_version",
+        "neon_integration_enabled",
+        "gbt_compliance_required"
+      ],
+      "variables": [
+        "current_doctrine_version",
+        "last_sync_timestamp",
+        "active_schemas_count",
+        "pending_updates"
+      ]
+    },
+    "master_file_plan": {
+      "canonical_table": "dpr_doctrine_schema",
+      "mapping_logic": "All doctrine schemas map to the canonical doctrine table with category-based organization"
+    },
+    "merge_plan": {
+      "source_tables": [
+        "dpr_command_log_schema",
+        "dpr_doctrine_category_map_schema",
+        "dpr_doctrine_christmas_tree_schema",
+        "dpr_doctrine_notional_schema",
+        "dpr_doctrine_schema",
+        "dpr_doctrine_sections_schema",
+        "dpr_doctrine_table_map_schema",
+        "dpr_index_key_schema",
+        "dpr_knowledge_sync_schema",
+        "dpr_messaging_library_schema",
+        "dpr_prep_table_schema",
+        "dpr_research_library_schema",
+        "dpr_sub_hive_assets_schema",
+        "dpr_sub_hive_doctrine_map_schema",
+        "dpr_sub_hive_registry_schema",
+        "dpr_system_key_registry_schema"
+      ],
+      "join_logic": "Doctrine schemas are joined by category and type with hierarchical relationships"
+    },
+    "cursor_scope": {
+      "templates": [
+        {
+          "name": "doctrine_schema_template",
+          "type": "json_schema",
+          "io_fields": [
+            "properties",
+            "required",
+            "type",
+            "description"
+          ]
+        },
+        {
+          "name": "stamped_process_template",
+          "type": "process_definition",
+          "io_fields": [
+            "process_id",
+            "phases",
+            "structure",
+            "routing"
+          ]
+        }
+      ]
+    },
+    "agent_interaction_map": {
+      "pull_agent": "GBT_Doctrine_Agent",
+      "actions": [
+        "fetch_doctrine_updates",
+        "validate_schema_compliance",
+        "sync_with_neon",
+        "update_memory"
+      ],
+      "forward_route": "doctrine_processing_pipeline"
+    },
+    "routing_plan": {
+      "path": "doctrine_update_workflow",
+      "human_checkpoint": true
+    },
+    "outbox_schema": null,
+    "sustainment_plan": {
+      "health_check": "doctrine_schema_validation",
+      "status_visibility": "real_time_monitoring"
+    },
+    "audit_map": {
+      "logs": [
+        "doctrine_update_log",
+        "schema_validation_log",
+        "gbt_memory_update_log"
+      ],
+      "shq_protocol": true
+    }
+  },
+  "doctrine_schemas": {
+    "dpr_command_log_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_command_log (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_source_agent": {
+          "type": "string",
+          "description": "TODO: Add definition for source_agent (BARTON_002_source_agent)",
+          "nullable": false
+        },
+        "BARTON_003_target_agent": {
+          "type": "string",
+          "description": "TODO: Add definition for target_agent (BARTON_003_target_agent)",
+          "nullable": false
+        },
+        "BARTON_004_status": {
+          "type": "string",
+          "description": "TODO: Add definition for status (BARTON_004_status)",
+          "nullable": true,
+          "default": "'queued'::text"
+        },
+        "BARTON_005_raw_payload": {
+          "type": "string",
+          "description": "TODO: Add definition for raw_payload (BARTON_005_raw_payload)",
+          "nullable": false
+        },
+        "BARTON_006_origin_label": {
+          "type": "string",
+          "description": "TODO: Add definition for origin_label (BARTON_006_origin_label)",
+          "nullable": true
+        },
+        "BARTON_007_mission_label": {
+          "type": "string",
+          "description": "TODO: Add definition for mission_label (BARTON_007_mission_label)",
+          "nullable": true
+        },
+        "BARTON_008_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id",
+        "BARTON_002_source_agent",
+        "BARTON_003_target_agent",
+        "BARTON_005_raw_payload"
+      ]
+    },
+    "dpr_doctrine_category_map_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine_category_map (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_doctrine_branch": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_branch (BARTON_001_doctrine_branch)",
+          "nullable": true
+        },
+        "BARTON_002_range_start": {
+          "type": "number",
+          "description": "TODO: Add definition for range_start (BARTON_002_range_start)",
+          "nullable": true
+        },
+        "BARTON_003_range_end": {
+          "type": "number",
+          "description": "TODO: Add definition for range_end (BARTON_003_range_end)",
+          "nullable": true
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": []
+    },
+    "dpr_doctrine_christmas_tree_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine_christmas_tree (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_doctrine_section": {
+          "type": "number",
+          "description": "TODO: Add definition for doctrine_section (BARTON_001_doctrine_section)",
+          "nullable": true
+        },
+        "BARTON_002_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+          "nullable": true
+        },
+        "BARTON_003_agent_id": {
+          "type": "string",
+          "description": "TODO: Add definition for agent_id (BARTON_003_agent_id)",
+          "nullable": true
+        },
+        "BARTON_004_process_id": {
+          "type": "string",
+          "description": "TODO: Add definition for process_id (BARTON_004_process_id)",
+          "nullable": true
+        },
+        "BARTON_005_mission_label": {
+          "type": "string",
+          "description": "TODO: Add definition for mission_label (BARTON_005_mission_label)",
+          "nullable": true
+        },
+        "BARTON_006_output_target": {
+          "type": "string",
+          "description": "TODO: Add definition for output_target (BARTON_006_output_target)",
+          "nullable": true
+        },
+        "BARTON_007_related_tables": {
+          "type": "string",
+          "description": "TODO: Add definition for related_tables (BARTON_007_related_tables)",
+          "nullable": true
+        },
+        "BARTON_008_webhook_url": {
+          "type": "string",
+          "description": "TODO: Add definition for webhook_url (BARTON_008_webhook_url)",
+          "format": "uri",
+          "nullable": true
+        },
+        "BARTON_009_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_009_enforcement_level)",
+          "nullable": true,
+          "default": "'strict'::text"
+        },
+        "BARTON_010_status": {
+          "type": "string",
+          "description": "TODO: Add definition for status (BARTON_010_status)",
+          "nullable": true,
+          "default": "'active'::text"
+        },
+        "BARTON_011_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_011_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": []
+    },
+    "dpr_doctrine_notional_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine_notional (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_section_number": {
+          "type": "number",
+          "description": "TODO: Add definition for section_number (BARTON_002_section_number)",
+          "nullable": false
+        },
+        "BARTON_003_section_title": {
+          "type": "string",
+          "description": "TODO: Add definition for section_title (BARTON_003_section_title)",
+          "nullable": false
+        },
+        "BARTON_004_doctrine_text": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_text (BARTON_004_doctrine_text)",
+          "nullable": false
+        },
+        "BARTON_005_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_005_enforcement_level)",
+          "nullable": false
+        },
+        "BARTON_006_doctrine_track": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_track (BARTON_006_doctrine_track)",
+          "nullable": false
+        },
+        "BARTON_007_source_system": {
+          "type": "string",
+          "description": "TODO: Add definition for source_system (BARTON_007_source_system)",
+          "nullable": true,
+          "default": "'Notion'::text"
+        },
+        "BARTON_008_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id",
+        "BARTON_002_section_number",
+        "BARTON_003_section_title",
+        "BARTON_004_doctrine_text",
+        "BARTON_005_enforcement_level",
+        "BARTON_006_doctrine_track"
+      ]
+    },
+    "dpr_doctrine_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_section_number": {
+          "type": "string",
+          "description": "TODO: Add definition for section_number (BARTON_002_section_number)",
+          "nullable": true
+        },
+        "BARTON_003_section_title": {
+          "type": "string",
+          "description": "TODO: Add definition for section_title (BARTON_003_section_title)",
+          "nullable": true
+        },
+        "BARTON_004_doctrine_text": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_text (BARTON_004_doctrine_text)",
+          "nullable": true
+        },
+        "BARTON_005_doctrine_type": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_type (BARTON_005_doctrine_type)",
+          "nullable": true
+        },
+        "BARTON_006_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_006_enforcement_level)",
+          "nullable": true
+        },
+        "BARTON_007_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "now()"
+        },
+        "BARTON_008_doctrine_category": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_category (BARTON_008_doctrine_category)",
+          "nullable": true
+        },
+        "BARTON_009_sub_hive": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive (BARTON_009_sub_hive)",
+          "nullable": true
+        },
+        "BARTON_010_enforcement_target": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_target (BARTON_010_enforcement_target)",
+          "nullable": true
+        },
+        "BARTON_011_enforcement_scope": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_scope (BARTON_011_enforcement_scope)",
+          "nullable": true
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_doctrine_sections_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine_sections (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_section_number": {
+          "type": "number",
+          "description": "TODO: Add definition for section_number (BARTON_001_section_number)",
+          "nullable": false
+        },
+        "BARTON_002_section_title": {
+          "type": "string",
+          "description": "TODO: Add definition for section_title (BARTON_002_section_title)",
+          "nullable": false
+        },
+        "BARTON_003_doctrine_text": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_text (BARTON_003_doctrine_text)",
+          "nullable": false
+        },
+        "BARTON_004_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_004_enforcement_level)",
+          "nullable": false
+        },
+        "BARTON_005_doctrine_track": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_track (BARTON_005_doctrine_track)",
+          "nullable": false
+        },
+        "BARTON_006_source": {
+          "type": "string",
+          "description": "TODO: Add definition for source (BARTON_006_source)",
+          "nullable": true,
+          "default": "'notion'::text"
+        },
+        "BARTON_007_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_007_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "now()"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_section_number",
+        "BARTON_002_section_title",
+        "BARTON_003_doctrine_text",
+        "BARTON_004_enforcement_level",
+        "BARTON_005_doctrine_track"
+      ]
+    },
+    "dpr_doctrine_table_map_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_doctrine_table_map (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_table_name": {
+          "type": "string",
+          "description": "TODO: Add definition for table_name (BARTON_001_table_name)",
+          "nullable": false
+        },
+        "BARTON_002_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+          "nullable": true
+        },
+        "BARTON_003_access_role": {
+          "type": "string",
+          "description": "TODO: Add definition for access_role (BARTON_003_access_role)",
+          "nullable": true
+        },
+        "BARTON_004_column_definitions": {
+          "type": "string",
+          "description": "TODO: Add definition for column_definitions (BARTON_004_column_definitions)",
+          "nullable": true
+        },
+        "BARTON_005_doctrine_section": {
+          "type": "number",
+          "description": "TODO: Add definition for doctrine_section (BARTON_005_doctrine_section)",
+          "nullable": true
+        },
+        "BARTON_006_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_table_name"
+      ]
+    },
+    "dpr_index_key_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_index_key (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+          "nullable": true
+        },
+        "BARTON_003_table_reference": {
+          "type": "string",
+          "description": "TODO: Add definition for table_reference (BARTON_003_table_reference)",
+          "nullable": true
+        },
+        "BARTON_004_doctrine_category": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_category (BARTON_004_doctrine_category)",
+          "nullable": true
+        },
+        "BARTON_005_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_005_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_knowledge_sync_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_knowledge_sync (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_sync_type": {
+          "type": "string",
+          "description": "TODO: Add definition for sync_type (BARTON_002_sync_type)",
+          "nullable": true
+        },
+        "BARTON_003_source": {
+          "type": "string",
+          "description": "TODO: Add definition for source (BARTON_003_source)",
+          "nullable": true
+        },
+        "BARTON_004_payload": {
+          "type": "string",
+          "description": "TODO: Add definition for payload (BARTON_004_payload)",
+          "nullable": true
+        },
+        "BARTON_005_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_005_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "now()"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_messaging_library_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_messaging_library (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_doctrine_code": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_code (BARTON_002_doctrine_code)",
+          "nullable": true
+        },
+        "BARTON_003_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_003_sub_hive_name)",
+          "nullable": true
+        },
+        "BARTON_004_persona": {
+          "type": "string",
+          "description": "TODO: Add definition for persona (BARTON_004_persona)",
+          "nullable": true
+        },
+        "BARTON_005_tone_tag": {
+          "type": "string",
+          "description": "TODO: Add definition for tone_tag (BARTON_005_tone_tag)",
+          "nullable": true
+        },
+        "BARTON_006_message_text": {
+          "type": "string",
+          "description": "TODO: Add definition for message_text (BARTON_006_message_text)",
+          "nullable": true
+        },
+        "BARTON_007_created_by": {
+          "type": "string",
+          "description": "TODO: Add definition for created_by (BARTON_007_created_by)",
+          "nullable": true
+        },
+        "BARTON_008_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_008_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_prep_table_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_prep_table (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_source_agent": {
+          "type": "string",
+          "description": "TODO: Add definition for source_agent (BARTON_002_source_agent)",
+          "nullable": false
+        },
+        "BARTON_003_status": {
+          "type": "string",
+          "description": "TODO: Add definition for status (BARTON_003_status)",
+          "nullable": true,
+          "default": "'pending'::text"
+        },
+        "BARTON_004_raw_payload": {
+          "type": "string",
+          "description": "TODO: Add definition for raw_payload (BARTON_004_raw_payload)",
+          "nullable": false
+        },
+        "BARTON_005_mission_label": {
+          "type": "string",
+          "description": "TODO: Add definition for mission_label (BARTON_005_mission_label)",
+          "nullable": true
+        },
+        "BARTON_006_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id",
+        "BARTON_002_source_agent",
+        "BARTON_004_raw_payload"
+      ]
+    },
+    "dpr_research_library_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_research_library (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_research_category": {
+          "type": "string",
+          "description": "TODO: Add definition for research_category (BARTON_002_research_category)",
+          "nullable": true
+        },
+        "BARTON_003_summary": {
+          "type": "string",
+          "description": "TODO: Add definition for summary (BARTON_003_summary)",
+          "nullable": true
+        },
+        "BARTON_004_source_url": {
+          "type": "string",
+          "description": "TODO: Add definition for source_url (BARTON_004_source_url)",
+          "format": "uri",
+          "nullable": true
+        },
+        "BARTON_005_doctrine_code": {
+          "type": "string",
+          "description": "TODO: Add definition for doctrine_code (BARTON_005_doctrine_code)",
+          "nullable": true
+        },
+        "BARTON_006_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_sub_hive_assets_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_sub_hive_assets (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_id": {
+          "type": "string",
+          "description": "TODO: Add definition for id (BARTON_001_id)",
+          "nullable": false,
+          "default": "gen_random_uuid()"
+        },
+        "BARTON_002_doctrine_section": {
+          "type": "number",
+          "description": "TODO: Add definition for doctrine_section (BARTON_002_doctrine_section)",
+          "nullable": true
+        },
+        "BARTON_003_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_003_sub_hive_name)",
+          "nullable": true
+        },
+        "BARTON_004_agent_id": {
+          "type": "string",
+          "description": "TODO: Add definition for agent_id (BARTON_004_agent_id)",
+          "nullable": true
+        },
+        "BARTON_005_process_id": {
+          "type": "string",
+          "description": "TODO: Add definition for process_id (BARTON_005_process_id)",
+          "nullable": true
+        },
+        "BARTON_006_mission_label": {
+          "type": "string",
+          "description": "TODO: Add definition for mission_label (BARTON_006_mission_label)",
+          "nullable": true
+        },
+        "BARTON_007_output_target": {
+          "type": "string",
+          "description": "TODO: Add definition for output_target (BARTON_007_output_target)",
+          "nullable": true
+        },
+        "BARTON_008_related_tables": {
+          "type": "string",
+          "description": "TODO: Add definition for related_tables (BARTON_008_related_tables)",
+          "nullable": true
+        },
+        "BARTON_009_webhook_url": {
+          "type": "string",
+          "description": "TODO: Add definition for webhook_url (BARTON_009_webhook_url)",
+          "format": "uri",
+          "nullable": true
+        },
+        "BARTON_010_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_010_enforcement_level)",
+          "nullable": true,
+          "default": "'strict'::text"
+        },
+        "BARTON_011_status": {
+          "type": "string",
+          "description": "TODO: Add definition for status (BARTON_011_status)",
+          "nullable": true,
+          "default": "'active'::text"
+        },
+        "BARTON_012_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_012_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_id"
+      ]
+    },
+    "dpr_sub_hive_doctrine_map_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_sub_hive_doctrine_map (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_section_number": {
+          "type": "number",
+          "description": "TODO: Add definition for section_number (BARTON_001_section_number)",
+          "nullable": false
+        },
+        "BARTON_002_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_002_sub_hive_name)",
+          "nullable": false
+        },
+        "BARTON_003_enforcement_level": {
+          "type": "string",
+          "description": "TODO: Add definition for enforcement_level (BARTON_003_enforcement_level)",
+          "nullable": true
+        },
+        "BARTON_004_linked_process_id": {
+          "type": "string",
+          "description": "TODO: Add definition for linked_process_id (BARTON_004_linked_process_id)",
+          "nullable": true
+        },
+        "BARTON_005_assigned_by": {
+          "type": "string",
+          "description": "TODO: Add definition for assigned_by (BARTON_005_assigned_by)",
+          "nullable": true
+        },
+        "BARTON_006_assigned_at": {
+          "type": "string",
+          "description": "TODO: Add definition for assigned_at (BARTON_006_assigned_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_section_number",
+        "BARTON_002_sub_hive_name"
+      ]
+    },
+    "dpr_sub_hive_registry_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_sub_hive_registry (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_sub_hive_name": {
+          "type": "string",
+          "description": "TODO: Add definition for sub_hive_name (BARTON_001_sub_hive_name)",
+          "nullable": false
+        },
+        "BARTON_002_display_name": {
+          "type": "string",
+          "description": "TODO: Add definition for display_name (BARTON_002_display_name)",
+          "nullable": false
+        },
+        "BARTON_003_internal_alias": {
+          "type": "string",
+          "description": "TODO: Add definition for internal_alias (BARTON_003_internal_alias)",
+          "nullable": true
+        },
+        "BARTON_004_purpose": {
+          "type": "string",
+          "description": "TODO: Add definition for purpose (BARTON_004_purpose)",
+          "nullable": true
+        },
+        "BARTON_005_status": {
+          "type": "string",
+          "description": "TODO: Add definition for status (BARTON_005_status)",
+          "nullable": true,
+          "default": "'active'::character varying"
+        },
+        "BARTON_006_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "BARTON_007_parent_hive": {
+          "type": "string",
+          "description": "TODO: Add definition for parent_hive (BARTON_007_parent_hive)",
+          "nullable": true
+        },
+        "BARTON_008_category": {
+          "type": "string",
+          "description": "TODO: Add definition for category (BARTON_008_category)",
+          "nullable": true
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_sub_hive_name",
+        "BARTON_002_display_name"
+      ]
+    },
+    "dpr_system_key_registry_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "dpr_system_key_registry (STAMPED/Barton Doctrine)",
+      "type": "object",
+      "properties": {
+        "BARTON_001_key_name": {
+          "type": "string",
+          "description": "TODO: Add definition for key_name (BARTON_001_key_name)",
+          "nullable": false
+        },
+        "BARTON_002_key_alias": {
+          "type": "string",
+          "description": "TODO: Add definition for key_alias (BARTON_002_key_alias)",
+          "nullable": false
+        },
+        "BARTON_003_key_domain": {
+          "type": "string",
+          "description": "TODO: Add definition for key_domain (BARTON_003_key_domain)",
+          "nullable": false
+        },
+        "BARTON_004_description": {
+          "type": "string",
+          "description": "TODO: Add definition for description (BARTON_004_description)",
+          "nullable": true
+        },
+        "BARTON_005_linked_entity": {
+          "type": "string",
+          "description": "TODO: Add definition for linked_entity (BARTON_005_linked_entity)",
+          "nullable": true
+        },
+        "BARTON_006_created_at": {
+          "type": "string",
+          "description": "TODO: Add definition for created_at (BARTON_006_created_at)",
+          "format": "date-time",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "conditionalLogic": {
+          "type": "array",
+          "description": "Conditional logic, constraints, or business rules for this table",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "BARTON_001_key_name",
+        "BARTON_002_key_alias",
+        "BARTON_003_key_domain"
+      ]
+    }
+  },
+  "schema_index": [
+    {
+      "name": "dpr_command_log_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_command_log_schema.json",
+      "description": "dpr_command_log (STAMPED/Barton Doctrine)",
+      "fields": 9
+    },
+    {
+      "name": "dpr_doctrine_category_map_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_category_map_schema.json",
+      "description": "dpr_doctrine_category_map (STAMPED/Barton Doctrine)",
+      "fields": 4
+    },
+    {
+      "name": "dpr_doctrine_christmas_tree_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_christmas_tree_schema.json",
+      "description": "dpr_doctrine_christmas_tree (STAMPED/Barton Doctrine)",
+      "fields": 12
+    },
+    {
+      "name": "dpr_doctrine_notional_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_notional_schema.json",
+      "description": "dpr_doctrine_notional (STAMPED/Barton Doctrine)",
+      "fields": 9
+    },
+    {
+      "name": "dpr_doctrine_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_schema.json",
+      "description": "dpr_doctrine (STAMPED/Barton Doctrine)",
+      "fields": 12
+    },
+    {
+      "name": "dpr_doctrine_sections_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_sections_schema.json",
+      "description": "dpr_doctrine_sections (STAMPED/Barton Doctrine)",
+      "fields": 8
+    },
+    {
+      "name": "dpr_doctrine_table_map_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_doctrine_table_map_schema.json",
+      "description": "dpr_doctrine_table_map (STAMPED/Barton Doctrine)",
+      "fields": 7
+    },
+    {
+      "name": "dpr_index_key_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_index_key_schema.json",
+      "description": "dpr_index_key (STAMPED/Barton Doctrine)",
+      "fields": 6
+    },
+    {
+      "name": "dpr_knowledge_sync_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_knowledge_sync_schema.json",
+      "description": "dpr_knowledge_sync (STAMPED/Barton Doctrine)",
+      "fields": 6
+    },
+    {
+      "name": "dpr_messaging_library_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_messaging_library_schema.json",
+      "description": "dpr_messaging_library (STAMPED/Barton Doctrine)",
+      "fields": 9
+    },
+    {
+      "name": "dpr_prep_table_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_prep_table_schema.json",
+      "description": "dpr_prep_table (STAMPED/Barton Doctrine)",
+      "fields": 7
+    },
+    {
+      "name": "dpr_research_library_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_research_library_schema.json",
+      "description": "dpr_research_library (STAMPED/Barton Doctrine)",
+      "fields": 7
+    },
+    {
+      "name": "dpr_sub_hive_assets_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_sub_hive_assets_schema.json",
+      "description": "dpr_sub_hive_assets (STAMPED/Barton Doctrine)",
+      "fields": 13
+    },
+    {
+      "name": "dpr_sub_hive_doctrine_map_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_sub_hive_doctrine_map_schema.json",
+      "description": "dpr_sub_hive_doctrine_map (STAMPED/Barton Doctrine)",
+      "fields": 7
+    },
+    {
+      "name": "dpr_sub_hive_registry_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_sub_hive_registry_schema.json",
+      "description": "dpr_sub_hive_registry (STAMPED/Barton Doctrine)",
+      "fields": 9
+    },
+    {
+      "name": "dpr_system_key_registry_schema",
+      "path": "C:\\Users\\CUSTOM PC\\Desktop\\Cursor Builds\\def-update\\schemas\\doctrine\\dpr_system_key_registry_schema.json",
+      "description": "dpr_system_key_registry (STAMPED/Barton Doctrine)",
+      "fields": 7
+    }
+  ],
+  "categories": {
+    "core_doctrine": [
+      "dpr_doctrine_schema",
+      "dpr_doctrine_sections_schema",
+      "dpr_doctrine_christmas_tree_schema",
+      "dpr_doctrine_notional_schema"
+    ],
+    "management": [
+      "dpr_doctrine_category_map_schema",
+      "dpr_doctrine_table_map_schema",
+      "dpr_index_key_schema"
+    ],
+    "assets": [
+      "dpr_sub_hive_assets_schema",
+      "dpr_sub_hive_registry_schema",
+      "dpr_sub_hive_doctrine_map_schema"
+    ],
+    "communication": [
+      "dpr_messaging_library_schema",
+      "dpr_research_library_schema",
+      "dpr_knowledge_sync_schema"
+    ],
+    "operations": [
+      "dpr_command_log_schema",
+      "dpr_prep_table_schema",
+      "dpr_system_key_registry_schema"
+    ]
+  },
+  "gbt_integration": {
+    "update_frequency": "on_demand",
+    "memory_update_method": "replace_all",
+    "validation_required": true,
+    "backup_before_update": true,
+    "instructions": [
+      "1. Fetch this file from the repository",
+      "2. Validate JSON structure",
+      "3. Update GBT memory with doctrine_schemas section",
+      "4. Update STAMPED framework knowledge with stamped_framework section",
+      "5. Log the update timestamp",
+      "6. Verify memory update success"
+    ],
+    "api_endpoints": {
+      "doctrine": "/api/doctrine",
+      "schemas": "/api/schemas",
+      "status": "/api/status"
+    }
+  }
+}
