@@ -1,4 +1,5 @@
 import { NEONDoctrine, STAMPEDFramework, BartonNumbering } from '../types/doctrine';
+import gbtDoctrineData from '../../gbt_doctrine.json';
 
 /**
  * NEON Doctrine - Nuclear Enforcement, Explicit Ownership, Operational Normalization
@@ -217,4 +218,24 @@ export function validateAgainstDoctrine(data: any, doctrineType: 'neon' | 'stamp
   }
 
   return validation;
+}
+
+export async function getGbtDoctrine() {
+  return {
+    status: 200,
+    data: gbtDoctrineData,
+    timestamp: new Date().toISOString(),
+    source: 'weewee-def-update-system'
+  };
+}
+
+export async function getDoctrineStatus() {
+  return {
+    status: 200,
+    message: 'GBT Doctrine API is operational',
+    version: '1.0.0',
+    last_updated: new Date().toISOString(),
+    total_schemas: gbtDoctrineData.metadata.total_schemas,
+    framework: gbtDoctrineData.metadata.framework
+  };
 } 

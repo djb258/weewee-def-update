@@ -65,6 +65,7 @@ function App() {
             {[
               { id: 'dashboard', name: 'Dashboard', icon: '📊' },
               { id: 'doctrine', name: 'Doctrine', icon: '📚' },
+              { id: 'gbt', name: 'GBT Doctrine', icon: '🤖' },
               { id: 'schemas', name: 'Schemas', icon: '🔧' },
               { id: 'compliance', name: 'Compliance', icon: '✅' },
               { id: 'api', name: 'API', icon: '🔌' }
@@ -178,6 +179,87 @@ function App() {
             <div className="bg-white shadow rounded-lg p-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Doctrine Management</h3>
               <p className="text-gray-600">Doctrine management interface coming soon...</p>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'gbt' && (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="bg-white shadow rounded-lg p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-lg font-medium text-gray-900">GBT Doctrine Data</h3>
+                <div className="flex space-x-2">
+                  <a 
+                    href="/gbt_doctrine.json" 
+                    download
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    📥 Download JSON
+                  </a>
+                  <a 
+                    href="/gbt_doctrine.json" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    🔗 View Raw
+                  </a>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">📊 Metadata</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Version:</strong> 1.0.0</p>
+                    <p><strong>Framework:</strong> STAMPED</p>
+                    <p><strong>Total Schemas:</strong> 16</p>
+                    <p><strong>Generated:</strong> {new Date().toLocaleDateString()}</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🤖 GBT Integration</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Update Method:</strong> Replace All</p>
+                    <p><strong>Validation:</strong> Required</p>
+                    <p><strong>Backup:</strong> Enabled</p>
+                    <p><strong>Status:</strong> Ready</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🔗 Access URLs</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Direct:</strong> /gbt_doctrine.json</p>
+                    <p><strong>API:</strong> /api/doctrine</p>
+                    <p><strong>Status:</strong> /api/status</p>
+                    <p><strong>Size:</strong> 41KB</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2">📋 Schema Summary</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                  <div>• dpr_command_log_schema (9 fields)</div>
+                  <div>• dpr_doctrine_category_map_schema (4 fields)</div>
+                  <div>• dpr_doctrine_christmas_tree_schema (12 fields)</div>
+                  <div>• dpr_doctrine_notional_schema (9 fields)</div>
+                  <div>• dpr_doctrine_schema (12 fields)</div>
+                  <div>• dpr_doctrine_sections_schema (8 fields)</div>
+                  <div>• dpr_doctrine_table_map_schema (7 fields)</div>
+                  <div>• dpr_index_key_schema (6 fields)</div>
+                  <div>• dpr_knowledge_sync_schema (6 fields)</div>
+                  <div>• dpr_messaging_library_schema (9 fields)</div>
+                  <div>• dpr_prep_table_schema (7 fields)</div>
+                  <div>• dpr_research_library_schema (7 fields)</div>
+                  <div>• dpr_sub_hive_assets_schema (13 fields)</div>
+                  <div>• dpr_sub_hive_doctrine_map_schema (7 fields)</div>
+                  <div>• dpr_sub_hive_registry_schema (9 fields)</div>
+                  <div>• dpr_system_key_registry_schema (7 fields)</div>
+                </div>
+              </div>
             </div>
           </div>
         )}
