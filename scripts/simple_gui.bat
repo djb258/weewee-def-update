@@ -1,5 +1,5 @@
 @echo off
-echo Starting Simple Cursor Blueprint Enforcer GUI...
+echo Starting Simple WeeWee Definition Update System GUI...
 echo.
 
 REM Try to find Python in common locations

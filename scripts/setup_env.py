@@ -10,7 +10,7 @@ import sys
 def create_env_file():
     """Create a .env file with placeholder values"""
     
-    env_content = """# Cursor Blueprint Enforcer Environment Variables
+    env_content = """# WeeWee Definition Update System Environment Variables
 # Replace these placeholder values with your actual credentials
 
 # Firebase Configuration
@@ -102,7 +102,7 @@ def check_env_file():
 
 def main():
     """Main function"""
-    print("🔧 Cursor Blueprint Enforcer - Environment Setup")
+    print("🔧 WeeWee Definition Update System - Environment Setup")
     print("=" * 50)
     
     if len(sys.argv) > 1 and sys.argv[1] == '--check':

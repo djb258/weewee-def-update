@@ -597,7 +597,7 @@ export class ToolSyncManager {
           type: 'remote',
           host: 'your-server.com',
           user: 'your-username',
-          projectPath: '/home/your-username/projects/cursor-blueprint-enforcer',
+          projectPath: '/home/your-username/projects/weewee-def-update',
         },
       ],
     };

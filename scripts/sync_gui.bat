@@ -1,8 +1,8 @@
 @echo off
-REM Cursor Blueprint Enforcer - GUI Launcher
+REM WeeWee Definition Update System - GUI Launcher
 REM This batch file launches the sync GUI application
 
-echo Starting Cursor Blueprint Enforcer Sync GUI...
+echo Starting WeeWee Definition Update System Sync GUI...
 echo.
 
 REM Check if Python is installed
@@ -16,7 +16,7 @@ if errorlevel 1 (
 
 REM Check if we're in the right directory
 if not exist "package.json" (
-    echo ERROR: Please run this script from the cursor-blueprint-enforcer directory
+    echo ERROR: Please run this script from the weewee-def-update directory
     echo Current directory: %CD%
     pause
     exit /b 1

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Cursor Blueprint Enforcer - New Machine Setup Script
+# WeeWee Definition Update System - New Machine Setup Script
 # This script sets up a new machine with all configurations and tools
 
 set -e  # Exit on any error
 
-echo "🚀 Setting up Cursor Blueprint Enforcer on new machine..."
+echo "🚀 Setting up WeeWee Definition Update System on new machine..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -248,7 +248,7 @@ show_next_steps() {
 # Main setup function
 main() {
     echo "=========================================="
-    echo "  Cursor Blueprint Enforcer Setup"
+    echo "  WeeWee Definition Update System Setup"
     echo "=========================================="
     echo ""
     

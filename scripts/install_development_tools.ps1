@@ -1,10 +1,10 @@
 # ============================================================================
-# CURSOR BLUEPRINT ENFORCER - DEVELOPMENT TOOLS INSTALLER
+# WEEWEE DEFINITION UPDATE SYSTEM - DEVELOPMENT TOOLS INSTALLER
 # ============================================================================
 # PowerShell script to install all required development tools
 # Run as Administrator for best results
 
-Write-Host "🛠️ Installing Development Tools for Cursor Blueprint Enforcer" -ForegroundColor Cyan
+Write-Host "🛠️ Installing Development Tools for WeeWee Definition Update System" -ForegroundColor Cyan
 Write-Host "================================================================" -ForegroundColor Cyan
 
 # Check if running as Administrator

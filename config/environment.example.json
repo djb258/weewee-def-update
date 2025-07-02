@@ -1,0 +1,28 @@
+{
+  "database": {
+    "url": "postgresql://username:password@localhost:5432/weewee_def",
+    "neonUrl": "postgresql://username:password@ep-xxx-xxx-xxx.region.aws.neon.tech/neondb"
+  },
+  "api": {
+    "baseUrl": "http://localhost:3000/api",
+    "key": "your_api_key_here"
+  },
+  "development": {
+    "nodeEnv": "development",
+    "debug": true,
+    "logLevel": "debug"
+  },
+  "sync": {
+    "interval": 300000,
+    "backupEnabled": true,
+    "backupInterval": 86400000
+  },
+  "security": {
+    "jwtSecret": "your_jwt_secret_here",
+    "encryptionKey": "your_encryption_key_here"
+  },
+  "externalServices": {
+    "cursorApiUrl": "https://api.cursor.sh",
+    "neonApiUrl": "https://console.neon.tech/api/v2"
+  }
+} 

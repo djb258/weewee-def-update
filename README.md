@@ -1,6 +1,7 @@
-# 🛠️ Cursor Blueprint Enforcer
 
-A comprehensive blueprint enforcement system with NEON doctrine and STAMPED compliance for enterprise-grade database management.
+# 🛠️ WeeWee Definition Update System
+
+A comprehensive system for managing definitions, schemas, and doctrine with NEON compliance and STAMPED framework integration.
 
 ## 🎯 Overview
 
@@ -10,7 +11,7 @@ This system provides automated compliance checking, schema validation, audit log
 
 ### Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/cursor-blueprint-enforcer)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/weewee-def-update)
 
 ### Manual Deployment
 
@@ -111,7 +112,7 @@ npm run doctrine:verify
 
 ### Quick Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/cursor-blueprint-enforcer)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/weewee-def-update)
 
 ### Manual Deployment
 
@@ -1139,4 +1140,3 @@ This repository is the **parent/master foundation** for all system doctrine, mod
 ---
 
 **This is the single source of truth for your system's doctrine, modules, and compliance.**
- 

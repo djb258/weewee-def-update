@@ -467,7 +467,7 @@ export class MachineSynchronizer {
             '~/.cursor/keybindings.json',
             '~/.cursor/snippets/',
             '~/.cursor/workspaceStorage/',
-            '~/projects/cursor-blueprint-enforcer/',
+            '~/projects/weewee-def-update/',
           ],
           tools: ['cursor', 'mindpal', 'deerflow', 'render', 'make', 'firebase', 'bigquery', 'neon'],
         },
@@ -479,7 +479,7 @@ export class MachineSynchronizer {
           sshKey: '~/.ssh/id_rsa',
           syncPaths: [
             '~/cursor-config/',
-            '~/projects/cursor-blueprint-enforcer/',
+            '~/projects/weewee-def-update/',
           ],
           tools: ['cursor', 'mindpal', 'deerflow', 'render', 'make'],
         },

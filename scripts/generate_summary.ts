@@ -182,7 +182,7 @@ function generateSummary(): SummaryData {
 function formatSummary(data: SummaryData): string {
   const lines: string[] = [];
   
-  lines.push('# Cursor Blueprint Enforcer - Latest Summary');
+  lines.push('# WeeWee Definition Update System - Latest Summary');
   lines.push('');
   lines.push(`**Generated:** ${data.timestamp}`);
   lines.push('');
