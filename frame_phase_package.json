@@ -1,0 +1,425 @@
+{
+  "process_id": "weewee-def-update",
+  "owner": "djb258",
+  "goal": "Comprehensive system for managing definitions, schemas, and doctrine using NEON Doctrine and STAMPED Framework with GBT compliance integration",
+  "type": "doctrine_management_system",
+  "phase": "Frame",
+  "structure": {
+    "process_name": "WeeWee Definition Update System",
+    "description": "A comprehensive system for managing definitions, schemas, and doctrine using the STAMPED framework with NEON Doctrine integration and GBT memory updates",
+    "version": "1.0.0",
+    "framework": "STAMPED",
+    "phase_structure": {
+      "phase_1": "Frame",
+      "phase_2": "Blueprint",
+      "phase_3": "Process"
+    },
+    "components": {
+      "frontend": {
+        "type": "React TypeScript",
+        "framework": "Vite",
+        "styling": "Tailwind CSS",
+        "purpose": "User interface and GBT doctrine access"
+      },
+      "backend": {
+        "type": "API Endpoints",
+        "framework": "Node.js",
+        "purpose": "Doctrine data serving and validation"
+      },
+      "database": {
+        "type": "NEON Doctrine",
+        "purpose": "Schema storage and management"
+      },
+      "deployment": {
+        "type": "Vercel",
+        "purpose": "Production hosting and GBT access"
+      }
+    },
+    "hierarchy": {
+      "root": "weewee-def-update",
+      "branches": [
+        "doctrine_management",
+        "schema_validation",
+        "gbt_integration",
+        "api_services",
+        "ui_components"
+      ],
+      "relationships": {
+        "doctrine_management": ["schema_validation", "gbt_integration"],
+        "schema_validation": ["api_services"],
+        "gbt_integration": ["api_services", "ui_components"],
+        "api_services": ["ui_components"]
+      }
+    }
+  },
+  "routing_plan": {
+    "path": "doctrine_update_workflow",
+    "human_checkpoint": true,
+    "automated_steps": [
+      "schema_validation",
+      "doctrine_generation",
+      "gbt_memory_update",
+      "deployment_verification"
+    ],
+    "manual_steps": [
+      "doctrine_review",
+      "compliance_approval",
+      "deployment_authorization"
+    ],
+    "decision_points": {
+      "validation_failure": "halt_and_review",
+      "deployment_failure": "rollback_and_retry",
+      "gbt_update_failure": "manual_intervention"
+    },
+    "fallback_routes": {
+      "primary": "automated_workflow",
+      "secondary": "manual_workflow",
+      "emergency": "direct_access"
+    }
+  },
+  "cursor_scope": {
+    "templates": [
+      {
+        "name": "doctrine_schema_template",
+        "type": "json_schema",
+        "io_fields": ["properties", "required", "type", "description", "BARTON_numbering"],
+        "validation_rules": ["required_fields", "type_consistency", "naming_convention"]
+      },
+      {
+        "name": "stamped_process_template",
+        "type": "process_definition",
+        "io_fields": ["process_id", "phases", "structure", "routing", "audit"],
+        "validation_rules": ["phase_completeness", "structure_hierarchy", "routing_logic"]
+      },
+      {
+        "name": "gbt_integration_template",
+        "type": "memory_update",
+        "io_fields": ["doctrine_schemas", "stamped_framework", "metadata", "instructions"],
+        "validation_rules": ["data_completeness", "format_consistency", "accessibility"]
+      }
+    ],
+    "data_boundaries": {
+      "doctrine_schemas": "schemas/doctrine/*.json",
+      "stamped_framework": "src/types/doctrine.ts",
+      "gbt_output": "gbt_doctrine.json",
+      "public_access": "public/gbt_doctrine.json"
+    },
+    "access_patterns": {
+      "read": ["schema_files", "doctrine_data", "framework_definitions"],
+      "write": ["gbt_doctrine.json", "public_files", "api_responses"],
+      "validate": ["json_schemas", "type_definitions", "framework_compliance"]
+    }
+  },
+  "constants_variables": {
+    "constants": [
+      {
+        "name": "doctrine_schema_version",
+        "value": "1.0.0",
+        "description": "Current version of doctrine schema format"
+      },
+      {
+        "name": "stamped_framework_version",
+        "value": "1.0.0",
+        "description": "STAMPED framework version being used"
+      },
+      {
+        "name": "neon_integration_enabled",
+        "value": true,
+        "description": "NEON Doctrine integration status"
+      },
+      {
+        "name": "gbt_compliance_required",
+        "value": true,
+        "description": "GBT compliance requirement flag"
+      },
+      {
+        "name": "barton_numbering_system",
+        "value": "BARTON_001_to_BARTON_999",
+        "description": "Barton numbering system for field identification"
+      },
+      {
+        "name": "vercel_deployment_url",
+        "value": "https://weewee-def-update.vercel.app",
+        "description": "Primary deployment URL for the system"
+      }
+    ],
+    "variables": [
+      {
+        "name": "current_doctrine_version",
+        "type": "string",
+        "default": "1.0.0",
+        "description": "Current doctrine version being processed"
+      },
+      {
+        "name": "last_sync_timestamp",
+        "type": "string",
+        "default": "2025-07-02T17:32:39.751Z",
+        "description": "Last synchronization timestamp"
+      },
+      {
+        "name": "active_schemas_count",
+        "type": "number",
+        "default": 16,
+        "description": "Number of active doctrine schemas"
+      },
+      {
+        "name": "pending_updates",
+        "type": "array",
+        "default": [],
+        "description": "List of pending doctrine updates"
+      },
+      {
+        "name": "gbt_memory_status",
+        "type": "string",
+        "default": "ready",
+        "description": "Current GBT memory update status"
+      },
+      {
+        "name": "deployment_status",
+        "type": "string",
+        "default": "deployed",
+        "description": "Current deployment status"
+      }
+    ]
+  },
+  "master_file_merge_plan": {
+    "canonical_table": "dpr_doctrine_schema",
+    "mapping_logic": "All doctrine schemas map to the canonical doctrine table with category-based organization and Barton numbering system",
+    "source_tables": [
+      "dpr_command_log_schema",
+      "dpr_doctrine_category_map_schema",
+      "dpr_doctrine_christmas_tree_schema",
+      "dpr_doctrine_notional_schema",
+      "dpr_doctrine_schema",
+      "dpr_doctrine_sections_schema",
+      "dpr_doctrine_table_map_schema",
+      "dpr_index_key_schema",
+      "dpr_knowledge_sync_schema",
+      "dpr_messaging_library_schema",
+      "dpr_prep_table_schema",
+      "dpr_research_library_schema",
+      "dpr_sub_hive_assets_schema",
+      "dpr_sub_hive_doctrine_map_schema",
+      "dpr_sub_hive_registry_schema",
+      "dpr_system_key_registry_schema"
+    ],
+    "join_logic": "Doctrine schemas are joined by category and type with hierarchical relationships and Barton numbering for field identification",
+    "merge_strategy": {
+      "primary_key": "BARTON_001_id",
+      "conflict_resolution": "latest_wins",
+      "validation_rules": ["required_fields", "type_consistency", "naming_convention"],
+      "transformation_rules": ["barton_numbering", "category_mapping", "hierarchy_building"]
+    },
+    "output_format": {
+      "type": "json",
+      "structure": "nested_objects",
+      "validation": "json_schema",
+      "accessibility": "public_url"
+    }
+  },
+  "agent_interaction_map": {
+    "pull_agent": "GBT_Doctrine_Agent",
+    "actions": [
+      {
+        "name": "fetch_doctrine_updates",
+        "description": "Retrieve latest doctrine data from the system",
+        "endpoint": "/gbt_doctrine.json",
+        "method": "GET",
+        "authentication": "none"
+      },
+      {
+        "name": "validate_schema_compliance",
+        "description": "Validate doctrine schemas against compliance rules",
+        "endpoint": "/api/validate",
+        "method": "POST",
+        "authentication": "api_key"
+      },
+      {
+        "name": "sync_with_neon",
+        "description": "Synchronize doctrine data with NEON database",
+        "endpoint": "/api/sync",
+        "method": "POST",
+        "authentication": "oauth"
+      },
+      {
+        "name": "update_memory",
+        "description": "Update GBT memory with new doctrine data",
+        "endpoint": "/api/memory",
+        "method": "POST",
+        "authentication": "gbt_token"
+      }
+    ],
+    "forward_route": "doctrine_processing_pipeline",
+    "interaction_patterns": {
+      "request_response": {
+        "pattern": "synchronous",
+        "timeout": 30000,
+        "retry_attempts": 3
+      },
+      "webhook": {
+        "pattern": "asynchronous",
+        "endpoint": "/api/webhook",
+        "verification": "signature"
+      },
+      "streaming": {
+        "pattern": "real_time",
+        "protocol": "server_sent_events",
+        "endpoint": "/api/stream"
+      }
+    },
+    "error_handling": {
+      "validation_errors": "log_and_retry",
+      "network_errors": "exponential_backoff",
+      "authentication_errors": "token_refresh",
+      "system_errors": "fallback_mode"
+    }
+  },
+  "outbox_schema": {
+    "enabled": true,
+    "schema_type": "doctrine_update_notification",
+    "structure": {
+      "notification_id": {
+        "type": "string",
+        "description": "Unique identifier for the notification"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "When the update occurred"
+      },
+      "update_type": {
+        "type": "string",
+        "enum": ["doctrine_update", "schema_change", "gbt_memory_update"],
+        "description": "Type of update performed"
+      },
+      "affected_schemas": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of schemas affected by the update"
+      },
+      "status": {
+        "type": "string",
+        "enum": ["success", "partial", "failed"],
+        "description": "Status of the update operation"
+      },
+      "metadata": {
+        "type": "object",
+        "description": "Additional metadata about the update"
+      }
+    },
+    "delivery_methods": [
+      {
+        "type": "webhook",
+        "endpoint": "/api/notifications",
+        "authentication": "bearer_token"
+      },
+      {
+        "type": "email",
+        "template": "doctrine_update_notification",
+        "recipients": ["admin@weewee-def-update.com"]
+      },
+      {
+        "type": "database_log",
+        "table": "doctrine_update_log",
+        "retention": "30_days"
+      }
+    ]
+  },
+  "sustainment_plan": {
+    "health_check": "doctrine_schema_validation",
+    "status_visibility": "real_time_monitoring",
+    "monitoring_metrics": [
+      {
+        "name": "api_response_time",
+        "threshold": 2000,
+        "unit": "milliseconds",
+        "alert": "high_latency"
+      },
+      {
+        "name": "doctrine_schema_count",
+        "threshold": 16,
+        "unit": "count",
+        "alert": "schema_missing"
+      },
+      {
+        "name": "gbt_accessibility",
+        "threshold": 100,
+        "unit": "percentage",
+        "alert": "access_failure"
+      },
+      {
+        "name": "deployment_status",
+        "threshold": "deployed",
+        "unit": "status",
+        "alert": "deployment_failed"
+      }
+    ],
+    "maintenance_schedule": {
+      "daily": ["health_check", "log_rotation"],
+      "weekly": ["schema_validation", "backup_creation"],
+      "monthly": ["performance_review", "security_audit"],
+      "quarterly": ["framework_update", "compliance_review"]
+    },
+    "backup_strategy": {
+      "frequency": "daily",
+      "retention": "30_days",
+      "location": "secure_storage",
+      "verification": "checksum_validation"
+    },
+    "recovery_procedures": {
+      "data_loss": "restore_from_backup",
+      "service_outage": "failover_to_backup",
+      "corruption": "validate_and_repair",
+      "security_breach": "isolate_and_investigate"
+    }
+  },
+  "audit_maps": {
+    "logs": [
+      {
+        "name": "doctrine_update_log",
+        "type": "database_table",
+        "fields": ["timestamp", "user", "action", "affected_schemas", "status"],
+        "retention": "1_year"
+      },
+      {
+        "name": "schema_validation_log",
+        "type": "file_system",
+        "fields": ["timestamp", "schema_name", "validation_result", "errors"],
+        "retention": "6_months"
+      },
+      {
+        "name": "gbt_memory_update_log",
+        "type": "api_endpoint",
+        "fields": ["timestamp", "update_type", "data_size", "success_rate"],
+        "retention": "3_months"
+      },
+      {
+        "name": "deployment_log",
+        "type": "vercel_dashboard",
+        "fields": ["timestamp", "version", "status", "performance_metrics"],
+        "retention": "1_year"
+      }
+    ],
+    "shq_protocol": true,
+    "audit_trail": {
+      "enabled": true,
+      "granularity": "field_level",
+      "tracking": ["reads", "writes", "updates", "deletes"],
+      "anonymization": "partial"
+    },
+    "compliance_reporting": {
+      "frequency": "monthly",
+      "format": "json",
+      "recipients": ["compliance@weewee-def-update.com"],
+      "automation": "scheduled"
+    },
+    "security_audit": {
+      "frequency": "quarterly",
+      "scope": "full_system",
+      "external_auditor": "certified_security_firm",
+      "remediation_tracking": "automated"
+    }
+  }
+} 

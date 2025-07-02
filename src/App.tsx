@@ -66,6 +66,7 @@ function App() {
               { id: 'dashboard', name: 'Dashboard', icon: '📊' },
               { id: 'doctrine', name: 'Doctrine', icon: '📚' },
               { id: 'gbt', name: 'GBT Doctrine', icon: '🤖' },
+              { id: 'frame', name: 'Frame Phase', icon: '🖼️' },
               { id: 'schemas', name: 'Schemas', icon: '🔧' },
               { id: 'compliance', name: 'Compliance', icon: '✅' },
               { id: 'api', name: 'API', icon: '🔌' }
@@ -258,6 +259,104 @@ function App() {
                   <div>• dpr_sub_hive_doctrine_map_schema (7 fields)</div>
                   <div>• dpr_sub_hive_registry_schema (9 fields)</div>
                   <div>• dpr_system_key_registry_schema (7 fields)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'frame' && (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="bg-white shadow rounded-lg p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-lg font-medium text-gray-900">Frame Phase Package</h3>
+                <div className="flex space-x-2">
+                  <a 
+                    href="/frame_phase_package.json" 
+                    download
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+                  >
+                    📥 Download JSON
+                  </a>
+                  <a 
+                    href="/frame_phase_package.json" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    🔗 View Raw
+                  </a>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🖼️ Frame Details</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Process ID:</strong> weewee-def-update</p>
+                    <p><strong>Owner:</strong> djb258</p>
+                    <p><strong>Type:</strong> doctrine_management_system</p>
+                    <p><strong>Phase:</strong> Frame</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🏗️ Structure</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Framework:</strong> STAMPED</p>
+                    <p><strong>Version:</strong> 1.0.0</p>
+                    <p><strong>Components:</strong> 4</p>
+                    <p><strong>Hierarchy:</strong> 5 branches</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🔗 Access URLs</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Direct:</strong> /frame_phase_package.json</p>
+                    <p><strong>API:</strong> /api/frame</p>
+                    <p><strong>Status:</strong> /api/frame/status</p>
+                    <p><strong>Size:</strong> 9.8KB</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🔄 Routing Plan</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Path:</strong> doctrine_update_workflow</p>
+                    <p><strong>Human Checkpoint:</strong> Yes</p>
+                    <p><strong>Automated Steps:</strong> 4</p>
+                    <p><strong>Manual Steps:</strong> 3</p>
+                    <p><strong>Decision Points:</strong> 3</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-900 mb-2">🤖 Agent Interaction</h4>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p><strong>Pull Agent:</strong> GBT_Doctrine_Agent</p>
+                    <p><strong>Actions:</strong> 4</p>
+                    <p><strong>Patterns:</strong> 3</p>
+                    <p><strong>Error Handling:</strong> 4 types</p>
+                    <p><strong>Forward Route:</strong> doctrine_processing_pipeline</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2">📋 Package Components</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                  <div>✅ structure (complete)</div>
+                  <div>✅ routing_plan (complete)</div>
+                  <div>✅ cursor_scope (complete)</div>
+                  <div>✅ constants_variables (complete)</div>
+                  <div>✅ master_file_merge_plan (complete)</div>
+                  <div>✅ agent_interaction_map (complete)</div>
+                  <div>✅ outbox_schema (complete)</div>
+                  <div>✅ sustainment_plan (complete)</div>
+                  <div>✅ audit_maps (complete)</div>
                 </div>
               </div>
             </div>
