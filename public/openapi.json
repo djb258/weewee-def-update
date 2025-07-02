@@ -1,56 +1,319 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Doctrine API",
+    "title": "WeeWee Definition Update Doctrine API",
     "version": "1.0.0",
-    "description": "Provides the latest system doctrine and foundation for process framing."
+    "description": "Provides complete NEON Doctrine, STAMPED Framework, and Barton Numbering System for validation and compliance."
   },
   "servers": [
     {
-      "url": "https://weewee-def-update.vercel.app"
+      "url": "https://weewee-def-update.vercel.app",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
     }
   ],
   "paths": {
-    "/": {
+    "/api/doctrine": {
       "get": {
         "operationId": "getDoctrine",
-        "summary": "Fetch the latest system doctrine",
+        "summary": "Fetch complete system doctrine",
+        "description": "Returns NEON Doctrine, STAMPED Framework, and Barton Numbering System",
         "responses": {
           "200": {
             "description": "Doctrine fetch successful",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "numbering": { "type": "string" },
-                    "acronyms": {
-                      "type": "object",
-                      "properties": {
-                        "STAMPED": { "type": "string" },
-                        "SPVPET": { "type": "string" },
-                        "STACKED": { "type": "string" }
-                      }
-                    },
-                    "tools": {
-                      "type": "array",
-                      "items": { "type": "string" }
-                    },
-                    "module_discipline": { "type": "string" },
-                    "process_policy": { "type": "string" }
-                  },
-                  "required": [
-                    "numbering",
-                    "acronyms",
-                    "tools",
-                    "module_discipline",
-                    "process_policy"
-                  ]
+                  "$ref": "#/components/schemas/DoctrineResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
           }
         }
+      }
+    },
+    "/api/doctrine.json": {
+      "get": {
+        "operationId": "getDoctrineJson",
+        "summary": "Fetch doctrine as JSON file",
+        "description": "Returns doctrine data as a static JSON file",
+        "responses": {
+          "200": {
+            "description": "Doctrine JSON fetch successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctrineResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DoctrineResponse": {
+        "type": "object",
+        "properties": {
+          "neon": {
+            "$ref": "#/components/schemas/NEONDoctrine"
+          },
+          "stamped": {
+            "$ref": "#/components/schemas/STAMPEDFramework"
+          },
+          "barton": {
+            "$ref": "#/components/schemas/BartonNumbering"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        },
+        "required": [
+          "neon",
+          "stamped",
+          "barton",
+          "metadata"
+        ]
+      },
+      "NEONDoctrine": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "principles": {
+            "type": "object",
+            "properties": {
+              "nuclearEnforcement": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "explicitOwnership": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "operationalNormalization": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "noOrphanData": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              }
+            },
+            "required": [
+              "nuclearEnforcement",
+              "explicitOwnership",
+              "operationalNormalization",
+              "noOrphanData"
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "lastUpdated",
+          "principles"
+        ]
+      },
+      "STAMPEDFramework": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "principles": {
+            "type": "object",
+            "properties": {
+              "structured": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "traceable": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "auditReady": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "mapped": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "promotable": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "enforced": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              },
+              "documented": {
+                "$ref": "#/components/schemas/DoctrinePrinciple"
+              }
+            },
+            "required": [
+              "structured",
+              "traceable",
+              "auditReady",
+              "mapped",
+              "promotable",
+              "enforced",
+              "documented"
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "lastUpdated",
+          "principles"
+        ]
+      },
+      "BartonNumbering": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "system": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "Barton Numbering System"
+              },
+              "description": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string",
+                "example": "X.Y.Z where X=major, Y=minor, Z=patch"
+              },
+              "rules": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "format",
+              "rules"
+            ]
+          },
+          "categories": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "1": "Core System",
+              "2": "Client Management",
+              "3": "Command System",
+              "4": "Doctrine Management",
+              "5": "Marketing",
+              "6": "Personal Database",
+              "7": "SHQ System"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "lastUpdated",
+          "system",
+          "categories"
+        ]
+      },
+      "DoctrinePrinciple": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "rules"
+        ]
+      },
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source": {
+            "type": "string",
+            "example": "weewee-def-update"
+          },
+          "endpoint": {
+            "type": "string",
+            "example": "/api/doctrine"
+          },
+          "repository": {
+            "type": "string",
+            "example": "https://github.com/djb258/weewee-def-update.git"
+          },
+          "deployment": {
+            "type": "string",
+            "example": "vercel"
+          }
+        },
+        "required": [
+          "version",
+          "lastUpdated",
+          "source",
+          "endpoint",
+          "repository"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
       }
     }
   }
