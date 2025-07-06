@@ -22,7 +22,12 @@
     "claude:module": "tsx scripts/claude-auto.ts module",
     "claude:sync": "tsx scripts/claude-auto.ts sync",
     "claude:config": "tsx scripts/claude-auto.ts config",
-    "claude:test": "tsx scripts/test-claude-auto.ts"
+    "claude:test": "tsx scripts/test-claude-auto.ts",
+    "claude:setup": "tsx scripts/setup-claude.ts",
+    "git:status": "tsx scripts/git-manager.ts status",
+    "git:pull": "tsx scripts/git-manager.ts pull",
+    "git:push": "tsx scripts/git-manager.ts push",
+    "git:commit": "tsx scripts/git-manager.ts commit"
   },
   "keywords": [
     "definitions",
