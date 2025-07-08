@@ -76,7 +76,15 @@
     "abacus:deployments": "tsx scripts/abacus-ai-setup.ts deployments",
     "abacus:create-model": "tsx scripts/abacus-ai-setup.ts create-model",
     "abacus:deploy": "tsx scripts/abacus-ai-setup.ts deploy",
-    "abacus:predict": "tsx scripts/abacus-ai-setup.ts predict"
+    "abacus:predict": "tsx scripts/abacus-ai-setup.ts predict",
+    "perplexity:chat": "tsx scripts/perplexity-integration.ts chat",
+    "perplexity:code": "tsx scripts/perplexity-integration.ts generate-code",
+    "perplexity:analyze": "tsx scripts/perplexity-integration.ts analyze",
+    "perplexity:tests": "tsx scripts/perplexity-integration.ts generate-tests",
+    "perplexity:debug": "tsx scripts/perplexity-integration.ts debug",
+    "perplexity:models": "tsx scripts/perplexity-integration.ts models",
+    "perplexity:explain": "tsx scripts/perplexity-integration.ts explain",
+    "perplexity:brainstorm": "tsx scripts/perplexity-integration.ts brainstorm"
   },
   "keywords": [
     "definitions",
@@ -149,6 +157,7 @@
     "framer-motion": "^12.23.0",
     "lucide-react": "^0.525.0",
     "mermaid": "^11.8.1",
+    "perplexity": "^1.0.1",
     "playwright": "^1.53.2",
     "postcss": "^8.0.0",
     "react": "^18.0.0",
