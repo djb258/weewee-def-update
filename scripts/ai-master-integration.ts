@@ -12,6 +12,9 @@ interface AIModel {
   capabilities: string[];
   maxTokens: number;
   costPer1kTokens?: number;
+  speed?: 'fast' | 'medium' | 'slow';
+  quality?: 'high' | 'medium' | 'low';
+  availability?: boolean;
 }
 
 interface AIRequest {
@@ -59,21 +62,30 @@ class AIMasterIntegration {
         provider: 'openai',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 128000,
-        costPer1kTokens: 0.005
+        costPer1kTokens: 0.005,
+        speed: 'medium',
+        quality: 'high',
+        availability: !!process.env.OPENAI_API_KEY
       },
       {
         name: 'gpt-4o-mini',
         provider: 'openai',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 128000,
-        costPer1kTokens: 0.00015
+        costPer1kTokens: 0.00015,
+        speed: 'fast',
+        quality: 'medium',
+        availability: !!process.env.OPENAI_API_KEY
       },
       {
         name: 'gpt-3.5-turbo',
         provider: 'openai',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 16385,
-        costPer1kTokens: 0.0005
+        costPer1kTokens: 0.0005,
+        speed: 'fast',
+        quality: 'medium',
+        availability: !!process.env.OPENAI_API_KEY
       },
 
       // Google Gemini Models
@@ -82,21 +94,30 @@ class AIMasterIntegration {
         provider: 'google',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 1000000,
-        costPer1kTokens: 0.00375
+        costPer1kTokens: 0.00375,
+        speed: 'medium',
+        quality: 'high',
+        availability: !!process.env.GEMINI_API_KEY
       },
       {
         name: 'gemini-1.5-flash',
         provider: 'google',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 1000000,
-        costPer1kTokens: 0.000075
+        costPer1kTokens: 0.000075,
+        speed: 'fast',
+        quality: 'medium',
+        availability: !!process.env.GEMINI_API_KEY
       },
       {
         name: 'gemini-1.0-pro',
         provider: 'google',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 30000,
-        costPer1kTokens: 0.0005
+        costPer1kTokens: 0.0005,
+        speed: 'medium',
+        quality: 'medium',
+        availability: !!process.env.GEMINI_API_KEY
       },
 
       // Claude Models (via existing integration)
@@ -105,14 +126,20 @@ class AIMasterIntegration {
         provider: 'anthropic',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 200000,
-        costPer1kTokens: 0.003
+        costPer1kTokens: 0.003,
+        speed: 'slow',
+        quality: 'high',
+        availability: !!process.env.ANTHROPIC_API_KEY
       },
       {
         name: 'claude-3-5-haiku',
         provider: 'anthropic',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 200000,
-        costPer1kTokens: 0.00025
+        costPer1kTokens: 0.00025,
+        speed: 'fast',
+        quality: 'medium',
+        availability: !!process.env.ANTHROPIC_API_KEY
       },
 
       // Perplexity Models (via existing integration)
@@ -121,14 +148,20 @@ class AIMasterIntegration {
         provider: 'perplexity',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization', 'explanation', 'brainstorming'],
         maxTokens: 4096,
-        costPer1kTokens: 0.0002
+        costPer1kTokens: 0.0002,
+        speed: 'medium',
+        quality: 'medium',
+        availability: !!process.env.PERPLEXITY_API_KEY
       },
       {
         name: 'codellama-70b-instruct',
         provider: 'perplexity',
         capabilities: ['code-generation', 'code-review', 'debugging', 'documentation', 'testing', 'optimization'],
         maxTokens: 4096,
-        costPer1kTokens: 0.0002
+        costPer1kTokens: 0.0002,
+        speed: 'medium',
+        quality: 'medium',
+        availability: !!process.env.PERPLEXITY_API_KEY
       }
     ];
   }
@@ -407,6 +440,133 @@ class AIMasterIntegration {
     
     return responses;
   }
+
+  /**
+   * Auto-select the best model based on task and preferences
+   */
+  autoSelectModel(
+    task?: string,
+    preferences: {
+      priority?: 'quality' | 'speed' | 'cost' | 'balanced';
+      maxCost?: number;
+      minQuality?: 'high' | 'medium' | 'low';
+      maxTokens?: number;
+    } = {}
+  ): AIModel {
+    const { priority = 'balanced', maxCost, minQuality, maxTokens } = preferences;
+    
+    // Filter available models
+    let availableModels = this.models.filter(model => model.availability);
+    
+    // Filter by max tokens if specified
+    if (maxTokens) {
+      availableModels = availableModels.filter(model => model.maxTokens >= maxTokens);
+    }
+    
+    // Filter by minimum quality if specified
+    if (minQuality) {
+      const qualityRank = { low: 1, medium: 2, high: 3 };
+      const minQualityRank = qualityRank[minQuality];
+      availableModels = availableModels.filter(model => 
+        qualityRank[model.quality || 'medium'] >= minQualityRank
+      );
+    }
+    
+    // Filter by max cost if specified
+    if (maxCost && maxCost > 0) {
+      availableModels = availableModels.filter(model => 
+        (model.costPer1kTokens || 0) <= maxCost
+      );
+    }
+    
+    if (availableModels.length === 0) {
+      throw new Error('No suitable models available with current preferences');
+    }
+    
+    // Score models based on priority
+    const scoredModels = availableModels.map(model => {
+      let score = 0;
+      
+      switch (priority) {
+        case 'quality':
+          score += (model.quality === 'high' ? 3 : model.quality === 'medium' ? 2 : 1) * 10;
+          score += (model.costPer1kTokens || 0) * -1000; // Lower cost is better
+          score += (model.speed === 'fast' ? 3 : model.speed === 'medium' ? 2 : 1);
+          break;
+          
+        case 'speed':
+          score += (model.speed === 'fast' ? 3 : model.speed === 'medium' ? 2 : 1) * 10;
+          score += (model.quality === 'high' ? 3 : model.quality === 'medium' ? 2 : 1) * 5;
+          score += (model.costPer1kTokens || 0) * -1000;
+          break;
+          
+        case 'cost':
+          score += (model.costPer1kTokens || 0) * -10000; // Lower cost is much better
+          score += (model.quality === 'high' ? 3 : model.quality === 'medium' ? 2 : 1) * 3;
+          score += (model.speed === 'fast' ? 3 : model.speed === 'medium' ? 2 : 1) * 2;
+          break;
+          
+        case 'balanced':
+        default:
+          score += (model.quality === 'high' ? 3 : model.quality === 'medium' ? 2 : 1) * 5;
+          score += (model.speed === 'fast' ? 3 : model.speed === 'medium' ? 2 : 1) * 3;
+          score += (model.costPer1kTokens || 0) * -5000;
+          break;
+      }
+      
+      // Task-specific bonuses
+      if (task) {
+        switch (task) {
+          case 'code-generation':
+            if (model.name.includes('code') || model.name.includes('codellama')) {
+              score += 5;
+            }
+            break;
+          case 'code-review':
+            if (model.quality === 'high') {
+              score += 3;
+            }
+            break;
+          case 'debugging':
+            if (model.quality === 'high') {
+              score += 3;
+            }
+            break;
+          case 'documentation':
+            if (model.quality === 'high') {
+              score += 2;
+            }
+            break;
+        }
+      }
+      
+      return { model, score };
+    });
+    
+    // Sort by score and return the best model
+    scoredModels.sort((a, b) => b.score - a.score);
+    
+    console.log(`🤖 Auto-selected: ${scoredModels[0].model.name} (${scoredModels[0].model.provider})`);
+    console.log(`   Quality: ${scoredModels[0].model.quality}, Speed: ${scoredModels[0].model.speed}, Cost: $${scoredModels[0].model.costPer1kTokens}/1K tokens`);
+    
+    return scoredModels[0].model;
+  }
+
+  /**
+   * Generate response with auto-selected model
+   */
+  async generateResponseAuto(
+    request: Omit<AIRequest, 'model'>,
+    preferences?: {
+      priority?: 'quality' | 'speed' | 'cost' | 'balanced';
+      maxCost?: number;
+      minQuality?: 'high' | 'medium' | 'low';
+      maxTokens?: number;
+    }
+  ): Promise<AIResponse> {
+    const selectedModel = this.autoSelectModel(request.task, preferences);
+    return await this.generateResponse({ ...request, model: selectedModel.name });
+  }
 }
 
 // CLI interface
@@ -433,6 +593,37 @@ async function main() {
         });
         console.log(`🤖 ${response.provider}/${response.model}:`);
         console.log(response.content);
+      } catch (error) {
+        console.error('❌ Error:', error);
+      }
+      break;
+
+    case 'auto':
+      const autoMessage = args[1];
+      const priority = args[2] as 'quality' | 'speed' | 'cost' | 'balanced' || 'balanced';
+      const maxCost = args[3] ? parseFloat(args[3]) : undefined;
+      
+      if (!autoMessage) {
+        console.error('❌ Please provide a message for auto-selection');
+        process.exit(1);
+      }
+      
+      try {
+        const response = await aiMaster.generateResponseAuto({
+          prompt: autoMessage,
+          task: 'explanation'
+        }, {
+          priority,
+          maxCost,
+          minQuality: 'medium'
+        });
+        
+        console.log(`🤖 Auto-selected ${response.provider}/${response.model}:`);
+        console.log(response.content);
+        
+        if (response.cost) {
+          console.log(`💰 Estimated cost: $${response.cost.toFixed(6)}`);
+        }
       } catch (error) {
         console.error('❌ Error:', error);
       }
@@ -601,6 +792,7 @@ Usage:
 
 Commands:
   chat <message> [model]                    - Chat with any AI model
+  auto <message> [priority] [maxCost]       - Auto-select best model for the task
   generate-code <prompt> [lang] [model]     - Generate code in specified language
   review-code <file> [model]                - Review code for issues and improvements
   debug <file> [error] [model]              - Debug code with optional error message
@@ -610,13 +802,16 @@ Commands:
   compare <prompt> <model1> <model2> ...    - Compare responses from multiple models
   models [provider]                         - List available models
 
-Models:
-  OpenAI: gpt-4o, gpt-4o-mini, gpt-3.5-turbo
-  Google: gemini-1.5-pro, gemini-1.5-flash, gemini-1.0-pro
-  Anthropic: claude-3-5-sonnet, claude-3-5-haiku
-  Perplexity: llama-3.1-70b-instruct, codellama-70b-instruct
+Auto-selection Priorities:
+  quality  - Best quality output (slower, more expensive)
+  speed    - Fastest response (may sacrifice quality)
+  cost     - Most cost-effective (may sacrifice quality/speed)
+  balanced - Balanced approach (default)
 
 Examples:
+  tsx scripts/ai-master-integration.ts auto "Explain React hooks" quality
+  tsx scripts/ai-master-integration.ts auto "Generate a simple function" speed 0.001
+  tsx scripts/ai-master-integration.ts auto "Debug this code" cost
   tsx scripts/ai-master-integration.ts chat "How do I implement authentication?" gpt-4o
   tsx scripts/ai-master-integration.ts generate-code "React component for user profile" typescript gemini-1.5-pro
   tsx scripts/ai-master-integration.ts review-code src/App.tsx gpt-4o
@@ -632,7 +827,8 @@ Environment Variables:
   }
 }
 
-if (require.main === module) {
+// Replace CommonJS main check with ESM-compatible check
+if (import.meta.url === `file://${process.argv[1]}` || import.meta.url === process.argv[1]) {
   main().catch(console.error);
 }
 

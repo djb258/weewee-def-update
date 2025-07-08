@@ -94,6 +94,7 @@
     "ai:brainstorm": "tsx scripts/ai-master-integration.ts brainstorm",
     "ai:compare": "tsx scripts/ai-master-integration.ts compare",
     "ai:models": "tsx scripts/ai-master-integration.ts models",
+    "ai:auto": "tsx scripts/ai-master-integration.ts auto",
     "cloud:health": "tsx scripts/cloud-integration.ts health",
     "cloud:neon": "tsx scripts/cloud-integration.ts neon",
     "cloud:firebase": "tsx scripts/cloud-integration.ts firebase",
