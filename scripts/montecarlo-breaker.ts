@@ -4,6 +4,25 @@ import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Doctrine Acronym Standards
+const DOCTRINE_ACRONYMS = {
+  STAMPED: {
+    name: 'Schema, Tools, Architecture, Modules, Processes, Enforcement, Doctrine',
+    fields: ['source_id', 'task_id', 'approved', 'migrated_to', 'process_signature', 'event_timestamp', 'data_payload'],
+    database: 'Neon'
+  },
+  SPVPET: {
+    name: 'Schema, Processes, Validation, Policy, Enforcement, Tools',
+    fields: ['source_id', 'process_id', 'validated', 'promoted_to', 'execution_signature', 'timestamp_last_touched'],
+    database: 'Firebase'
+  },
+  STACKED: {
+    name: 'Schema, Tools, Architecture, Compliance, Knowledge, Enforcement, Doctrine',
+    fields: ['source_id', 'task_id', 'analytics_approved', 'consolidated_from', 'knowledge_signature', 'event_timestamp', 'data_payload'],
+    database: 'BigQuery'
+  }
+};
+
 // Monte Carlo Breaker Configuration Schema
 const BreakerConfigSchema = z.object({
   enabled: z.boolean().default(true),
@@ -30,17 +49,27 @@ const BreakerConfigSchema = z.object({
     'undefined_access',
     'type_coercion',
     'async_race_conditions',
-    'memory_leaks'
+    'memory_leaks',
+    'doctrine_stamped_compliance',
+    'doctrine_spvpet_compliance',
+    'doctrine_stacked_compliance',
+    'doctrine_acronym_validation',
+    'doctrine_barton_numbering'
   ])).default([
     'random_input',
     'malformed_data',
     'concurrent_requests',
     'invalid_schemas',
-    'async_race_conditions'
+    'async_race_conditions',
+    'doctrine_stamped_compliance',
+    'doctrine_spvpet_compliance',
+    'doctrine_stacked_compliance',
+    'doctrine_acronym_validation'
   ]),
   targetEndpoints: z.array(z.string()).default(['/api/*']),
   successThreshold: z.number().default(0.95), // 95% success rate required
-  reportPath: z.string().default('./montecarlo-report.json')
+  reportPath: z.string().default('./montecarlo-report.json'),
+  doctrineCompliance: z.boolean().default(true)
 });
 
 type BreakerConfig = z.infer<typeof BreakerConfigSchema>;
@@ -319,6 +348,209 @@ class MonteCarloBreaker {
     }
   }
 
+  // Doctrine Acronym Testing Strategies
+  private async executeDoctrineStampedComplianceStrategy(): Promise<TestResult> {
+    const startTime = Date.now();
+    
+    try {
+      // Test STAMPED format compliance
+      const stampedPayload = {
+        source_id: this.generateRandomString(10),
+        task_id: this.generateRandomString(8),
+        approved: this.generateRandomBoolean(),
+        migrated_to: Math.random() > 0.5 ? this.generateRandomString(10) : null,
+        process_signature: this.generateRandomString(32),
+        event_timestamp: new Date().toISOString(),
+        data_payload: this.generateRandomObject(2)
+      };
+
+      const isValid = this.validateStampedPayload(stampedPayload);
+      const response = await this.simulateApiCall('/api/stamped', stampedPayload);
+      
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_stamped_compliance',
+        success: isValid && response.success,
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString(),
+        payload: stampedPayload,
+        response
+      };
+    } catch (error) {
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_stamped_compliance',
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  private async executeDoctrineSpvpetComplianceStrategy(): Promise<TestResult> {
+    const startTime = Date.now();
+    
+    try {
+      // Test SPVPET format compliance
+      const spvpetPayload = {
+        source_id: this.generateRandomString(10),
+        process_id: this.generateRandomString(8),
+        validated: Math.random() > 0.5 ? true : 'pending',
+        promoted_to: Math.random() > 0.5 ? this.generateRandomString(10) : undefined,
+        execution_signature: this.generateRandomString(32),
+        timestamp_last_touched: new Date().toISOString()
+      };
+
+      const isValid = this.validateSpvpetPayload(spvpetPayload);
+      const response = await this.simulateApiCall('/api/spvpet', spvpetPayload);
+      
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_spvpet_compliance',
+        success: isValid && response.success,
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString(),
+        payload: spvpetPayload,
+        response
+      };
+    } catch (error) {
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_spvpet_compliance',
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  private async executeDoctrineStackedComplianceStrategy(): Promise<TestResult> {
+    const startTime = Date.now();
+    
+    try {
+      // Test STACKED format compliance
+      const stackedPayload = {
+        source_id: this.generateRandomString(10),
+        task_id: this.generateRandomString(8),
+        analytics_approved: this.generateRandomBoolean(),
+        consolidated_from: Math.random() > 0.5 ? this.generateRandomString(10) : null,
+        knowledge_signature: this.generateRandomString(32),
+        event_timestamp: new Date().toISOString(),
+        data_payload: this.generateRandomObject(2)
+      };
+
+      const isValid = this.validateStackedPayload(stackedPayload);
+      const response = await this.simulateApiCall('/api/stacked', stackedPayload);
+      
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_stacked_compliance',
+        success: isValid && response.success,
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString(),
+        payload: stackedPayload,
+        response
+      };
+    } catch (error) {
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_stacked_compliance',
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  private async executeDoctrineAcronymValidationStrategy(): Promise<TestResult> {
+    const startTime = Date.now();
+    
+    try {
+      // Test acronym validation and consistency
+      const acronymTests = [
+        { acronym: 'STAMPED', fields: DOCTRINE_ACRONYMS.STAMPED.fields },
+        { acronym: 'SPVPET', fields: DOCTRINE_ACRONYMS.SPVPET.fields },
+        { acronym: 'STACKED', fields: DOCTRINE_ACRONYMS.STACKED.fields }
+      ];
+
+      const testResults = acronymTests.map(test => ({
+        acronym: test.acronym,
+        hasRequiredFields: this.validateAcronymFields(test.acronym, test.fields),
+        definition: DOCTRINE_ACRONYMS[test.acronym as keyof typeof DOCTRINE_ACRONYMS]?.name
+      }));
+
+      const allValid = testResults.every(result => result.hasRequiredFields);
+      const response = await this.simulateApiCall('/api/doctrine/acronyms', testResults);
+      
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_acronym_validation',
+        success: allValid && response.success,
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString(),
+        payload: testResults,
+        response
+      };
+    } catch (error) {
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_acronym_validation',
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  private async executeDoctrineBartonNumberingStrategy(): Promise<TestResult> {
+    const startTime = Date.now();
+    
+    try {
+      // Test Barton numbering compliance
+      const bartonTests = [
+        { format: '1.5.3.30.0', valid: true, description: 'SHQ compliance doctrine' },
+        { format: '2.1.1.40.0', valid: true, description: 'CFO messaging doctrine' },
+        { format: '1.2.1.10.0', valid: true, description: 'DPR structural doctrine' },
+        { format: '3.1.1.10.0', valid: false, description: 'Invalid database' },
+        { format: '1.6.1.10.0', valid: false, description: 'Invalid sub-hive' },
+        { format: '1.1.1.60.0', valid: false, description: 'Invalid section' }
+      ];
+
+      const testResults = bartonTests.map(test => ({
+        format: test.format,
+        isValid: this.validateBartonNumbering(test.format),
+        expected: test.valid,
+        description: test.description
+      }));
+
+      const allValid = testResults.every(result => result.isValid === result.expected);
+      const response = await this.simulateApiCall('/api/doctrine/barton', testResults);
+      
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_barton_numbering',
+        success: allValid && response.success,
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString(),
+        payload: testResults,
+        response
+      };
+    } catch (error) {
+      return {
+        iteration: this.results.length + 1,
+        strategy: 'doctrine_barton_numbering',
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+        duration: Date.now() - startTime,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
   // Simulation methods
   private async simulateApiCall(endpoint: string, payload: any): Promise<any> {
     // Simulate API call with timeout
@@ -365,6 +597,64 @@ class MonteCarloBreaker {
     });
   }
 
+  // Doctrine Validation Methods
+  private validateStampedPayload(payload: any): boolean {
+    const requiredFields = DOCTRINE_ACRONYMS.STAMPED.fields;
+    return requiredFields.every(field => payload.hasOwnProperty(field)) &&
+           typeof payload.source_id === 'string' &&
+           typeof payload.task_id === 'string' &&
+           typeof payload.process_signature === 'string' &&
+           typeof payload.event_timestamp === 'string';
+  }
+
+  private validateSpvpetPayload(payload: any): boolean {
+    const requiredFields = DOCTRINE_ACRONYMS.SPVPET.fields;
+    return requiredFields.every(field => payload.hasOwnProperty(field)) &&
+           typeof payload.source_id === 'string' &&
+           typeof payload.process_id === 'string' &&
+           typeof payload.execution_signature === 'string' &&
+           typeof payload.timestamp_last_touched === 'string';
+  }
+
+  private validateStackedPayload(payload: any): boolean {
+    const requiredFields = DOCTRINE_ACRONYMS.STACKED.fields;
+    return requiredFields.every(field => payload.hasOwnProperty(field)) &&
+           typeof payload.source_id === 'string' &&
+           typeof payload.task_id === 'string' &&
+           typeof payload.knowledge_signature === 'string' &&
+           typeof payload.event_timestamp === 'string';
+  }
+
+  private validateAcronymFields(acronym: string, expectedFields: string[]): boolean {
+    const acronymData = DOCTRINE_ACRONYMS[acronym as keyof typeof DOCTRINE_ACRONYMS];
+    if (!acronymData) return false;
+    
+    return expectedFields.every(field => acronymData.fields.includes(field)) &&
+           acronymData.fields.every(field => expectedFields.includes(field));
+  }
+
+  private validateBartonNumbering(format: string): boolean {
+    const parts = format.split('.');
+    if (parts.length !== 5) return false;
+    
+    const [db, hq, sub, nested, index] = parts.map(Number);
+    
+    // Database validation (1 or 2)
+    if (db !== 1 && db !== 2) return false;
+    
+    // Sub-hive validation
+    if (db === 1 && (hq < 1 || hq > 5)) return false;
+    if (db === 2 && (hq < 1 || hq > 4)) return false;
+    
+    // Section validation (0-49)
+    if (nested < 0 || nested > 49) return false;
+    
+    // Index validation (non-negative)
+    if (index < 0) return false;
+    
+    return true;
+  }
+
   // Main execution
   public async run(): Promise<MonteCarloReport> {
     console.log('🎲 Starting Monte Carlo Breaker...');
@@ -378,7 +668,12 @@ class MonteCarloBreaker {
       'malformed_data': () => this.executeMalformedDataStrategy(),
       'concurrent_requests': () => this.executeConcurrentRequestsStrategy(),
       'invalid_schemas': () => this.executeInvalidSchemasStrategy(),
-      'async_race_conditions': () => this.executeAsyncRaceConditionsStrategy()
+      'async_race_conditions': () => this.executeAsyncRaceConditionsStrategy(),
+      'doctrine_stamped_compliance': () => this.executeDoctrineStampedComplianceStrategy(),
+      'doctrine_spvpet_compliance': () => this.executeDoctrineSpvpetComplianceStrategy(),
+      'doctrine_stacked_compliance': () => this.executeDoctrineStackedComplianceStrategy(),
+      'doctrine_acronym_validation': () => this.executeDoctrineAcronymValidationStrategy(),
+      'doctrine_barton_numbering': () => this.executeDoctrineBartonNumberingStrategy()
     };
 
     // Run iterations

@@ -1,417 +1,171 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
+import { Dashboard } from './components/dashboard/Dashboard';
+import { Button } from './components/ui/Button';
+import { Card, CardHeader, CardContent } from './components/ui/Card';
+import { Toaster } from 'react-hot-toast';
+import { motion } from 'framer-motion';
+import { 
+  ChartBarIcon, 
+  CogIcon, 
+  UserIcon,
+  RocketLaunchIcon
+} from '@heroicons/react/24/outline';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard')
-  const [apiStatus, setApiStatus] = useState('checking')
-
-  useEffect(() => {
-    // Check API status
-    fetch('/api/doctrine')
-      .then(response => {
-        if (response.ok) {
-          setApiStatus('online')
-        } else {
-          setApiStatus('error')
-        }
-      })
-      .catch(() => setApiStatus('offline'))
-  }, [])
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'online': return 'text-green-600'
-      case 'offline': return 'text-red-600'
-      case 'error': return 'text-yellow-600'
-      default: return 'text-gray-600'
-    }
-  }
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'online': return 'API Online'
-      case 'offline': return 'API Offline'
-      case 'error': return 'API Error'
-      default: return 'Checking...'
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
+      <Toaster position="top-right" />
+      
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  WeeWee Definition Update System
-                </h1>
-              </div>
+            <div className="flex items-center space-x-3">
+              <RocketLaunchIcon className="h-8 w-8 text-blue-600" />
+              <h1 className="text-2xl font-bold text-gray-900">SOP Library</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <div className={`flex items-center space-x-2 ${getStatusColor(apiStatus)}`}>
-                <div className={`w-2 h-2 rounded-full ${apiStatus === 'online' ? 'bg-green-500' : apiStatus === 'offline' ? 'bg-red-500' : 'bg-yellow-500'}`}></div>
-                <span className="text-sm font-medium">{getStatusText(apiStatus)}</span>
-              </div>
+              <Button variant="ghost" icon={<UserIcon className="h-4 w-4" />}>
+                Profile
+              </Button>
+              <Button variant="outline" icon={<CogIcon className="h-4 w-4" />}>
+                Settings
+              </Button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
-            {[
-              { id: 'dashboard', name: 'Dashboard', icon: '📊' },
-              { id: 'doctrine', name: 'Doctrine', icon: '📚' },
-              { id: 'gbt', name: 'GBT Doctrine', icon: '🤖' },
-              { id: 'frame', name: 'Frame Phase', icon: '🖼️' },
-              { id: 'schemas', name: 'Schemas', icon: '🔧' },
-              { id: 'compliance', name: 'Compliance', icon: '✅' },
-              { id: 'api', name: 'API', icon: '🔌' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                <span className="mr-2">{tab.icon}</span>
-                {tab.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
-
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        {activeTab === 'dashboard' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* System Status Card */}
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="p-5">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
-                        <span className="text-white text-lg">⚡</span>
-                      </div>
-                    </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="text-sm font-medium text-gray-500 truncate">System Status</dt>
-                        <dd className="text-lg font-medium text-gray-900">Operational</dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Dashboard />
+        </motion.div>
 
-              {/* API Status Card */}
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="p-5">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
-                        <span className="text-white text-lg">🔌</span>
-                      </div>
-                    </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="text-sm font-medium text-gray-500 truncate">API Status</dt>
-                        <dd className={`text-lg font-medium ${getStatusColor(apiStatus)}`}>
-                          {getStatusText(apiStatus)}
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Version Card */}
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="p-5">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
-                        <span className="text-white text-lg">📦</span>
-                      </div>
-                    </div>
-                    <div className="ml-5 w-0 flex-1">
-                      <dl>
-                        <dt className="text-sm font-medium text-gray-500 truncate">Version</dt>
-                        <dd className="text-lg font-medium text-gray-900">1.0.0</dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Welcome Section */}
-            <div className="mt-8 bg-white shadow rounded-lg">
-              <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
-                  Welcome to the WeeWee Definition Update System
-                </h3>
-                <div className="text-sm text-gray-600 space-y-2">
-                  <p>This comprehensive system manages definitions, schemas, and doctrine using the STAMPED framework.</p>
-                  <p>Key features:</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>NEON Doctrine integration</li>
-                    <li>GBT compliance system</li>
-                    <li>Schema validation and management</li>
-                    <li>API endpoints for external integration</li>
-                    <li>Real-time status monitoring</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'doctrine' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Doctrine Management</h3>
-              <p className="text-gray-600">Doctrine management interface coming soon...</p>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'gbt' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-medium text-gray-900">GBT Doctrine Data</h3>
-                <div className="flex space-x-2">
-                  <a 
-                    href="/gbt_doctrine.json" 
-                    download
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-                  >
-                    📥 Download JSON
-                  </a>
-                  <a 
-                    href="/gbt_doctrine.json" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                  >
-                    🔗 View Raw
-                  </a>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">📊 Metadata</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Version:</strong> 1.0.0</p>
-                    <p><strong>Framework:</strong> STAMPED</p>
-                    <p><strong>Total Schemas:</strong> 16</p>
-                    <p><strong>Generated:</strong> {new Date().toLocaleDateString()}</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🤖 GBT Integration</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Update Method:</strong> Replace All</p>
-                    <p><strong>Validation:</strong> Required</p>
-                    <p><strong>Backup:</strong> Enabled</p>
-                    <p><strong>Status:</strong> Ready</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🔗 Access URLs</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Direct:</strong> /gbt_doctrine.json</p>
-                    <p><strong>API:</strong> /api/doctrine</p>
-                    <p><strong>Status:</strong> /api/status</p>
-                    <p><strong>Size:</strong> 41KB</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-medium text-gray-900 mb-2">📋 Schema Summary</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                  <div>• dpr_command_log_schema (9 fields)</div>
-                  <div>• dpr_doctrine_category_map_schema (4 fields)</div>
-                  <div>• dpr_doctrine_christmas_tree_schema (12 fields)</div>
-                  <div>• dpr_doctrine_notional_schema (9 fields)</div>
-                  <div>• dpr_doctrine_schema (12 fields)</div>
-                  <div>• dpr_doctrine_sections_schema (8 fields)</div>
-                  <div>• dpr_doctrine_table_map_schema (7 fields)</div>
-                  <div>• dpr_index_key_schema (6 fields)</div>
-                  <div>• dpr_knowledge_sync_schema (6 fields)</div>
-                  <div>• dpr_messaging_library_schema (9 fields)</div>
-                  <div>• dpr_prep_table_schema (7 fields)</div>
-                  <div>• dpr_research_library_schema (7 fields)</div>
-                  <div>• dpr_sub_hive_assets_schema (13 fields)</div>
-                  <div>• dpr_sub_hive_doctrine_map_schema (7 fields)</div>
-                  <div>• dpr_sub_hive_registry_schema (9 fields)</div>
-                  <div>• dpr_system_key_registry_schema (7 fields)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'frame' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-medium text-gray-900">Frame Phase Package</h3>
-                <div className="flex space-x-2">
-                  <a 
-                    href="/frame_phase_package.json" 
-                    download
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
-                  >
-                    📥 Download JSON
-                  </a>
-                  <a 
-                    href="/frame_phase_package.json" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                  >
-                    🔗 View Raw
-                  </a>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🖼️ Frame Details</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Process ID:</strong> weewee-def-update</p>
-                    <p><strong>Owner:</strong> djb258</p>
-                    <p><strong>Type:</strong> doctrine_management_system</p>
-                    <p><strong>Phase:</strong> Frame</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🏗️ Structure</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Framework:</strong> STAMPED</p>
-                    <p><strong>Version:</strong> 1.0.0</p>
-                    <p><strong>Components:</strong> 4</p>
-                    <p><strong>Hierarchy:</strong> 5 branches</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🔗 Access URLs</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Direct:</strong> /frame_phase_package.json</p>
-                    <p><strong>API:</strong> /api/frame</p>
-                    <p><strong>Status:</strong> /api/frame/status</p>
-                    <p><strong>Size:</strong> 9.8KB</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🔄 Routing Plan</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Path:</strong> doctrine_update_workflow</p>
-                    <p><strong>Human Checkpoint:</strong> Yes</p>
-                    <p><strong>Automated Steps:</strong> 4</p>
-                    <p><strong>Manual Steps:</strong> 3</p>
-                    <p><strong>Decision Points:</strong> 3</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">🤖 Agent Interaction</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p><strong>Pull Agent:</strong> GBT_Doctrine_Agent</p>
-                    <p><strong>Actions:</strong> 4</p>
-                    <p><strong>Patterns:</strong> 3</p>
-                    <p><strong>Error Handling:</strong> 4 types</p>
-                    <p><strong>Forward Route:</strong> doctrine_processing_pipeline</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-medium text-gray-900 mb-2">📋 Package Components</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                  <div>✅ structure (complete)</div>
-                  <div>✅ routing_plan (complete)</div>
-                  <div>✅ cursor_scope (complete)</div>
-                  <div>✅ constants_variables (complete)</div>
-                  <div>✅ master_file_merge_plan (complete)</div>
-                  <div>✅ agent_interaction_map (complete)</div>
-                  <div>✅ outbox_schema (complete)</div>
-                  <div>✅ sustainment_plan (complete)</div>
-                  <div>✅ audit_maps (complete)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'schemas' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Schema Management</h3>
-              <p className="text-gray-600">Schema management interface coming soon...</p>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'compliance' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Compliance Dashboard</h3>
-              <p className="text-gray-600">Compliance monitoring interface coming soon...</p>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'api' && (
-          <div className="px-4 py-6 sm:px-0">
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">API Documentation</h3>
-              <div className="space-y-4">
+        {/* UI Components Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12"
+        >
+          <Card>
+            <CardHeader>
+              <h2 className="text-xl font-semibold text-gray-900">UI Components Showcase</h2>
+              <p className="text-gray-600">Explore the available UI components and their variants</p>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {/* Button Variants */}
                 <div>
-                  <h4 className="font-medium text-gray-700">Available Endpoints:</h4>
-                  <ul className="mt-2 space-y-2">
-                    <li className="text-sm">
-                      <code className="bg-gray-100 px-2 py-1 rounded">GET /api/doctrine</code>
-                      <span className="ml-2 text-gray-600">- Retrieve doctrine data</span>
-                    </li>
-                    <li className="text-sm">
-                      <code className="bg-gray-100 px-2 py-1 rounded">GET /api/schemas</code>
-                      <span className="ml-2 text-gray-600">- Retrieve schema definitions</span>
-                    </li>
-                  </ul>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Button Variants</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="primary">Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="outline">Outline</Button>
+                    <Button variant="ghost">Ghost</Button>
+                    <Button variant="danger">Danger</Button>
+                    <Button variant="success">Success</Button>
+                  </div>
                 </div>
+
+                {/* Button Sizes */}
                 <div>
-                  <h4 className="font-medium text-gray-700">Status:</h4>
-                  <p className={`text-sm ${getStatusColor(apiStatus)}`}>
-                    {getStatusText(apiStatus)}
-                  </p>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Button Sizes</h3>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button size="sm">Small</Button>
+                    <Button size="md">Medium</Button>
+                    <Button size="lg">Large</Button>
+                    <Button size="xl">Extra Large</Button>
+                  </div>
+                </div>
+
+                {/* Button with Icons */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Buttons with Icons</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button icon={<ChartBarIcon className="h-4 w-4" />}>
+                      View Analytics
+                    </Button>
+                    <Button variant="outline" icon={<CogIcon className="h-4 w-4" />}>
+                      Configure
+                    </Button>
+                    <Button variant="success" icon={<RocketLaunchIcon className="h-4 w-4" />}>
+                      Deploy
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Loading States */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Loading States</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button loading>Processing...</Button>
+                    <Button variant="outline" loading>Loading...</Button>
+                    <Button variant="success" loading>Saving...</Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        )}
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Feature Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <ChartBarIcon className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Analytics</h3>
+              </div>
+              <p className="text-gray-600">
+                Comprehensive analytics and reporting with interactive charts and real-time data visualization.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <RocketLaunchIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Deployment</h3>
+              </div>
+              <p className="text-gray-600">
+                Streamlined deployment process with automated testing and continuous integration.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <CogIcon className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Configuration</h3>
+              </div>
+              <p className="text-gray-600">
+                Flexible configuration management with environment-specific settings and validation.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
