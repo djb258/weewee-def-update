@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "skipValidation": false,
+  "autoApproveChanges": false,
+  "bypassSafetyChecks": false,
+  "fastDeployment": false,
+  "debugLevel": "info",
+  "allowedOperations": [],
+  "riskLevel": "medium"
+}

@@ -1,0 +1,71 @@
+{
+  "config": {
+    "projectName": "sop-library",
+    "nodeVersion": "18.0.0",
+    "enableYolo": true,
+    "installDependencies": true,
+    "setupGit": true,
+    "setupVSCode": false,
+    "setupDocker": false,
+    "runTests": false,
+    "autoCommit": false
+  },
+  "steps": [
+    {
+      "name": "Check Prerequisites",
+      "success": true,
+      "duration": 528
+    },
+    {
+      "name": "Install Dependencies",
+      "success": true,
+      "duration": 5005
+    },
+    {
+      "name": "Setup Git Configuration",
+      "success": true,
+      "duration": 186
+    },
+    {
+      "name": "Enable YOLO Mode",
+      "success": true,
+      "duration": 741
+    },
+    {
+      "name": "Setup VSCode Extensions",
+      "success": true,
+      "duration": 0
+    },
+    {
+      "name": "Setup Docker (Optional)",
+      "success": true,
+      "duration": 0
+    },
+    {
+      "name": "Run Initial Tests",
+      "success": true,
+      "duration": 1
+    },
+    {
+      "name": "Create Setup Documentation",
+      "success": false,
+      "duration": 4
+    },
+    {
+      "name": "Auto Commit Changes",
+      "success": true,
+      "duration": 0
+    }
+  ],
+  "summary": {
+    "totalSteps": 9,
+    "successfulSteps": 8,
+    "failedSteps": 1,
+    "totalDuration": 6472,
+    "startTime": "2025-07-08T00:20:04.583Z",
+    "endTime": "2025-07-08T00:20:11.055Z"
+  },
+  "recommendations": [
+    "🔧 1 steps failed - review and fix manually"
+  ]
+}
