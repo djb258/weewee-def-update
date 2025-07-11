@@ -1,10 +1,74 @@
-# 🛠️ Cursor Blueprint Enforcer
+# 🚨 ORBT + UDNS DOCTRINE (HARDENED)
 
-A comprehensive blueprint enforcement system with NEON doctrine and STAMPED compliance for enterprise-grade database management.
+**This repository defines the supreme doctrine for all app blueprints and builds. All apps must embed or reference this before deployment.**
+
+---
+
+## ORBT: Operating, Repair, Build, Training
+- **Operating**: How the application is intended to run
+- **Repair**: How errors and malfunctions are logged, diagnosed, and corrected
+- **Build**: How the application was constructed, including schema, tools, and agents used
+- **Training**: What others need to understand how to use, maintain, or extend the system
+
+## UDNS: Universal Diagnostic Numbering Schema
+- **Format**: `ALTITUDE.MODULE.SUBMODULE.ACTION`
+- **Examples**:
+  - `10.UI.form.submit` (UI form submission)
+  - `20.API.auth.refresh` (API authentication refresh)
+  - `30.DB.firebase.sync` (Database Firebase sync)
+  - `40.AGENT.workflow.execute` (Agent workflow execution)
+  - `50.EXTERNAL.webhook.receive` (External webhook reception)
+
+### Altitude Levels
+| Code | Meaning |
+|------|---------|
+| 10   | UI (User Interface) |
+| 20   | API / Service |
+| 30   | DB / Persistence |
+| 40   | Agents / Orchestration |
+| 50   | External (Webhooks, Third-Party) |
+| 60   | Reserved |
+
+## Color System
+- **GREEN**: Fully compliant, no issues detected
+- **YELLOW**: Partial/structural issues, needs review
+- **RED**: Critical issues, deployment blocked
+
+## Error Escalation
+- If the same error type occurs 3 times in a row, escalate from YELLOW to RED
+- Any critical error or missing doctrine requirement is immediately RED
+- Manual intervention and fix required to reset from RED to YELLOW/GREEN
+
+## Error Logging & Escalation
+- All errors must be logged with UDNS code and color status
+- Escalation logic is enforced by doctrine and must be implemented in all apps
+
+---
+
+# 🚨 ORBT SYSTEM: Cursor Blueprint Enforcer
+
+**Status Flag: 🟢 GREEN** - Complete ORBT doctrine implementation
+
+A comprehensive blueprint enforcement system with NEON doctrine and STAMPED compliance for enterprise-grade database management, now fully compliant with the ORBT System doctrine.
 
 ## 🎯 Overview
 
 This system provides automated compliance checking, schema validation, audit logging, and blueprint integration to ensure your database follows the highest standards of data governance.
+
+### 🚨 ORBT System Compliance
+
+This application is built according to the **ORBT System doctrine**:
+
+- **O = Operating System** - How the application is intended to run
+- **R = Repair System** - How errors and malfunctions are logged, diagnosed, and corrected  
+- **B = Build System** - How the application was constructed, including schema, tools, and agents used
+- **T = Training System** - What others need to understand how to use, maintain, or extend the system
+
+**Complete ORBT Documentation:**
+- 📖 [Operating Manual](./docs/ORBT_OPERATING_MANUAL.md) - How the system works
+- 🔧 [Repair Manual](./docs/ORBT_REPAIR_MANUAL.md) - Error handling and troubleshooting
+- 🏗️ [Build Manual](./docs/ORBT_BUILD_MANUAL.md) - System construction and architecture
+- 🎓 [Training Manual](./docs/ORBT_TRAINING_MANUAL.md) - How to use and maintain the system
 
 ## 🚀 Quick Deploy
 
@@ -81,6 +145,19 @@ npm install
 ```
 
 ### Basic Usage
+
+#### ORBT System Commands
+
+```bash
+# Check ORBT system status
+npm run orbt:status
+
+# Run ORBT compliance check
+npm run orbt:compliance
+
+# Generate ORBT documentation
+npm run orbt:docs
+```
 
 #### Run Full Compliance Check
 
@@ -1139,4 +1216,38 @@ This repository is the **parent/master foundation** for all system doctrine, mod
 ---
 
 **This is the single source of truth for your system's doctrine, modules, and compliance.**
+ 
+
+---
+
+## Neon ORBT Doctrine Ingestion
+
+This repository includes a script to insert the full ORBT doctrine into your Neon database for compliance and enforcement.
+
+**Script location:**
+```
+scripts/simple_orbt_insert.ts
+```
+
+**Usage:**
+1. Set your Neon connection string in the environment variable:
+   ```sh
+   export NEON_DATABASE_URL="postgresql://neondb_owner:YOUR_PASSWORD@YOUR_NEON_HOST/neondb?sslmode=require&channel_binding=require"
+   # On Windows PowerShell:
+   $env:NEON_DATABASE_URL="postgresql://neondb_owner:YOUR_PASSWORD@YOUR_NEON_HOST/neondb?sslmode=require&channel_binding=require"
+   ```
+2. Run the script:
+   ```sh
+   npx tsx scripts/simple_orbt_insert.ts
+   ```
+
+**What it does:**
+- Inserts all ORBT doctrine tiers, universal rules, color coding, and diagnostic mode into the `dpr_doctrine` table.
+- Prints a summary and verifies the number of entries inserted.
+
+**Note:**
+- The script is idempotent only if you manually clear out old entries (since it does not use ON CONFLICT due to Neon schema constraints).
+- You can modify the script to add more doctrine or adjust Barton numbering as needed.
+
+---
  

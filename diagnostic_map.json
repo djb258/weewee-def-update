@@ -1,0 +1,30 @@
+{
+  "doctrine": true,
+  "altitude_levels": {
+    "10": "UI (User Interface)",
+    "20": "API / Service (Application Programming Interface)",
+    "30": "DB / Persistence (Database)",
+    "40": "Agents / Orchestration (AI Agents, Workflows)",
+    "50": "External (Webhooks, Third-Party Integrations)",
+    "60": "Reserved (Future Use)"
+  },
+  "color_codes": {
+    "GREEN": "Fully compliant, no issues detected.",
+    "YELLOW": "Partial/structural issues, needs review.",
+    "RED": "Critical issues, deployment blocked."
+  },
+  "error_promotion_logic": {
+    "yellow_to_red": "If the same error type occurs 3 times in a row, escalate from YELLOW to RED.",
+    "red": "Any critical error or missing doctrine requirement is immediately RED.",
+    "reset": "Manual intervention and fix required to reset from RED to YELLOW/GREEN."
+  },
+  "example_codes": [
+    "10.UI.form.submit",
+    "20.API.auth.refresh",
+    "30.DB.firebase.sync",
+    "40.AGENT.workflow.execute",
+    "50.EXTERNAL.webhook.receive"
+  ],
+  "udns_format": "ALTITUDE.MODULE.SUBMODULE.ACTION",
+  "doctrine_note": "This file is doctrine. All apps must reference or import this before deployment."
+} 
