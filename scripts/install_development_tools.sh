@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ============================================================================
-# CURSOR BLUEPRINT ENFORCER - DEVELOPMENT TOOLS INSTALLER
+# WEEWEE DEFINITION UPDATE SYSTEM - DEVELOPMENT TOOLS INSTALLER
 # ============================================================================
 # Bash script to install all required development tools
 # Compatible with macOS and Linux
 
-echo "🛠️ Installing Development Tools for Cursor Blueprint Enforcer"
+echo "🛠️ Installing Development Tools for WeeWee Definition Update System"
 echo "================================================================"
 
 # Colors for output

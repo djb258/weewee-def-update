@@ -1,0 +1,74 @@
+{
+  "gbtConfig": {
+    "version": "1.0.0",
+    "name": "WeeWee Definition Update GBT",
+    "description": "GBT configuration for WeeWee Definition Update System",
+    "lastUpdated": "2025-01-02T11:33:00.000Z",
+    "doctrineEndpoints": {
+      "primary": "https://weewee-def-update.vercel.app/api/doctrine",
+      "fallback": "http://localhost:3000/api/doctrine.json",
+      "local": "./public/api/doctrine.json"
+    },
+    "repository": {
+      "url": "https://github.com/djb258/weewee-def-update.git",
+      "branch": "main",
+      "type": "parent/master"
+    },
+    "modules": {
+      "client": {
+        "prefix": "clnt_",
+        "category": "2",
+        "description": "Client Management"
+      },
+      "command": {
+        "prefix": "cmd_",
+        "category": "3",
+        "description": "Command System"
+      },
+      "doctrine": {
+        "prefix": "dpr_",
+        "category": "4",
+        "description": "Doctrine Management"
+      },
+      "marketing": {
+        "prefix": "marketing_",
+        "category": "5",
+        "description": "Marketing"
+      },
+      "personal": {
+        "prefix": "pers_db_",
+        "category": "6",
+        "description": "Personal Database"
+      },
+      "shq": {
+        "prefix": "shq_",
+        "category": "7",
+        "description": "SHQ System"
+      }
+    },
+    "validation": {
+      "schemas": {
+        "enabled": true,
+        "draft": "draft-07",
+        "strict": true
+      },
+      "doctrine": {
+        "neon": true,
+        "stamped": true,
+        "barton": true
+      }
+    },
+    "sync": {
+      "neon": {
+        "enabled": true,
+        "interval": 300000,
+        "autoBackup": true
+      },
+      "cursor": {
+        "enabled": true,
+        "knowledgeBase": true,
+        "configSync": true
+      }
+    }
+  }
+} 

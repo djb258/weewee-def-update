@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: weewee-def-update
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    healthCheckPath: /
+    autoDeploy: true
+    branch: main
+
+  - type: web
+    name: weewee-def-update-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm run dev
+    envVars:
+      - key: NODE_ENV
+        value: development
+      - key: PORT
+        value: 3001
+    healthCheckPath: /api/health
+    autoDeploy: true
+    branch: main 

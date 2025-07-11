@@ -35,7 +35,7 @@ def run_test(command, description):
 
 def main():
     """Main test function"""
-    print("🔧 Cursor Blueprint Enforcer - Quick Test")
+    print("🔧 WeeWee Definition Update System - Quick Test")
     print("=" * 50)
     
     tests = [

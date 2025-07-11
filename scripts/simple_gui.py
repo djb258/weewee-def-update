@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple Cursor Blueprint Enforcer GUI
+Simple WeeWee Definition Update System GUI
 A simplified GUI that focuses on working functionality
 """
 
@@ -15,7 +15,7 @@ from datetime import datetime
 class SimpleCursorGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Cursor Blueprint Enforcer - Simple GUI")
+        self.root.title("WeeWee Definition Update System - Simple GUI")
         self.root.geometry("500x400")
         self.root.resizable(True, True)
         
@@ -34,7 +34,7 @@ class SimpleCursorGUI:
         main_frame.rowconfigure(2, weight=1)
         
         # Title
-        title_label = ttk.Label(main_frame, text="🚀 Cursor Blueprint Enforcer", 
+        title_label = ttk.Label(main_frame, text="🚀 WeeWee Definition Update System", 
                                font=("Arial", 16, "bold"))
         title_label.grid(row=0, column=0, pady=(0, 20))
         
@@ -83,7 +83,7 @@ class SimpleCursorGUI:
         self.exit_btn.grid(row=5, column=0, pady=(10, 0))
         
         # Initial log message
-        self.log("Simple Cursor Blueprint Enforcer GUI started")
+        self.log("Simple WeeWee Definition Update System GUI started")
         self.log(f"Current directory: {os.getcwd()}")
         
     def log(self, message):

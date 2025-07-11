@@ -1,6 +1,6 @@
-# Cursor Blueprint Enforcer - Knowledge Base
+# WeeWee Definition Update System - Knowledge Base
 
-Welcome to the Cursor Blueprint Enforcer knowledge base! This is organized using Dendron-style hierarchical notes.
+Welcome to the WeeWee Definition Update System knowledge base! This is organized using Dendron-style hierarchical notes.
 
 ## 📋 Note Structure
 
@@ -41,6 +41,6 @@ Welcome to the Cursor Blueprint Enforcer knowledge base! This is organized using
 
 ## 🔗 External Links
 
-- [GitHub Repository](https://github.com/djb258/cursor-blueprint-enforcer)
+- [GitHub Repository](https://github.com/djb258/weewee-def-update)
 - [Barton Doctrine Documentation](../DOCTRINE.md)
 - [Environment Setup Guide](../ENVIRONMENT_SETUP.md)

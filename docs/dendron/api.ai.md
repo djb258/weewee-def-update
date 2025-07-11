@@ -1,6 +1,6 @@
 # AI Services Integration
 
-Comprehensive AI service integrations for the Cursor Blueprint Enforcer.
+Comprehensive AI service integrations for the WeeWee Definition Update System.
 
 ## 🤖 Configured AI Services
 

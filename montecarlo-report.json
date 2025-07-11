@@ -1,0 +1,400 @@
+{
+  "config": {
+    "enabled": true,
+    "iterations": 100,
+    "concurrency": 10,
+    "timeoutMs": 5000,
+    "breakStrategies": [
+      "random_input",
+      "malformed_data",
+      "concurrent_requests",
+      "invalid_schemas",
+      "async_race_conditions"
+    ],
+    "targetEndpoints": [
+      "/api/*"
+    ],
+    "successThreshold": 0.95,
+    "reportPath": "./montecarlo-report.json"
+  },
+  "summary": {
+    "totalTests": 100,
+    "successfulTests": 69,
+    "failedTests": 31,
+    "successRate": 0.69,
+    "averageDuration": 350.74,
+    "totalDuration": 35188,
+    "startTime": "2025-07-08T00:14:44.717Z",
+    "endTime": "2025-07-08T00:15:19.905Z"
+  },
+  "failures": [
+    {
+      "iteration": 7,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/31",
+      "duration": 301,
+      "timestamp": "2025-07-08T00:14:47.602Z",
+      "payload": {
+        "concurrentCount": 41
+      }
+    },
+    {
+      "iteration": 9,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/6",
+      "duration": 15,
+      "timestamp": "2025-07-08T00:14:47.820Z",
+      "payload": {
+        "concurrentCount": 42
+      }
+    },
+    {
+      "iteration": 14,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/12",
+      "duration": 218,
+      "timestamp": "2025-07-08T00:14:49.671Z",
+      "payload": {
+        "concurrentCount": 23
+      }
+    },
+    {
+      "iteration": 19,
+      "strategy": "malformed_data",
+      "success": false,
+      "error": "Simulated API failure: /api/validate",
+      "duration": 821,
+      "timestamp": "2025-07-08T00:14:52.228Z",
+      "payload": [
+        1,
+        2,
+        3,
+        {
+          "invalid": "structure"
+        }
+      ]
+    },
+    {
+      "iteration": 20,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/24",
+      "duration": 427,
+      "timestamp": "2025-07-08T00:14:52.655Z",
+      "payload": {
+        "concurrentCount": 28
+      }
+    },
+    {
+      "iteration": 24,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/17",
+      "duration": 258,
+      "timestamp": "2025-07-08T00:14:53.539Z",
+      "payload": {
+        "concurrentCount": 32
+      }
+    },
+    {
+      "iteration": 25,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Simulated API failure: /api/test",
+      "duration": 865,
+      "timestamp": "2025-07-08T00:14:54.404Z",
+      "payload": false
+    },
+    {
+      "iteration": 26,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/2",
+      "duration": 35,
+      "timestamp": "2025-07-08T00:14:54.439Z",
+      "payload": {
+        "concurrentCount": 44
+      }
+    },
+    {
+      "iteration": 28,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/4",
+      "duration": 600,
+      "timestamp": "2025-07-08T00:14:55.105Z",
+      "payload": {
+        "concurrentCount": 36
+      }
+    },
+    {
+      "iteration": 30,
+      "strategy": "invalid_schemas",
+      "success": false,
+      "error": "Schema validation failed",
+      "duration": 346,
+      "timestamp": "2025-07-08T00:14:55.703Z",
+      "payload": {
+        "type": "invalid_type",
+        "schema": {
+          "invalid": "schema"
+        }
+      }
+    },
+    {
+      "iteration": 32,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/1",
+      "duration": 556,
+      "timestamp": "2025-07-08T00:14:56.458Z",
+      "payload": {
+        "concurrentCount": 18
+      }
+    },
+    {
+      "iteration": 35,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Maximum call stack size exceeded",
+      "duration": 0,
+      "timestamp": "2025-07-08T00:14:57.678Z"
+    },
+    {
+      "iteration": 42,
+      "strategy": "invalid_schemas",
+      "success": false,
+      "error": "Schema validation failed",
+      "duration": 207,
+      "timestamp": "2025-07-08T00:15:00.158Z",
+      "payload": {
+        "type": "invalid_type",
+        "schema": {
+          "invalid": "schema"
+        }
+      }
+    },
+    {
+      "iteration": 46,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/3",
+      "duration": 47,
+      "timestamp": "2025-07-08T00:15:01.077Z",
+      "payload": {
+        "concurrentCount": 23
+      }
+    },
+    {
+      "iteration": 47,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/18",
+      "duration": 63,
+      "timestamp": "2025-07-08T00:15:01.140Z",
+      "payload": {
+        "concurrentCount": 47
+      }
+    },
+    {
+      "iteration": 58,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/0",
+      "duration": 147,
+      "timestamp": "2025-07-08T00:15:04.470Z",
+      "payload": {
+        "concurrentCount": 35
+      }
+    },
+    {
+      "iteration": 59,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/30",
+      "duration": 314,
+      "timestamp": "2025-07-08T00:15:04.784Z",
+      "payload": {
+        "concurrentCount": 49
+      }
+    },
+    {
+      "iteration": 60,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/13",
+      "duration": 47,
+      "timestamp": "2025-07-08T00:15:04.831Z",
+      "payload": {
+        "concurrentCount": 58
+      }
+    },
+    {
+      "iteration": 65,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Simulated API failure: /api/test",
+      "duration": 846,
+      "timestamp": "2025-07-08T00:15:07.071Z",
+      "payload": null
+    },
+    {
+      "iteration": 66,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/1",
+      "duration": 269,
+      "timestamp": "2025-07-08T00:15:07.340Z",
+      "payload": {
+        "concurrentCount": 23
+      }
+    },
+    {
+      "iteration": 67,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/8",
+      "duration": 959,
+      "timestamp": "2025-07-08T00:15:08.299Z",
+      "payload": {
+        "concurrentCount": 10
+      }
+    },
+    {
+      "iteration": 68,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/2",
+      "duration": 74,
+      "timestamp": "2025-07-08T00:15:08.374Z",
+      "payload": {
+        "concurrentCount": 16
+      }
+    },
+    {
+      "iteration": 71,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/34",
+      "duration": 306,
+      "timestamp": "2025-07-08T00:15:09.774Z",
+      "payload": {
+        "concurrentCount": 47
+      }
+    },
+    {
+      "iteration": 75,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/18",
+      "duration": 121,
+      "timestamp": "2025-07-08T00:15:11.854Z",
+      "payload": {
+        "concurrentCount": 21
+      }
+    },
+    {
+      "iteration": 83,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Maximum call stack size exceeded",
+      "duration": 0,
+      "timestamp": "2025-07-08T00:15:15.069Z"
+    },
+    {
+      "iteration": 86,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Maximum call stack size exceeded",
+      "duration": 0,
+      "timestamp": "2025-07-08T00:15:15.715Z"
+    },
+    {
+      "iteration": 87,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/5",
+      "duration": 135,
+      "timestamp": "2025-07-08T00:15:15.850Z",
+      "payload": {
+        "concurrentCount": 23
+      }
+    },
+    {
+      "iteration": 90,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/53",
+      "duration": 118,
+      "timestamp": "2025-07-08T00:15:16.436Z",
+      "payload": {
+        "concurrentCount": 57
+      }
+    },
+    {
+      "iteration": 92,
+      "strategy": "random_input",
+      "success": false,
+      "error": "Maximum call stack size exceeded",
+      "duration": 0,
+      "timestamp": "2025-07-08T00:15:16.620Z"
+    },
+    {
+      "iteration": 98,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/27",
+      "duration": 30,
+      "timestamp": "2025-07-08T00:15:18.970Z",
+      "payload": {
+        "concurrentCount": 36
+      }
+    },
+    {
+      "iteration": 99,
+      "strategy": "concurrent_requests",
+      "success": false,
+      "error": "Simulated API failure: /api/concurrent/7",
+      "duration": 35,
+      "timestamp": "2025-07-08T00:15:19.005Z",
+      "payload": {
+        "concurrentCount": 52
+      }
+    }
+  ],
+  "strategies": {
+    "random_input": {
+      "attempts": 24,
+      "failures": 6,
+      "successRate": 0.75
+    },
+    "malformed_data": {
+      "attempts": 20,
+      "failures": 1,
+      "successRate": 0.95
+    },
+    "concurrent_requests": {
+      "attempts": 23,
+      "failures": 22,
+      "successRate": 0.043478260869565216
+    },
+    "invalid_schemas": {
+      "attempts": 17,
+      "failures": 2,
+      "successRate": 0.8823529411764706
+    },
+    "async_race_conditions": {
+      "attempts": 16,
+      "failures": 0,
+      "successRate": 1
+    }
+  },
+  "recommendations": [
+    "⚠️  Success rate (69.0%) is below threshold (95.0%)",
+    "🔧 Improve handling of random_input strategy (75.0% success rate)",
+    "🔧 Improve handling of concurrent_requests strategy (4.3% success rate)"
+  ]
+}

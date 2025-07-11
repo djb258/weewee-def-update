@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Cursor Blueprint Enforcer - GUI Sync Tool
+WeeWee Definition Update System - GUI Sync Tool
 A simple GUI application to sync Cursor configuration and tools across machines.
 """
 
@@ -16,7 +16,7 @@ from datetime import datetime
 class CursorSyncGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Cursor Blueprint Enforcer - Sync Tool")
+        self.root.title("WeeWee Definition Update System - Sync Tool")
         self.root.geometry("600x500")
         self.root.resizable(True, True)
         
@@ -41,7 +41,7 @@ class CursorSyncGUI:
         main_frame.rowconfigure(3, weight=1)
         
         # Title
-        title_label = ttk.Label(main_frame, text="🚀 Cursor Blueprint Enforcer", 
+        title_label = ttk.Label(main_frame, text="🚀 WeeWee Definition Update System", 
                                font=("Arial", 16, "bold"))
         title_label.grid(row=0, column=0, columnspan=2, pady=(0, 20))
         
@@ -102,7 +102,7 @@ class CursorSyncGUI:
         self.exit_btn.grid(row=0, column=2)
         
         # Initial log message
-        self.log("Cursor Blueprint Enforcer GUI started")
+        self.log("WeeWee Definition Update System GUI started")
         self.log(f"Current directory: {os.getcwd()}")
         
     def log(self, message):
@@ -333,7 +333,7 @@ def main():
     """Main function"""
     # Check if we're in the right directory
     if not os.path.exists("package.json"):
-        messagebox.showerror("Error", "Please run this script from the cursor-blueprint-enforcer directory.")
+        messagebox.showerror("Error", "Please run this script from the weewee-def-update directory.")
         return
     
     # Create and run GUI

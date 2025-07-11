@@ -1,97 +1,171 @@
 import React from 'react';
-import { PingPongEngine } from './core/pingPongEngine';
-import { PingPongPromptUI } from './components/PingPongPromptUI';
+import { Dashboard } from './components/dashboard/Dashboard';
+import { Button } from './components/ui/Button';
+import { Card, CardHeader, CardContent } from './components/ui/Card';
+import { Toaster } from 'react-hot-toast';
+import { motion } from 'framer-motion';
+import { 
+  ChartBarIcon, 
+  CogIcon, 
+  UserIcon,
+  RocketLaunchIcon
+} from '@heroicons/react/24/outline';
 
-const engine = new PingPongEngine({ 
-  initialPrompt: 'Write a clear, specific prompt for your AI task. Be as detailed as possible about what you want to achieve, any constraints, and the expected output format.' 
-});
-
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Cursor Blueprint Enforcer
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Foundational Home System - Single Source of Truth for All Doctrine, Data Schemas, Tools, and Processes
-          </p>
-        </header>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Barton Numbering System
-            </h2>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <span className="text-gray-700">Database 1: Command Ops</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-gray-700">Database 2: Marketing DB</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                <span className="text-gray-700">Format: DB.HQ.SUB.NESTED.INDEX</span>
-              </div>
+    <div className="min-h-screen bg-gray-50">
+      <Toaster position="top-right" />
+      
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center space-x-3">
+              <RocketLaunchIcon className="h-8 w-8 text-blue-600" />
+              <h1 className="text-2xl font-bold text-gray-900">SOP Library</h1>
             </div>
-            <div className="mt-4 p-3 bg-gray-50 rounded">
-              <code className="text-sm text-gray-800">Example: 1.5.3.30.0</code>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Sub-Hive Architecture
-            </h2>
-            <div className="space-y-2 text-sm">
-              <div><strong>clnt:</strong> Client management</div>
-              <div><strong>dpr:</strong> Doctrine + Library</div>
-              <div><strong>marketing:</strong> Marketing operations</div>
-              <div><strong>pers_db:</strong> Personal — David Barton</div>
-              <div><strong>shq:</strong> Supreme Headquarters</div>
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" icon={<UserIcon className="h-4 w-4" />}>
+                Profile
+              </Button>
+              <Button variant="outline" icon={<CogIcon className="h-4 w-4" />}>
+                Settings
+              </Button>
             </div>
           </div>
         </div>
+      </header>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Section Categories
-          </h2>
-          <div className="grid md:grid-cols-5 gap-4 text-sm">
-            <div className="text-center p-3 bg-blue-50 rounded">
-              <div className="font-semibold">0-9</div>
-              <div className="text-gray-600">Tone</div>
-            </div>
-            <div className="text-center p-3 bg-green-50 rounded">
-              <div className="font-semibold">10-19</div>
-              <div className="text-gray-600">Structure</div>
-            </div>
-            <div className="text-center p-3 bg-yellow-50 rounded">
-              <div className="font-semibold">20-29</div>
-              <div className="text-gray-600">Process</div>
-            </div>
-            <div className="text-center p-3 bg-red-50 rounded">
-              <div className="font-semibold">30-39</div>
-              <div className="text-gray-600">Compliance</div>
-            </div>
-            <div className="text-center p-3 bg-purple-50 rounded">
-              <div className="font-semibold">40-49</div>
-              <div className="text-gray-600">Messaging</div>
-            </div>
-          </div>
-        </div>
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Dashboard />
+        </motion.div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Ping-Pong Prompt Engine
-          </h2>
-          <PingPongPromptUI engine={engine} />
-        </div>
-      </div>
+        {/* UI Components Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12"
+        >
+          <Card>
+            <CardHeader>
+              <h2 className="text-xl font-semibold text-gray-900">UI Components Showcase</h2>
+              <p className="text-gray-600">Explore the available UI components and their variants</p>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {/* Button Variants */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Button Variants</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="primary">Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="outline">Outline</Button>
+                    <Button variant="ghost">Ghost</Button>
+                    <Button variant="danger">Danger</Button>
+                    <Button variant="success">Success</Button>
+                  </div>
+                </div>
+
+                {/* Button Sizes */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Button Sizes</h3>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button size="sm">Small</Button>
+                    <Button size="md">Medium</Button>
+                    <Button size="lg">Large</Button>
+                    <Button size="xl">Extra Large</Button>
+                  </div>
+                </div>
+
+                {/* Button with Icons */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Buttons with Icons</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button icon={<ChartBarIcon className="h-4 w-4" />}>
+                      View Analytics
+                    </Button>
+                    <Button variant="outline" icon={<CogIcon className="h-4 w-4" />}>
+                      Configure
+                    </Button>
+                    <Button variant="success" icon={<RocketLaunchIcon className="h-4 w-4" />}>
+                      Deploy
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Loading States */}
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">Loading States</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Button loading>Processing...</Button>
+                    <Button variant="outline" loading>Loading...</Button>
+                    <Button variant="success" loading>Saving...</Button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Feature Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <ChartBarIcon className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Analytics</h3>
+              </div>
+              <p className="text-gray-600">
+                Comprehensive analytics and reporting with interactive charts and real-time data visualization.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <RocketLaunchIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Deployment</h3>
+              </div>
+              <p className="text-gray-600">
+                Streamlined deployment process with automated testing and continuous integration.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <CogIcon className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">Configuration</h3>
+              </div>
+              <p className="text-gray-600">
+                Flexible configuration management with environment-specific settings and validation.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </main>
     </div>
   );
-} 
+}
+
+export default App;

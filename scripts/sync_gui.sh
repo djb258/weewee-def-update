@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Cursor Blueprint Enforcer - GUI Launcher
+# WeeWee Definition Update System - GUI Launcher
 # This shell script launches the sync GUI application
 
-echo "Starting Cursor Blueprint Enforcer Sync GUI..."
+echo "Starting WeeWee Definition Update System Sync GUI..."
 echo
 
 # Check if Python is installed
@@ -21,7 +21,7 @@ fi
 
 # Check if we're in the right directory
 if [ ! -f "package.json" ]; then
-    echo "ERROR: Please run this script from the cursor-blueprint-enforcer directory"
+    echo "ERROR: Please run this script from the weewee-def-update directory"
     echo "Current directory: $(pwd)"
     exit 1
 fi

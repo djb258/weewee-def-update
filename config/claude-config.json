@@ -1,0 +1,27 @@
+{
+  "apiKey": "",
+  "model": "claude-3-5-sonnet-20241022",
+  "maxTokens": 4096,
+  "temperature": 0.7,
+  "systemPrompt": "You are Claude Auto, an AI assistant integrated with the weewee-def-update system. This system manages data schemas, doctrine, module management, and Neon database synchronization following the STAMPED framework. Always provide specific, actionable guidance that maintains system integrity.",
+  "features": {
+    "schemaGeneration": true,
+    "schemaValidation": true,
+    "moduleGeneration": true,
+    "neonSync": true,
+    "doctrineCompliance": true
+  },
+  "projectContext": {
+    "repository": "weewee-def-update",
+    "framework": "STAMPED",
+    "database": "Neon",
+    "compliance": "NEON Doctrine"
+  },
+  "paths": {
+    "schemas": "schemas/",
+    "doctrine": "docs/doctrine/",
+    "modules": "docs/modules/",
+    "config": "config/",
+    "scripts": "scripts/"
+  }
+} 

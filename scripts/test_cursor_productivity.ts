@@ -131,7 +131,7 @@ class CursorProductivityTester {
       const cursorJsonContent = await fs.readFile(cursorJsonPath, 'utf-8');
       const cursorJson = JSON.parse(cursorJsonContent);
 
-      if (cursorJson.name === 'cursor-blueprint-enforcer') {
+      if (cursorJson.name === 'weewee-def-update') {
         this.addResult('Workspace Configuration', 'PASS', 'Workspace is properly configured');
       } else {
         this.addResult('Workspace Configuration', 'FAIL', 'Workspace name mismatch');

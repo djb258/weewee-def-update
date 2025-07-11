@@ -1,0 +1,125 @@
+name: Claude Auto Integration
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'schemas/**'
+      - 'docs/**'
+      - 'config/**'
+      - 'scripts/**'
+  push:
+    branches: [ main ]
+    paths:
+      - 'schemas/**'
+      - 'docs/**'
+      - 'config/**'
+      - 'scripts/**'
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    name: Claude Auto Review
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Claude SDK
+      run: npm install @anthropic-ai/sdk
+      
+    - name: Run Claude Auto Validation
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: |
+        # Validate all schemas
+        for schema in schemas/**/*.json; do
+          if [ -f "$schema" ]; then
+            echo "Validating schema: $schema"
+            node scripts/claude-auto.ts validate "$schema" || echo "Schema validation failed for $schema"
+          fi
+        done
+        
+    - name: Generate Compliance Report
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: |
+        node scripts/claude-auto.ts chat "Generate a compliance report for all changes in this PR. Check STAMPED framework adherence and NEON doctrine compliance."
+        
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const report = fs.readFileSync('claude-report.txt', 'utf8');
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🤖 Claude Auto Review
+            
+            ${report}
+            
+            ---
+            *This review was generated automatically by Claude Auto integration.*`
+          });
+
+  claude-sync:
+    runs-on: ubuntu-latest
+    name: Claude Auto Sync
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Claude SDK
+      run: npm install @anthropic-ai/sdk
+      
+    - name: Generate Sync Script
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: |
+        node scripts/claude-auto.ts sync > neon-sync-script.js
+        
+    - name: Execute Neon Sync
+      env:
+        NEON_DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
+      run: |
+        if [ -f "neon-sync-script.js" ]; then
+          node neon-sync-script.js
+        fi
+        
+    - name: Update Documentation
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: |
+        node scripts/claude-auto.ts chat "Update the README.md with the latest changes and sync status"
+        
+    - name: Commit and Push Updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "🤖 Claude Auto: Updated documentation and sync status" || echo "No changes to commit"
+        git push 

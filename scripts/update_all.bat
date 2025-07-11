@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo Cursor Blueprint Enforcer - Full Update
+echo WeeWee Definition Update System - Full Update
 echo ========================================
 echo.
 
